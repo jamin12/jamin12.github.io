@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+
+<!-- 
+  ========================================
+  포스트 가져오기 로직
+  ========================================
+-->
+
+{% if page.target_category %}
+<!-- 
+    CASE 1: 카테고리 필터링 모드
+    index.html에 'target_category'가 설정된 경우, 해당 카테고리의 글만 보여줍니다.
+    이 모드에서는 페이지네이션이 비활성화됩니다.
+  -->
+{% assign category_posts = site.categories[page.target_category] %}
+
+<!-- 카테고리 내에서 고정(Pin)된 글과 일반 글 분리 -->
+{% assign all_pinned = category_posts | where: 'pin', 'true' %} {% assign
+all_normal = category_posts | where_exp: 'item', 'item.pin != true and
+item.hidden != true' %}
+
+<!-- 합치기: 고정된 글을 먼저 보여주고, 그 뒤에 일반 글 배치 -->
+{% assign posts = all_pinned | concat: all_normal %} {% else %}
+<!-- 
+    CASE 2: 기본 페이지네이션 모드
+    모든 글을 페이지네이션과 함께 보여줍니다.
+    고정된 글(Pin)이 첫 페이지 상단에 오도록 처리합니다.
+  -->
+{% assign all_pinned = site.posts | where: 'pin', 'true' %} {% assign all_normal
+= site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
+{% assign posts = '' | split: '' %}
+
+<!-- 페이지네이션 범위 계산 -->
+{% assign visible_start = paginator.page | minus: 1 | times: paginator.per_page
+%} {% assign visible_end = visible_start | plus: paginator.per_page %}
+
+<!-- 1. 고정된 글 추가 (현재 페이지 범위에 포함되는 경우) -->
+{% if all_pinned.size > visible_start %} {% if all_pinned.size > visible_end %}
+{% assign pinned_size = paginator.per_page %} {% else %} {% assign pinned_size =
+all_pinned.size | minus: visible_start %} {% endif %} {% for i in
+(visible_start..all_pinned.size) limit: pinned_size %} {% assign posts = posts |
+push: all_pinned[i] %} {% endfor %} {% else %} {% assign pinned_size = 0 %} {%
+endif %}
+
+<!-- 2. 일반 글 추가 (남은 공간 채우기) -->
+{% assign normal_size = paginator.posts | size | minus: pinned_size %} {% if
+normal_size > 0 %} {% if pinned_size > 0 %} {% assign normal_start = 0 %} {%
+else %} {% assign normal_start = visible_start | minus: all_pinned.size %} {%
+endif %} {% assign normal_end = normal_start | plus: normal_size | minus: 1 %}
+{% for i in (normal_start..normal_end) %} {% assign posts = posts | push:
+all_normal[i] %} {% endfor %} {% endif %} {% endif %}
+
+<!-- 
+  ========================================
+  포스트 목록 렌더링
+  ========================================
+-->
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for post in posts %} {% include post-card.html %} {% endfor %}
+</div>
+
+<!-- 
+  ========================================
+  페이지네이션 컨트롤
+  ========================================
+  카테고리 필터링 모드가 아닐 때만 페이지네이션 표시
+-->
+{% unless page.target_category %} {% if paginator.total_pages > 1 %} {% include
+post-paginator.html %} {% endif %} {% endunless %}
