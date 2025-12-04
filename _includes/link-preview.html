@@ -1,0 +1,68 @@
+<div class="link-preview-wrapper">
+  <style>
+    .link-preview-card {
+      display: block;
+      border: 1px solid var(--btn-border-color, #444);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none !important;
+      margin: 1rem 0;
+      transition: all 0.2s ease-in-out;
+      background-color: #1e1e1e; /* Dark background */
+      padding: 16px;
+
+      /* Title styles applied to the link text */
+      color: var(--heading-color, #fff) !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Light mode override */
+    [data-mode="light"] .link-preview-card {
+      background-color: #f6f8fa;
+      border-color: #e1e4e8;
+      color: #24292e !important;
+    }
+    [data-mode="dark"] .link-preview-card {
+      background-color: #1e1e1e;
+      border-color: #444;
+      color: #fff !important;
+    }
+
+    .link-preview-card:hover {
+      background-color: var(--link-hover-bg, rgba(255, 255, 255, 0.05));
+      text-decoration: none !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* URL display using pseudo-element */
+    .link-preview-card::after {
+      content: attr(href);
+      display: block;
+      font-weight: normal;
+      font-size: 0.85rem;
+      color: #58a6ff; /* Blue link color */
+      margin-top: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-decoration: underline;
+    }
+
+    [data-mode="light"] .link-preview-card::after {
+      color: #0366d6;
+    }
+  </style>
+  <a
+    href="{{ include.url }}"
+    class="link-preview-card"
+    target="_blank"
+    rel="noopener noreferrer"
+    >{% assign preview_title = include.title %}{% unless preview_title %}{%
+    assign stripped_url = include.url | replace: 'https://', '' | replace:
+    'http://', '' | replace: 'www.', '' %}{% assign preview_title = stripped_url
+    | split: '/' | first %}{% endunless %}
+    <div class="link-preview-title">{{ preview_title }}</div></a
+  >
+</div>
