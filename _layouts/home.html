@@ -16,7 +16,25 @@ layout: default
     index.html에 'target_category'가 설정된 경우, 해당 카테고리의 글만 보여줍니다.
     이 모드에서는 페이지네이션이 비활성화됩니다.
   -->
-{% assign category_posts = site.categories[page.target_category] %}
+
+{% assign category_posts = '' | split: '' %} {% assign target_cats =
+page.target_category %}
+
+<!-- target_category가 배열인지 확인하기 위한 꼼수 (size 체크 등) 혹은 
+      Jekyll에서 배열/문자열 구분이 모호하므로, 그냥 append 해보고 로직 처리.
+      하지만 단순히, 리스트인 경우와 스트링인 경우를 처리하기 위해 split을 활용할 수 있음. -->
+
+<!-- 문자열인 경우 배열로 변환 -->
+{% if target_cats.first %}
+<!-- 이미 배열인 경우 그대로 사용 -->
+{% else %} {% assign target_cats = target_cats | split: '#####' %}
+<!-- 배열로 만듦 -->
+{% endif %} {% for cat_name in target_cats %} {% assign posts_in_cat =
+site.categories[cat_name] %} {% if posts_in_cat %} {% assign category_posts =
+category_posts | concat: posts_in_cat %} {% endif %} {% endfor %}
+
+<!-- 중복 제거 (혹시 글이 여러 카테고리에 속해있을 경우) 및 날짜순 정렬 -->
+{% assign category_posts = category_posts | uniq | sort: 'date' | reverse %}
 
 <!-- 카테고리 내에서 고정(Pin)된 글과 일반 글 분리 -->
 {% assign all_pinned = category_posts | where: 'pin', 'true' %} {% assign
