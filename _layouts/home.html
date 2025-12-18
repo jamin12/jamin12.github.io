@@ -42,9 +42,38 @@ all_normal = category_posts | where_exp: 'item', 'item.pin != true and
 item.hidden != true' %}
 
 <!-- 합치기: 고정된 글을 먼저 보여주고, 그 뒤에 일반 글 배치 -->
-{% assign posts = all_pinned | concat: all_normal %} {% else %}
+{% assign posts = all_pinned | concat: all_normal %} {% elsif
+page.exclude_category %}
 <!-- 
-    CASE 2: 기본 페이지네이션 모드
+    CASE 2: 카테고리 제외 모드
+    index.html에 'exclude_category'가 설정된 경우, 해당 카테고리를 제외한 모든 글을 보여줍니다.
+    이 모드에서는 페이지네이션이 비활성화됩니다.
+  -->
+
+{% assign excluded_cats = '' | split: '' %} {% assign target_ex_cats =
+page.exclude_category %}
+
+<!-- 문자열인 경우 배열로 변환 -->
+{% if target_ex_cats.first %}
+<!-- 이미 배열인 경우 -->
+{% else %} {% assign target_ex_cats = target_ex_cats | split: '#####' %} {%
+endif %} {% assign all_posts = site.posts %} {% assign filtered_posts = '' |
+split: '' %} {% for post in all_posts %} {% assign is_excluded = false %} {% for
+cat in post.categories %} {% if target_ex_cats contains cat %} {% assign
+is_excluded = true %} {% break %} {% endif %} {% endfor %} {% unless is_excluded
+%} {% assign filtered_posts = filtered_posts | push: post %} {% endunless %} {%
+endfor %}
+
+<!-- 중복 제거 및 날짜순 정렬 -->
+{% assign category_posts = filtered_posts | uniq | sort: 'date' | reverse %}
+
+<!-- 카테고리 내에서 고정(Pin)된 글과 일반 글 분리 -->
+{% assign all_pinned = category_posts | where: 'pin', 'true' %} {% assign
+all_normal = category_posts | where_exp: 'item', 'item.pin != true and
+item.hidden != true' %} {% assign posts = all_pinned | concat: all_normal %} {%
+else %}
+<!-- 
+    CASE 3: 기본 페이지네이션 모드
     모든 글을 페이지네이션과 함께 보여줍니다.
     고정된 글(Pin)이 첫 페이지 상단에 오도록 처리합니다.
   -->
@@ -88,5 +117,6 @@ all_normal[i] %} {% endfor %} {% endif %} {% endif %}
   ========================================
   카테고리 필터링 모드가 아닐 때만 페이지네이션 표시
 -->
-{% unless page.target_category %} {% if paginator.total_pages > 1 %} {% include
-post-paginator.html %} {% endif %} {% endunless %}
+{% unless page.target_category or page.exclude_category %} {% if
+paginator.total_pages > 1 %} {% include post-paginator.html %} {% endif %} {%
+endunless %}
