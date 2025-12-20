@@ -191,7 +191,4 @@ sequenceDiagram
 
 ## 참고
 
-{%- include reference.html
-  title="Pact JUnit 5 Consumer Documentation"
-  url="https://docs.pact.io/implementation_guides/jvm/consumer/junit5"
--%}
+{% include link-preview.html url="https://docs.pact.io/implementation_guides/jvm/consumer/junit5" title="Pact JUnit 5 Consumer Documentation" %}
