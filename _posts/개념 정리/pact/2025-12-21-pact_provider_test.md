@@ -209,6 +209,50 @@ interaction 하나가 검증될 때의 흐름은 다음과 같다.
 
 이 과정을 interaction 수만큼 반복한다.
 
+## 전체 흐름 요약
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Extension as PactVerificationSpring6Provider
+    participant File as Pact File
+    participant Test as Test Class
+    participant Context as PactVerificationContext
+    participant Target as MockMvc Target
+    participant Controller as Controller
+
+    note over Extension, File: 1. Initialization
+    Extension->>File: Load Pact File & Filter by Provider Name
+    File-->>Extension: List of Interactions
+
+    loop For Each Interaction
+        note over Extension, Controller: 2. Verification
+        
+        opt Provider State Exists
+            Extension->>Test: Invoke @State Method
+        end
+
+        Extension->>Test: Execute @TestTemplate method
+        activate Test
+        
+        Test->>Context: context.verifyInteraction()
+        activate Context
+        
+        Context->>Target: Send Request (Converted from Interaction)
+        activate Target
+        Target->>Controller: Call API Endpoint
+        Controller-->>Target: Return Response
+        deactivate Target
+        
+        Context->>Context: Compare Response with Contract
+        Context-->>Test: Verification Result
+        deactivate Context
+        
+        deactivate Test
+    end
+```
+
+
 ## 참고
 
 {% include link-preview.html url="https://docs.pact.io/implementation_guides/jvm/provider/junit5spring" title="Pact JUnit 5 Spring Provider Documentation" %}
