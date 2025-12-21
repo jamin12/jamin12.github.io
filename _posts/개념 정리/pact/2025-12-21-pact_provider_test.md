@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "pact provider test"
-date: 2025-12-20
+date: 2025-12-21
 categories: [개념정리, pact]
 tags: [cdc, pact, 러너스하이2_주제1]
 mermaid: true
