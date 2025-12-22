@@ -2,7 +2,7 @@
 layout: post
 title: "비동기 호출과 TaskDecorator: SecurityContext 전파"
 date: 2025-12-22
-categories: [개념정리, spring boot]
+categories: [트러블 슈팅]
 tags: [비동기, taskdecorator, security]
 mermaid: true
 ---
