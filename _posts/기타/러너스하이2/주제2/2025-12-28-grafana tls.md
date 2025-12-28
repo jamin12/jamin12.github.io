@@ -17,7 +17,7 @@ Grafana은 “안전하지 않음으로 이동” 같은 예외 버튼이 아예
 문제는 “TLS 설정이 안 됨”이 아니라, 브라우저가 **신뢰 검증을 통과하지 못한 것**이었다.
 그리고 HSTS가 켜져 있으면, 그 실패를 “예외로 진행”하는 경로가 차단된다.
 
-{% include link-preview.html url="https://jamin12.github.io/개념 정리/network/2025-12-28-tls/" %}
+{% include link-preview.html url="https://jamin12.github.io/posts/tls/" %}
 
 ## 1. HTTPS에서 브라우저가 확인하는 것은 “서버”가 아니다
 
