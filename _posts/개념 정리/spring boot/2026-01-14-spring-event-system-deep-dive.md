@@ -591,7 +591,7 @@ protected boolean supportsEvent(
 
 ### 실제 동작 시나리오
 
-```kotlin
+``` text
 // 이벤트 계층 구조
 open class ApplicationEvent(source: Any)
     ↑
@@ -631,7 +631,7 @@ context.publishEvent(ProjectCreatedEvent(projectId = "p1"))
 
 ### 타입 매칭 규칙
 
-```kotlin
+``` text
 // 이벤트 계층 구조
 ApplicationEvent
     ↑

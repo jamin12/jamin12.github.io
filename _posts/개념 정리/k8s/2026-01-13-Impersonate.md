@@ -20,7 +20,7 @@ Impersonation은 이 두 단계 사이에서 동작한다.
 
 Impersonation 헤더가 포함된 요청은 처리 과정이 달라진다.
 
-```http
+```text
 Authorization: Bearer <platform-sa-token>
 Impersonate-User: user-123
 Impersonate-Group: project-9-admin
@@ -86,7 +86,7 @@ user-123 (group=project-9-admin)이 pods list를 수행할 수 있는가?
 
 Platform SA가 `cluster-admin`을 가지고 있다면, 다음과 같은 요청이 가능해진다.
 
-```http
+```text
 Impersonate-User: user-123
 Impersonate-Group: system:masters
 ```
