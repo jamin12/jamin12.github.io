@@ -185,3 +185,7 @@ activeService의 selector가 새 hash로 변경된다. Pod는 그대로 유지�
 ### Scale Down
 
 `scaleDownDelaySeconds`에 설정된 시간이 지나면 이전 ReplicaSet의 replicas가 0으로 변경된다. `revisionHistoryLimit`만큼 ReplicaSet 히스토리가 보관되어 롤백에 사용된다.
+
+## 참고
+
+![Blue-Green Deployment](/assets/imgs/posts/개념정리/배포/blue_green_deployment.gif)
