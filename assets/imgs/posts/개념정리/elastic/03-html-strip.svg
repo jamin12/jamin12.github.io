@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="sh3" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <marker id="arr3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f472b6"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="240" rx="16" fill="url(#bg3)"/>
+  <text x="400" y="35" text-anchor="middle" fill="#f8fafc" font-size="17" font-weight="700">html_strip Character Filter</text>
+
+  <!-- Raw HTML -->
+  <rect x="40" y="60" width="220" height="130" rx="12" fill="#334155" filter="url(#sh3)"/>
+  <text x="150" y="85" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600">원본 데이터</text>
+  <text x="150" y="115" text-anchor="middle" fill="#f472b6" font-size="14" font-weight="600">&lt;p&gt;</text>
+  <text x="150" y="135" text-anchor="middle" fill="#f8fafc" font-size="14">Hello World</text>
+  <text x="150" y="155" text-anchor="middle" fill="#f472b6" font-size="14" font-weight="600">&lt;/p&gt;</text>
+
+  <!-- Arrow 1 -->
+  <line x1="268" y1="125" x2="308" y2="125" stroke="#f472b6" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- html_strip box -->
+  <rect x="315" y="80" width="170" height="90" rx="12" fill="#f472b6" opacity="0.15" stroke="#f472b6" stroke-width="1.5"/>
+  <text x="400" y="118" text-anchor="middle" fill="#f472b6" font-size="20">🧹</text>
+  <text x="400" y="142" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">html_strip</text>
+  <text x="400" y="160" text-anchor="middle" fill="#94a3b8" font-size="10">태그 제거</text>
+
+  <!-- Arrow 2 -->
+  <line x1="490" y1="125" x2="538" y2="125" stroke="#f472b6" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- Clean text -->
+  <rect x="545" y="60" width="220" height="130" rx="12" fill="#334155" filter="url(#sh3)"/>
+  <text x="655" y="85" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600">색인 데이터</text>
+  <text x="655" y="130" text-anchor="middle" fill="#86efac" font-size="18" font-weight="600">Hello World</text>
+  <text x="655" y="155" text-anchor="middle" fill="#64748b" font-size="11">깔끔한 텍스트만 색인</text>
+
+  <!-- Caption -->
+  <text x="400" y="225" text-anchor="middle" fill="#64748b" font-size="11">웹 크롤링 데이터에서 HTML 태그를 제거하여 순수 텍스트만 색인</text>
+</svg>

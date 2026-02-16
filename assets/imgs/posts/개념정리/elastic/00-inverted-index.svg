@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg0" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="sh0" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <marker id="arr0" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="400" rx="16" fill="url(#bg0)"/>
+  <text x="400" y="32" text-anchor="middle" fill="#f8fafc" font-size="17" font-weight="700">역인덱스 (Inverted Index) 구조</text>
+
+  <!-- Documents -->
+  <text x="110" y="65" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="600">Documents</text>
+
+  <rect x="25" y="78" width="170" height="30" rx="6" fill="#334155" filter="url(#sh0)"/>
+  <text x="40" y="98" fill="#fbbf24" font-size="11" font-weight="700">Doc 1</text>
+  <text x="82" y="98" fill="#f8fafc" font-size="11">"The quick brown fox"</text>
+
+  <rect x="25" y="115" width="170" height="30" rx="6" fill="#334155" filter="url(#sh0)"/>
+  <text x="40" y="135" fill="#fbbf24" font-size="11" font-weight="700">Doc 2</text>
+  <text x="82" y="135" fill="#f8fafc" font-size="11">"The quick rabbit"</text>
+
+  <rect x="25" y="152" width="170" height="30" rx="6" fill="#334155" filter="url(#sh0)"/>
+  <text x="40" y="172" fill="#fbbf24" font-size="11" font-weight="700">Doc 3</text>
+  <text x="82" y="172" fill="#f8fafc" font-size="11">"Brown fox jumps"</text>
+
+  <!-- Arrow -->
+  <text x="110" y="210" text-anchor="middle" fill="#94a3b8" font-size="10">Analyzer 처리 후</text>
+  <line x1="200" y1="135" x2="280" y2="135" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr0)"/>
+
+  <!-- Inverted Index Table -->
+  <text x="530" y="65" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="600">Inverted Index</text>
+
+  <!-- Header -->
+  <rect x="310" y="78" width="460" height="30" rx="6" fill="#475569"/>
+  <text x="420" y="98" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">Token</text>
+  <line x1="530" y1="78" x2="530" y2="108" stroke="#64748b" stroke-width="1"/>
+  <text x="650" y="98" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">Document IDs</text>
+
+  <!-- Rows -->
+  <rect x="310" y="112" width="460" height="28" rx="0" fill="#1e293b"/>
+  <text x="420" y="130" text-anchor="middle" fill="#86efac" font-size="12">the</text>
+  <line x1="530" y1="112" x2="530" y2="140" stroke="#33415580" stroke-width="1"/>
+  <rect x="570" y="118" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="592" y="131" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 1</text>
+  <rect x="625" y="118" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="647" y="131" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 2</text>
+
+  <rect x="310" y="142" width="460" height="28" rx="0" fill="#334155" opacity="0.5"/>
+  <text x="420" y="160" text-anchor="middle" fill="#86efac" font-size="12">quick</text>
+  <line x1="530" y1="142" x2="530" y2="170" stroke="#33415580" stroke-width="1"/>
+  <rect x="570" y="148" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="592" y="161" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 1</text>
+  <rect x="625" y="148" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="647" y="161" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 2</text>
+
+  <rect x="310" y="172" width="460" height="28" rx="0" fill="#1e293b"/>
+  <text x="420" y="190" text-anchor="middle" fill="#86efac" font-size="12">brown</text>
+  <line x1="530" y1="172" x2="530" y2="200" stroke="#33415580" stroke-width="1"/>
+  <rect x="570" y="178" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="592" y="191" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 1</text>
+  <rect x="625" y="178" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="647" y="191" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 3</text>
+
+  <rect x="310" y="202" width="460" height="28" rx="0" fill="#334155" opacity="0.5"/>
+  <text x="420" y="220" text-anchor="middle" fill="#86efac" font-size="12">fox</text>
+  <line x1="530" y1="202" x2="530" y2="230" stroke="#33415580" stroke-width="1"/>
+  <rect x="570" y="208" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="592" y="221" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 1</text>
+  <rect x="625" y="208" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="647" y="221" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 3</text>
+
+  <rect x="310" y="232" width="460" height="28" rx="0" fill="#1e293b"/>
+  <text x="420" y="250" text-anchor="middle" fill="#86efac" font-size="12">rabbit</text>
+  <line x1="530" y1="232" x2="530" y2="260" stroke="#33415580" stroke-width="1"/>
+  <rect x="570" y="238" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="592" y="251" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 2</text>
+
+  <rect x="310" y="262" width="460" height="28" rx="0" fill="#334155" opacity="0.5"/>
+  <text x="420" y="280" text-anchor="middle" fill="#86efac" font-size="12">jumps</text>
+  <line x1="530" y1="262" x2="530" y2="290" stroke="#33415580" stroke-width="1"/>
+  <rect x="570" y="268" width="45" height="18" rx="4" fill="#fbbf2430"/>
+  <text x="592" y="281" text-anchor="middle" fill="#fbbf24" font-size="10">Doc 3</text>
+
+  <!-- Search example -->
+  <rect x="100" y="310" width="600" height="70" rx="12" fill="#3b82f6" opacity="0.1" stroke="#3b82f6" stroke-width="1"/>
+  <text x="400" y="335" text-anchor="middle" fill="#93c5fd" font-size="13" font-weight="700">검색어: "quick brown"</text>
+  <text x="400" y="358" text-anchor="middle" fill="#94a3b8" font-size="11">quick → [Doc 1, Doc 2] / brown → [Doc 1, Doc 3] → Doc 1이 가장 많이 매칭 → 높은 Score</text>
+  <text x="400" y="375" text-anchor="middle" fill="#64748b" font-size="10">토큰별로 역인덱스를 조회 → 매칭된 문서를 Score 기반으로 정렬하여 반환</text>
+</svg>

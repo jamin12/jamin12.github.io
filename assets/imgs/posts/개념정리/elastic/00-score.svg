@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bgS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="shS" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="300" rx="16" fill="url(#bgS)"/>
+  <text x="400" y="32" text-anchor="middle" fill="#f8fafc" font-size="17" font-weight="700">Score 계산의 3가지 요소</text>
+  <text x="400" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">검색 결과의 관련도 순위를 결정하는 핵심 지표</text>
+
+  <!-- TF -->
+  <rect x="30" y="75" width="230" height="185" rx="12" fill="#334155" filter="url(#shS)"/>
+  <rect x="30" y="75" width="230" height="36" rx="12" fill="#3b82f6" opacity="0.2"/>
+  <text x="145" y="99" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="700">TF (Term Frequency)</text>
+
+  <text x="145" y="130" text-anchor="middle" fill="#f8fafc" font-size="12">해당 문서에 검색 토큰이</text>
+  <text x="145" y="148" text-anchor="middle" fill="#f8fafc" font-size="12">얼마나 많이 등장하는가</text>
+
+  <rect x="55" y="165" width="180" height="40" rx="8" fill="#1e293b"/>
+  <text x="145" y="183" text-anchor="middle" fill="#93c5fd" font-size="11">"fox"가 3번 등장한 문서</text>
+  <text x="145" y="198" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">→ 높은 TF → 높은 Score</text>
+
+  <rect x="60" y="218" width="170" height="28" rx="6" fill="#3b82f620"/>
+  <text x="145" y="237" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">많이 등장할수록 관련도 ↑</text>
+
+  <!-- IDF -->
+  <rect x="285" y="75" width="230" height="185" rx="12" fill="#334155" filter="url(#shS)"/>
+  <rect x="285" y="75" width="230" height="36" rx="12" fill="#f59e0b" opacity="0.2"/>
+  <text x="400" y="99" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="700">IDF (Inverse Doc Freq)</text>
+
+  <text x="400" y="130" text-anchor="middle" fill="#f8fafc" font-size="12">전체 문서에서 그 토큰이</text>
+  <text x="400" y="148" text-anchor="middle" fill="#f8fafc" font-size="12">얼마나 희귀한가</text>
+
+  <rect x="310" y="165" width="180" height="40" rx="8" fill="#1e293b"/>
+  <text x="400" y="183" text-anchor="middle" fill="#fcd34d" font-size="11">"the"는 모든 문서에 등장</text>
+  <text x="400" y="198" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">→ 낮은 IDF → 낮은 Score</text>
+
+  <rect x="315" y="218" width="170" height="28" rx="6" fill="#f59e0b20"/>
+  <text x="400" y="237" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="600">희귀할수록 관련도 ↑</text>
+
+  <!-- Field Length -->
+  <rect x="540" y="75" width="230" height="185" rx="12" fill="#334155" filter="url(#shS)"/>
+  <rect x="540" y="75" width="230" height="36" rx="12" fill="#22c55e" opacity="0.2"/>
+  <text x="655" y="93" text-anchor="middle" fill="#86efac" font-size="13" font-weight="700">Field Length</text>
+  <text x="655" y="107" text-anchor="middle" fill="#86efac" font-size="11">Normalization</text>
+
+  <text x="655" y="133" text-anchor="middle" fill="#f8fafc" font-size="12">해당 필드의 전체</text>
+  <text x="655" y="151" text-anchor="middle" fill="#f8fafc" font-size="12">길이가 얼마나 짧은가</text>
+
+  <rect x="565" y="165" width="180" height="40" rx="8" fill="#1e293b"/>
+  <text x="655" y="183" text-anchor="middle" fill="#86efac" font-size="11">3단어 문서 vs 100단어 문서</text>
+  <text x="655" y="198" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">→ 짧은 문서가 더 높은 Score</text>
+
+  <rect x="570" y="218" width="170" height="28" rx="6" fill="#22c55e20"/>
+  <text x="655" y="237" text-anchor="middle" fill="#86efac" font-size="11" font-weight="600">필드가 짧을수록 관련도 ↑</text>
+
+  <!-- Bottom -->
+  <text x="400" y="285" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="600">Score = TF × IDF × Field Length Norm → 이 값이 높은 문서가 검색 결과 상위에 노출</text>
+</svg>
