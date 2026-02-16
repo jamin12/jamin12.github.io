@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="sh6" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <marker id="arr6" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="280" rx="16" fill="url(#bg6)"/>
+  <text x="400" y="35" text-anchor="middle" fill="#f8fafc" font-size="17" font-weight="700">한글 검색이 안 되는 이유</text>
+
+  <!-- Standard Tokenizer -->
+  <rect x="40" y="60" width="340" height="180" rx="12" fill="#334155" filter="url(#sh6)"/>
+  <rect x="40" y="60" width="340" height="36" rx="12" fill="#ef4444" opacity="0.2"/>
+  <text x="210" y="84" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="700">standard tokenizer</text>
+
+  <text x="210" y="118" text-anchor="middle" fill="#94a3b8" font-size="12">색인 데이터: "삼성전자"</text>
+
+  <!-- Token box -->
+  <rect x="130" y="132" width="160" height="34" rx="8" fill="#475569"/>
+  <text x="210" y="154" text-anchor="middle" fill="#f8fafc" font-size="15" font-weight="600">삼성전자</text>
+  <text x="210" y="178" text-anchor="middle" fill="#64748b" font-size="10">→ 통째로 1개의 토큰</text>
+
+  <text x="210" y="205" text-anchor="middle" fill="#94a3b8" font-size="12">검색어: "삼성"</text>
+  <rect x="110" y="214" width="200" height="28" rx="6" fill="#ef444430"/>
+  <text x="210" y="233" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="600">"삼성" ≠ "삼성전자" → 매칭 실패</text>
+
+  <!-- Nori Tokenizer -->
+  <rect x="420" y="60" width="340" height="180" rx="12" fill="#334155" filter="url(#sh6)"/>
+  <rect x="420" y="60" width="340" height="36" rx="12" fill="#22c55e" opacity="0.2"/>
+  <text x="590" y="84" text-anchor="middle" fill="#86efac" font-size="13" font-weight="700">nori_tokenizer</text>
+
+  <text x="590" y="118" text-anchor="middle" fill="#94a3b8" font-size="12">색인 데이터: "삼성전자"</text>
+
+  <!-- Token boxes -->
+  <rect x="490" y="132" width="80" height="34" rx="8" fill="#22c55e30" stroke="#22c55e" stroke-width="1"/>
+  <text x="530" y="154" text-anchor="middle" fill="#86efac" font-size="15" font-weight="600">삼성</text>
+  <rect x="590" y="132" width="80" height="34" rx="8" fill="#22c55e30" stroke="#22c55e" stroke-width="1"/>
+  <text x="630" y="154" text-anchor="middle" fill="#86efac" font-size="15" font-weight="600">전자</text>
+  <text x="590" y="178" text-anchor="middle" fill="#64748b" font-size="10">→ 형태소 단위 2개의 토큰</text>
+
+  <text x="590" y="205" text-anchor="middle" fill="#94a3b8" font-size="12">검색어: "삼성"</text>
+  <rect x="490" y="214" width="200" height="28" rx="6" fill="#22c55e30"/>
+  <text x="590" y="233" text-anchor="middle" fill="#86efac" font-size="13" font-weight="600">"삼성" = "삼성" → 매칭 성공!</text>
+
+  <!-- Bottom -->
+  <text x="400" y="268" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="600">한국어는 형태소 분석이 필수 — Nori Analyzer로 해결</text>
+</svg>
