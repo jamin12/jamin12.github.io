@@ -39,7 +39,7 @@ Elasticsearch는 문서를 색인할 때, 텍스트를 Analyzer로 처리하여 
 
 "quick brown"을 검색하면, Elasticsearch는 역인덱스에서 `quick`과 `brown`을 각각 조회한다. `quick`은 Doc 1, Doc 2에 있고, `brown`은 Doc 1, Doc 3에 있다. 두 토큰 모두 포함된 Doc 1이 가장 관련도가 높다고 판단하여 상위에 노출한다. 토큰 단위로 조회하기 때문에 검색어 순서는 상관없다.
 
-![역인덱스 구조](/assets/imgs/posts/개념정리/elastic/00-inverted-index.svg)
+![역인덱스 구조](/assets/imgs/posts/개념정리/elastic/00-inverted-index.png)
 
 ## Score — 검색 결과의 관련도 점수
 
@@ -51,7 +51,7 @@ Elasticsearch는 검색 결과를 반환할 때 각 문서에 **Score**를 부�
 
 **Field Length Normalization** — 필드의 전체 길이가 짧을수록 Score가 높아진다. 3단어짜리 문서에서 "fox"가 등장하는 것이 100단어짜리 문서에서 등장하는 것보다 더 관련성이 높다고 보는 것이다.
 
-![Score 계산의 3가지 요소](/assets/imgs/posts/개념정리/elastic/00-score.svg)
+![Score 계산의 3가지 요소](/assets/imgs/posts/개념정리/elastic/00-score.png)
 
 이 세 가지 값을 종합하여 최종 Score가 결정되고, 이 Score가 높은 문서부터 검색 결과에 노출된다. Elasticsearch의 검색 품질은 결국 역인덱스에 어떤 토큰이 들어가느냐에 달려 있고, 그것을 결정하는 것이 **Analyzer**다.
 
@@ -65,7 +65,7 @@ Analyzer는 세 가지 구성 요소로 이루어져 있다.
 
 텍스트는 `Character Filter → Tokenizer → Token Filter` 순서로 처리된다. 이 파이프라인을 커스터마이징한 것이 Custom Analyzer다.
 
-![Analyzer Pipeline](/assets/imgs/posts/개념정리/elastic/01-analyzer-pipeline.svg)
+![Analyzer Pipeline](/assets/imgs/posts/개념정리/elastic/01-analyzer-pipeline.png)
 
 ## 1. 대소문자 구분 없이 검색 — lowercase Token Filter
 
@@ -85,7 +85,7 @@ Custom Analyzer에 `lowercase` token filter를 적용하면 대소문자 구분 
 
 `"The Quick Brown Fox"`로 색인된 데이터가 `"the quick brown fox"`로도 검색된다.
 
-![lowercase Token Filter](/assets/imgs/posts/개념정리/elastic/02-lowercase.svg)
+![lowercase Token Filter](/assets/imgs/posts/개념정리/elastic/02-lowercase.png)
 
 ## 2. HTML 태그 제거 — html_strip Character Filter
 
@@ -105,7 +105,7 @@ HTML 태그가 포함된 텍스트를 색인하면 태그가 토큰에 포함된
 
 `<p>Hello</p>`가 `Hello`로 변환되어 색인된다.
 
-![html_strip Character Filter](/assets/imgs/posts/개념정리/elastic/03-html-strip.svg)
+![html_strip Character Filter](/assets/imgs/posts/개념정리/elastic/03-html-strip.png)
 
 ## 3. 불용어 제거 — stop Token Filter
 
@@ -143,7 +143,7 @@ HTML 태그가 포함된 텍스트를 색인하면 태그가 토큰에 포함된
 
 stemmer는 언어별로 다르게 동작하므로 대상 언어에 맞는 설정이 필요하다.
 
-![stop + stemmer Token Filter](/assets/imgs/posts/개념정리/elastic/04-stop-stemmer.svg)
+![stop + stemmer Token Filter](/assets/imgs/posts/개념정리/elastic/04-stop-stemmer.png)
 
 ## 5. 동의어로 검색 — synonym Token Filter
 
@@ -212,7 +212,7 @@ stemmer는 언어별로 다르게 동작하므로 대상 언어에 맞는 설정
 
 동의어가 많을 경우 외부 파일(`synonyms_path`)로 관리하는 방식도 있다.
 
-![synonym Token Filter](/assets/imgs/posts/개념정리/elastic/05-synonym.svg)
+![synonym Token Filter](/assets/imgs/posts/개념정리/elastic/05-synonym.png)
 
 ## 요약
 

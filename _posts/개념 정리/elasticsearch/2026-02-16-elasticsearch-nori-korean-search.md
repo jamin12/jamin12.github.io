@@ -14,7 +14,7 @@ Elasticsearch의 기본 `standard` tokenizer는 공백과 특수문자를 기준
 
 "삼성전자"를 색인하면 `standard` tokenizer는 이 단어를 통째로 하나의 토큰으로 만든다. 그래서 "삼성"으로 검색해도 "삼성전자" 토큰과 일치하지 않아 결과가 나오지 않는다. 한글은 교착어(조사, 어미가 붙는 언어)이기 때문에, 형태소 단위로 분리해주는 별도의 분석기가 필요하다.
 
-![한글 검색 문제](/assets/imgs/posts/개념정리/elastic/06-korean-problem.svg)
+![한글 검색 문제](/assets/imgs/posts/개념정리/elastic/06-korean-problem.png)
 
 ## Nori Analyzer
 
@@ -82,7 +82,7 @@ bin/elasticsearch-plugin install analysis-nori
 }
 ```
 
-![Nori decompound_mode 비교](/assets/imgs/posts/개념정리/elastic/07-nori-decompound.svg)
+![Nori decompound_mode 비교](/assets/imgs/posts/개념정리/elastic/07-nori-decompound.png)
 
 ### nori_part_of_speech — 불필요한 품사 제거
 
@@ -120,7 +120,7 @@ bin/elasticsearch-plugin install analysis-nori
 
 한글은 Nori가 형태소 분석을 처리하고, 영어는 `lowercase`, `stop`, `stemmer` 필터가 처리한다. "삼성전자 Galaxy S25"라는 텍스트가 있을 때, "삼성"으로도, "galaxy"로도 검색이 가능해진다.
 
-![한글+영어 혼합 분석](/assets/imgs/posts/개념정리/elastic/08-mixed-analyzer.svg)
+![한글+영어 혼합 분석](/assets/imgs/posts/개념정리/elastic/08-mixed-analyzer.png)
 
 ## 요약
 
