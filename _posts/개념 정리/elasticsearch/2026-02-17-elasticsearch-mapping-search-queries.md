@@ -3,7 +3,7 @@ layout: post
 title: "Elasticsearch 매핑과 검색 쿼리"
 date: 2026-02-17
 categories: [개념정리, elasticsearch]
-tags: [elasticsearch, mapping, match, term, bool, range, search_as_you_type, pagination, sort]
+tags: [elasticsearch, mapping, match, term, bool, range, pagination, sort]
 ---
 
 ## 매핑(mapping)과 데이터 타입
@@ -189,63 +189,6 @@ GET /products/_search
 
 채용 플랫폼에서 "원격 근무 가능", "연봉 6,000만 원 이상"을 우대하거나, 블로그 검색에서 "최근 작성", "좋아요 수 많은 글"을 우대하는 것도 같은 원리다.
 
-## 자동 완성 기능 — search_as_you_type
-
-검색창에 글자를 입력하는 도중에 실시간으로 결과를 보여주는 자동 완성 기능이 필요한 경우가 있다. Elasticsearch에서는 이를 위한 전용 필드 타입인 `search_as_you_type`을 제공한다.
-
-### 동작 방식
-
-`search_as_you_type`으로 매핑된 필드는 내부적으로 여러 서브 필드를 자동 생성한다.
-
-| 서브 필드 | 역할 |
-|---|---|
-| `field` | 원본 text와 동일하게 토큰 분리 |
-| `field._2gram` | 인접한 2개 토큰 조합 (shingle) |
-| `field._3gram` | 인접한 3개 토큰 조합 (shingle) |
-| `field._index_prefix` | 각 토큰의 접두사(prefix)를 미리 인덱싱 |
-
-"엘라스틱서치 검색 엔진"이라는 값이 들어가면, `_index_prefix` 서브 필드에는 `[엘, 엘라, 엘라스, ...]` 같은 접두사가 미리 저장된다. 사용자가 "엘라"까지만 입력해도 빠르게 매칭할 수 있는 구조다.
-
-### 매핑 설정
-
-```json
-PUT /products
-{
-  "mappings": {
-    "properties": {
-      "name": {
-        "type": "search_as_you_type"
-      }
-    }
-  }
-}
-```
-
-### 검색 쿼리
-
-`search_as_you_type` 필드는 `multi_match` 쿼리의 `bool_prefix` 타입과 함께 사용한다. 검색 대상에 서브 필드를 함께 지정해야 한다.
-
-```json
-GET /products/_search
-{
-  "query": {
-    "multi_match": {
-      "query": "엘라스틱",
-      "type": "bool_prefix",
-      "fields": [
-        "name",
-        "name._2gram",
-        "name._3gram"
-      ]
-    }
-  }
-}
-```
-
-이 쿼리는 검색어를 토큰으로 분리한 뒤, 마지막 토큰은 prefix 매칭으로, 나머지 토큰은 일반 매칭으로 처리한다. "엘라스틱 검"이라고 입력하면 "엘라스틱"은 정확히 매칭하고 "검"은 접두사로 매칭하여 "검색"이 포함된 도큐먼트를 찾는다.
-
-일반 `match` 쿼리로는 "엘라스틱"까지만 입력했을 때 "엘라스틱서치"를 매칭할 수 없다. `search_as_you_type`은 접두사가 미리 인덱싱되어 있으므로 부분 입력 상태에서도 매칭이 가능하다.
-
 ## 페이지네이션과 정렬
 
 ### 기본 페이지네이션 — from / size
@@ -345,4 +288,3 @@ GET /posts/_search
 | `range` | 숫자/날짜 범위 조건 | integer, long, double, date | `filter` |
 | `must_not` | 특정 조건 제외 | 모든 타입 | — |
 | `should` | 조건 충족 시 Score 가산점 | 모든 타입 | — |
-| `multi_match` (bool_prefix) | 자동 완성 (입력 중 실시간 검색) | search_as_you_type | `must` |
