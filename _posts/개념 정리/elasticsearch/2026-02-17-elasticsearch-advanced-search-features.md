@@ -11,10 +11,15 @@ tags: [elasticsearch, fuzziness, multi_match, highlight, pagination, multi-field
 구글에서 오타를 내더라도 원하는 결과가 잘 나오는 것처럼, Elasticsearch에서도 `match` 쿼리에 `fuzziness` 옵션을 추가하면 오타를 허용하는 검색이 가능하다.
 
 ```json
-"match": {
-  "title": {
-    "query": "elastiksearch",
-    "fuzziness": "AUTO"
+GET /posts/_search
+{
+  "query": {
+    "match": {
+      "title": {
+        "query": "elastiksearch",
+        "fuzziness": "AUTO"
+      }
+    }
   }
 }
 ```
@@ -26,9 +31,14 @@ tags: [elasticsearch, fuzziness, multi_match, highlight, pagination, multi-field
 구글에서 특정 키워드로 검색하면 사이트의 제목뿐만 아니라 내용까지 포함해서 검색한다. Elasticsearch에서 이런 동작을 구현하는 것이 `multi_match` 쿼리다. 여러 text 타입 필드에서 동시에 검색하며, 매칭되는 필드가 많을수록 Score가 높아진다.
 
 ```json
-"multi_match": {
-  "query": "엘라스틱서치 적용 후기",
-  "fields": ["title", "content"]
+GET /posts/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "엘라스틱서치 적용 후기",
+      "fields": ["title", "content"]
+    }
+  }
 }
 ```
 
@@ -39,7 +49,15 @@ title과 content 둘 다에 키워드가 포함된 도큐먼트가 가장 높은
 "내용에만 키워드가 있는 글"보다 "제목에 키워드가 있는 글"이 더 관련성 높은 결과일 가능성이 크다. 이런 경우 `^` 기호로 특정 필드에 가중치를 부여할 수 있다.
 
 ```json
-"fields": ["title^2", "content"]
+GET /posts/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "엘라스틱서치 적용 후기",
+      "fields": ["title^2", "content"]
+    }
+  }
+}
 ```
 
 `title^2`는 title 필드의 Score에 2배 가중치를 부여한다는 의미다. 이렇게 하면 title에만 키워드가 있는 글이 content에만 있는 글보다 상위에 노출된다.
@@ -51,11 +69,17 @@ title과 content 둘 다에 키워드가 포함된 도큐먼트가 가장 높은
 구글이나 쿠팡에서 검색 결과를 보면 검색한 키워드가 강조 표시되어 있다. Elasticsearch는 검색 쿼리에 `highlight` 옵션을 추가하면, 응답에서 매칭된 키워드를 지정한 HTML 태그로 감싸서 반환해준다.
 
 ```json
-"highlight": {
-  "fields": {
-    "title": {
-      "pre_tags": ["<mark>"],
-      "post_tags": ["</mark>"]
+GET /posts/_search
+{
+  "query": {
+    "match": { "title": "엘라스틱서치 적용 후기" }
+  },
+  "highlight": {
+    "fields": {
+      "title": {
+        "pre_tags": ["<mark>"],
+        "post_tags": ["</mark>"]
+      }
     }
   }
 }
@@ -73,6 +97,17 @@ title과 content 둘 다에 키워드가 포함된 도큐먼트가 가장 높은
 
 **from** — 건너뛸 도큐먼트 수. SQL의 `OFFSET`에 해당하며, 0부터 시작한다.
 
+```json
+GET /posts/_search
+{
+  "from": 6,
+  "size": 3,
+  "query": {
+    "match": { "title": "검색엔진" }
+  }
+}
+```
+
 페이지 번호로부터 from 값을 구하는 공식은 `from = (페이지 번호 - 1) × size`다. size가 3일 때, 1페이지는 from=0, 2페이지는 from=3, 3페이지는 from=6이 된다.
 
 ### 정렬 — sort
@@ -80,9 +115,15 @@ title과 content 둘 다에 키워드가 포함된 도큐먼트가 가장 높은
 기본적으로 Elasticsearch는 Score 내림차순으로 결과를 정렬한다. 좋아요 수, 날짜 등 특정 필드 기준으로 정렬하고 싶을 때는 `sort` 옵션을 사용한다.
 
 ```json
-"sort": [
-  { "likes": { "order": "desc" } }
-]
+GET /posts/_search
+{
+  "query": {
+    "match": { "title": "검색엔진" }
+  },
+  "sort": [
+    { "likes": { "order": "desc" } }
+  ]
+}
 ```
 
 ## 하나의 필드에 두 가지 타입 — Multi Field
@@ -96,11 +137,18 @@ text 타입은 유연한 검색(match)에, keyword 타입은 정확한 검색(te
 하나의 필드에 `fields` 옵션으로 서브 필드를 추가하면, 같은 데이터가 두 가지 형태로 동시에 저장된다.
 
 ```json
-"category": {
-  "type": "text",
-  "analyzer": "nori",
-  "fields": {
-    "raw": { "type": "keyword" }
+PUT /products
+{
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "text",
+        "analyzer": "nori",
+        "fields": {
+          "raw": { "type": "keyword" }
+        }
+      }
+    }
   }
 }
 ```
@@ -126,10 +174,15 @@ text 타입은 유연한 검색(match)에, keyword 타입은 정확한 검색(te
 검색할 때는 `multi_match`에 `bool_prefix` 타입을 사용한다.
 
 ```json
-"multi_match": {
-  "query": "돌김",
-  "type": "bool_prefix",
-  "fields": ["name", "name._2gram", "name._3gram"]
+GET /products/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "돌김",
+      "type": "bool_prefix",
+      "fields": ["name", "name._2gram", "name._3gram"]
+    }
+  }
 }
 ```
 
