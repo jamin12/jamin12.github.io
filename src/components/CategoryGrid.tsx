@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
-import { formatCategory, getSubcategoriesByCategory } from '../lib/posts.js'
-import { getCategoryLetter } from '../lib/category-meta.js'
+import { formatCategory, getSubcategoriesByCategory } from '../lib/posts'
+import { getCategoryLetter } from '../lib/category-meta'
 
 const MAX_CHIPS = 4
 

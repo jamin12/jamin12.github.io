@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { formatCategory, getPostsBySeries } from '../lib/posts.js'
+import { formatCategory, getPostsBySeries } from '../lib/posts'
 
 // 재사용 가능한 글 목록 렌더러
 // props.posts: Post 배열

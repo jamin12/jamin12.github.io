@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router'
-import { getPostsBySeries, formatCategory } from '../lib/posts.js'
+import { getPostsBySeries, formatCategory } from '../lib/posts'
 
 export default function SeriesDetailPage() {
   const { name } = useParams()

@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
-import { resolveImageSrc, formatCategory } from '../lib/posts.js'
-import { getCategoryLetter, getSubcategoryLabel } from '../lib/category-meta.js'
+import { resolveImageSrc, formatCategory } from '../lib/posts'
+import { getCategoryLetter, getSubcategoryLabel } from '../lib/category-meta'
 
 // 홈 `01 최신 글`의 좌측 히어로 카드.
 // cover 있으면 이미지 + 그라데이션 오버레이, 없으면 서브카테고리 라벨 또는 카테고리 letter-mark fallback

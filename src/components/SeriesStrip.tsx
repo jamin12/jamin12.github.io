@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { seriesList } from '../lib/posts.js'
+import { seriesList } from '../lib/posts'
 
 export default function SeriesStrip() {
   if (seriesList.length === 0) return null

@@ -14,12 +14,12 @@ import {
   getSeriesNav,
   resolveImageSrc,
   formatCategory,
-} from '../lib/posts.js'
+} from '../lib/posts'
 import { getSubcategoriesForCategory } from '../lib/subcategory-rules.js'
-import { highlighter } from '../lib/shiki.js'
-import { rehypeMermaidPassthrough } from '../lib/rehype-mermaid-passthrough.js'
-import TOC from '../components/TOC.jsx'
-import MermaidDiagram from '../components/MermaidDiagram.jsx'
+import { highlighter } from '../lib/shiki'
+import { rehypeMermaidPassthrough } from '../lib/rehype-mermaid-passthrough'
+import TOC from '../components/TOC'
+import MermaidDiagram from '../components/MermaidDiagram'
 
 const remarkPlugins = [remarkGfm, remarkMath]
 const rehypePlugins = [

@@ -13,6 +13,11 @@
 // 새 카테고리/주제가 추가되면 이 파일만 수정. 전역 변수는 없음
 // ─────────────────────────────────────────
 
+/**
+ * @typedef {{ slug: string, label: string, tags: string[] }} SubcategoryRule
+ */
+
+/** @type {Record<string, SubcategoryRule[]>} */
 export const SUBCATEGORY_RULES = {
   '개념-정리': [
     { slug: 'network',       label: '네트워크',       tags: ['network'] },

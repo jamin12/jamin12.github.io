@@ -4,8 +4,8 @@ import {
   getSubcategoriesByCategory,
   getUngroupedPostsByCategory,
   formatCategory,
-} from '../lib/posts.js'
-import PostCards from '../components/PostCards.jsx'
+} from '../lib/posts'
+import PostCards from '../components/PostCards'
 
 export default function CategoryPage() {
   const { category, subcategory } = useParams()

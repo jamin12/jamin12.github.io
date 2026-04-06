@@ -4,6 +4,15 @@
 // - 지원: scalar, 배열 ([a, b, c]), `key:` 빈 값, 간단한 주석 무시
 // - 멀티라인 배열이나 복잡한 YAML은 지원하지 않음 (이 프로젝트 규약상 불필요)
 // ─────────────────────────────────────────
+
+/**
+ * @typedef {{ data: Record<string, unknown>, content: string }} ParseResult
+ */
+
+/**
+ * @param {string} raw
+ * @returns {ParseResult}
+ */
 export function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   if (!match) return { data: {}, content: raw }

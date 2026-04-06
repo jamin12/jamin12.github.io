@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
-import { formatCategory } from '../lib/posts.js'
-import { getSubcategoryLabel, getCategoryLetter } from '../lib/category-meta.js'
+import { formatCategory } from '../lib/posts'
+import { getSubcategoryLabel, getCategoryLetter } from '../lib/category-meta'
 
 // 홈 `01 최신 글`: 균일한 카드 그리드
 export default function LatestGrid({ posts }) {

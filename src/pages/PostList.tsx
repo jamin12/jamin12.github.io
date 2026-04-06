@@ -1,8 +1,8 @@
 import { Link } from 'react-router'
-import { posts, categories, tags, formatCategory } from '../lib/posts.js'
-import PostCards from '../components/PostCards.jsx'
-import LatestGrid from '../components/LatestGrid.jsx'
-import SeriesStrip from '../components/SeriesStrip.jsx'
+import { posts, categories, tags, formatCategory } from '../lib/posts'
+import PostCards from '../components/PostCards'
+import LatestGrid from '../components/LatestGrid'
+import SeriesStrip from '../components/SeriesStrip'
 
 // ── 홈 노출 설정 ──
 const POSTS_PER_CATEGORY = 5 // `03 카테고리별 최근` 각 섹션의 글 수

@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router'
-import { getPostsByTag } from '../lib/posts.js'
-import PostCards from '../components/PostCards.jsx'
+import { getPostsByTag } from '../lib/posts'
+import PostCards from '../components/PostCards'
 
 export default function TagPage() {
   const { tag } = useParams()

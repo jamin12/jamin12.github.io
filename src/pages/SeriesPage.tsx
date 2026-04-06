@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { seriesList, formatCategory } from '../lib/posts.js'
+import { seriesList, formatCategory } from '../lib/posts'
 
 export default function SeriesPage() {
   return (

@@ -1,18 +1,18 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router'
-import PostList from './pages/PostList.jsx'
-import CategoryPage from './pages/CategoryPage.jsx'
-import TagPage from './pages/TagPage.jsx'
-import SeriesPage from './pages/SeriesPage.jsx'
-import SeriesDetailPage from './pages/SeriesDetailPage.jsx'
-import Sidebar from './components/Sidebar.jsx'
-import ThemeToggle from './components/ThemeToggle.jsx'
-import ScrollToTop from './components/ScrollToTop.jsx'
+import PostList from './pages/PostList'
+import CategoryPage from './pages/CategoryPage'
+import TagPage from './pages/TagPage'
+import SeriesPage from './pages/SeriesPage'
+import SeriesDetailPage from './pages/SeriesDetailPage'
+import Sidebar from './components/Sidebar'
+import ThemeToggle from './components/ThemeToggle'
+import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 
 // PostDetail은 shiki(언어 문법 16개) + KaTeX를 포함해 번들이 무거우므로 lazy 로드
 // → 홈/카테고리/태그 진입 시에는 하이라이터·수식 엔진을 로드하지 않음
-const PostDetail = lazy(() => import('./pages/PostDetail.jsx'))
+const PostDetail = lazy(() => import('./pages/PostDetail'))
 
 function NotFound() {
   return (
