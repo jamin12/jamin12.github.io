@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
 function getInitialTheme() {
-  if (typeof document === 'undefined') return 'dark'
-  return document.documentElement.dataset.theme || 'dark'
+  if (typeof document === 'undefined') return 'light'
+  return document.documentElement.dataset.theme || 'light'
 }
 
 export default function ThemeToggle() {

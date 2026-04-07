@@ -13,17 +13,17 @@
     />
     <script>
       // FOUC 방지: React 마운트 전에 테마를 <html>에 적용
-      // 기본은 다크 (브랜드 정체성). 시스템이 light를 명시할 때만 라이트.
+      // 기본은 라이트. 시스템이 dark를 명시할 때만 다크.
       (function () {
         try {
           var saved = localStorage.getItem('theme')
-          var prefersLight =
+          var prefersDark =
             window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: light)').matches
-          var theme = saved || (prefersLight ? 'light' : 'dark')
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+          var theme = saved || (prefersDark ? 'dark' : 'light')
           document.documentElement.dataset.theme = theme
         } catch (e) {
-          document.documentElement.dataset.theme = 'dark'
+          document.documentElement.dataset.theme = 'light'
         }
       })()
     </script>
