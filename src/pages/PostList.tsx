@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { posts, categories, tags, formatCategory } from '../lib/posts'
+import { publicPosts, categories, tags, formatCategory } from '../lib/posts'
 import PostCards from '../components/PostCards'
 import LatestGrid from '../components/LatestGrid'
 import SeriesStrip from '../components/SeriesStrip'
@@ -11,7 +11,7 @@ const LATEST_COUNT = 6 // `01 최신 글`의 카드 수
 // posts는 이미 날짜 내림차순이므로 각 카테고리의 첫 글 = 최신 글
 function buildCategoryGroups() {
   const map = new Map()
-  for (const post of posts) {
+  for (const post of publicPosts) {
     if (!map.has(post.category)) map.set(post.category, [])
     map.get(post.category).push(post)
   }
@@ -26,7 +26,7 @@ function buildCategoryGroups() {
 }
 
 export default function PostList() {
-  const latest = posts.slice(0, LATEST_COUNT)
+  const latest = publicPosts.slice(0, LATEST_COUNT)
   const groups = buildCategoryGroups()
 
   return (

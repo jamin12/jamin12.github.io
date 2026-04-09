@@ -23,6 +23,7 @@ export interface Post {
   tags: string[]
   summary: string
   draft: boolean
+  private: boolean
   readingTime: number
   cover: string
   order: number
@@ -83,17 +84,22 @@ export const posts: Post[] = (metaJson as Post[]).filter(
   (p) => !(import.meta.env.PROD && p.draft)
 )
 
+// ── 공개 글 배열 ──
+// private: true인 글은 목록·카테고리·태그·시리즈 인덱스에서 숨김.
+// 직접 URL(/posts/<slug>)로는 접근 가능 — getPostBySlug는 전체 posts 사용.
+export const publicPosts: Post[] = posts.filter((p) => !p.private)
+
 // ── 카테고리 인덱스 ──
-export const categories: CategoryInfo[] = [...new Set(posts.map((p) => p.category))]
+export const categories: CategoryInfo[] = [...new Set(publicPosts.map((p) => p.category))]
   .map((name) => ({
     name,
-    count: posts.filter((p) => p.category === name).length,
+    count: publicPosts.filter((p) => p.category === name).length,
   }))
   .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'ko'))
 
 // ── 태그 인덱스 ──
 const tagMap = new Map<string, number>()
-for (const p of posts) {
+for (const p of publicPosts) {
   for (const t of p.tags) tagMap.set(t, (tagMap.get(t) ?? 0) + 1)
 }
 export const tags: TagInfo[] = [...tagMap.entries()]
@@ -106,11 +112,11 @@ export function getPostBySlug(slug: string): Post | undefined {
 }
 
 export function getPostsByCategory(category: string): Post[] {
-  return posts.filter((p) => p.category === category)
+  return publicPosts.filter((p) => p.category === category)
 }
 
 export function getPostsByTag(tag: string): Post[] {
-  return posts.filter((p) => p.tags.includes(tag))
+  return publicPosts.filter((p) => p.tags.includes(tag))
 }
 
 // 카테고리 안의 subcategory 그룹 인덱스.
@@ -120,7 +126,7 @@ export function getSubcategoriesByCategory(categoryName: string): SubcategoryGro
   const rules = getSubcategoriesForCategory(categoryName)
   const out: SubcategoryGroup[] = []
   for (const rule of rules) {
-    const list = posts.filter(
+    const list = publicPosts.filter(
       (p) => p.category === categoryName && p.subcategory === rule.slug
     )
     if (list.length > 0) {
@@ -132,7 +138,7 @@ export function getSubcategoriesByCategory(categoryName: string): SubcategoryGro
 
 // 카테고리 내 특정 subcategory의 글만 조회
 export function getPostsBySubcategory(category: string, subcategorySlug: string): Post[] {
-  return posts.filter(
+  return publicPosts.filter(
     (p) => p.category === category && p.subcategory === subcategorySlug
   )
 }
@@ -140,7 +146,7 @@ export function getPostsBySubcategory(category: string, subcategorySlug: string)
 // subcategory 규칙에 매칭되지 않은 "나머지" 글 — 트러블-슈팅처럼 규칙 없는 카테고리,
 // 또는 새 태그 조합이라 아직 매핑되지 않은 글이 여기에 들어감
 export function getUngroupedPostsByCategory(categoryName: string): Post[] {
-  return posts.filter(
+  return publicPosts.filter(
     (p) => p.category === categoryName && !p.subcategory
   )
 }
@@ -149,7 +155,7 @@ export function getUngroupedPostsByCategory(categoryName: string): Post[] {
 // 카테고리·태그와 독립적인 순서 있는 글 묶음.
 // 같은 series 문자열을 가진 글들이 seriesOrder 순으로 정렬된다.
 const seriesMap = new Map<string, Post[]>()
-for (const p of posts) {
+for (const p of publicPosts) {
   if (!p.series) continue
   if (!seriesMap.has(p.series)) seriesMap.set(p.series, [])
   seriesMap.get(p.series)!.push(p)

@@ -53,6 +53,7 @@ export async function generatePostsIndex() {
     if (!m) continue
     const [, category, slug] = m
     const draft = data.draft === 'true' || data.draft === true
+    const private_ = data.private === 'true' || data.private === true
     const tags = Array.isArray(data.tags) ? data.tags : []
     // 하위 카테고리 자동 추론 (src/lib/subcategory-rules.js의 규칙 적용)
     const sub = getSubcategory(category, tags)
@@ -66,6 +67,7 @@ export async function generatePostsIndex() {
       tags,
       summary: data.summary || '',
       draft,
+      private: private_,
       readingTime: calcReadingTime(content),
       // 선택 필드: frontmatter `cover: ./images/foo.png` (홈 카드 대표 이미지)
       cover: data.cover || '',

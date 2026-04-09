@@ -1,4 +1,4 @@
-import { use, useRef } from 'react'
+import { use, useRef, useState } from 'react'
 import { useParams, Link } from 'react-router'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -20,6 +20,7 @@ import { highlighter } from '../lib/shiki'
 import { rehypeMermaidPassthrough } from '../lib/rehype-mermaid-passthrough'
 import TOC from '../components/TOC'
 import MermaidDiagram from '../components/MermaidDiagram'
+import Lightbox from '../components/Lightbox'
 
 const remarkPlugins = [remarkGfm, remarkMath]
 const rehypePlugins = [
@@ -62,15 +63,23 @@ export default function PostDetail() {
   // 미해결 상태에선 App.jsx의 <Suspense>가 fallback을 노출
   const body = use(getPostBodyPromise(post.category, slug))
   const seriesNav = getSeriesNav(slug)
+  const [lightbox, setLightbox] = useState<React.ReactNode | null>(null)
 
   const components = {
-    img: ({ src, alt }) => (
-      <img
-        src={resolveImageSrc(src, post.category)}
-        alt={alt || ''}
-        loading="lazy"
-      />
-    ),
+    img: ({ src, alt }) => {
+      const resolved = resolveImageSrc(src, post.category)
+      return (
+        <img
+          src={resolved}
+          alt={alt || ''}
+          loading="lazy"
+          className="zoomable"
+          onClick={() =>
+            setLightbox(<img src={resolved} alt={alt || ''} />)
+          }
+        />
+      )
+    },
     a: ({ href = '', children, ...rest }) => {
       const isExternal = /^https?:\/\//.test(href)
       if (isExternal) {
@@ -98,7 +107,19 @@ export default function PostDetail() {
           node?.properties?.dataMermaidCode ||
           rest['data-mermaid-code'] ||
           ''
-        return <MermaidDiagram code={code} />
+        return (
+          <MermaidDiagram
+            code={code}
+            onClickExpand={(svgHtml) =>
+              setLightbox(
+                <div
+                  className="lightbox-mermaid"
+                  dangerouslySetInnerHTML={{ __html: svgHtml }}
+                />
+              )
+            }
+          />
+        )
       }
       return (
         <div className={className} {...rest}>
@@ -216,6 +237,11 @@ export default function PostDetail() {
           <TOC containerRef={bodyRef} />
         </aside>
       </div>
+      {lightbox && (
+        <Lightbox onClose={() => setLightbox(null)}>
+          {lightbox}
+        </Lightbox>
+      )}
     </div>
   )
 }

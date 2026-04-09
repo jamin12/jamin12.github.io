@@ -111,7 +111,7 @@ Provider 테스트의 목적에는 이 정도가 충분했다.
 Consumer는 interaction을 정의할 때 전제 조건을 함께 적을 수 있다.
 
 ```kotlin
-given("project has unassigned namespaces")
+given(“project has unassigned namespaces”)
 ```
 
 이 문장은 요청 자체의 일부가 아니다.
@@ -120,22 +120,57 @@ given("project has unassigned namespaces")
 Provider 테스트에서는 이 조건을 실제 상태로 만들어야 한다.
 
 ```kotlin
-@State("project has unassigned namespaces")
+@State(“project has unassigned namespaces”)
 fun projectHasUnassignedNamespaces() {
   // 상태 준비
 }
 ```
-
-여기서 상태란 DB 상태일 수도 있고,
-Mock으로 구성된 내부 동작일 수도 있다.
 
 중요한 점은 이 메서드가 호출되는 시점이다.
 
 - interaction 하나를 검증하기 직전에
 - Pact 확장이 자동으로 호출한다
 
+`@TestTemplate` 실행 전에 Pact 확장이 강제로 먼저 호출하는 구조다. 개발자가 호출 순서를 바꾸거나 건너뛸 수 없다.
+
+```
+1. @State(“...”)       ← Pact 확장이 먼저 호출
+2. @BeforeEach         ← JUnit이 호출
+3. @TestTemplate       ← verifyInteraction() 실행
+```
+
 Provider 테스트는 이 메서드를 통해
 “지금 이 요청이 실행 가능하다”는 환경을 만든다.
+
+## @State 안에서 실제로 하는 일
+
+`@State` 메서드 안에서 하는 일은 테스트 전략에 따라 다르다.
+
+`@WebMvcTest`를 사용하는 경우, Controller가 의존하는 UseCase가 `@MockBean`이므로 **UseCase의 리턴값을 세팅**하는 코드를 작성한다.
+
+```kotlin
+@MockBean lateinit var getNamespaceUseCase: GetNamespaceUseCase
+
+@State(“project has unassigned namespaces”)
+fun projectHasUnassignedNamespaces() {
+    whenever(getNamespaceUseCase.execute(“project-1”))
+        .thenReturn(listOf(NamespaceResponse(“ns-1”), NamespaceResponse(“ns-2”)))
+}
+```
+
+여기서 세팅하는 건 **Controller의 응답이 아니라 UseCase의 리턴값**이다. Controller는 이 리턴값을 받아서 평소 코드대로 직렬화, `@ResponseStatus`, `@ExceptionHandler` 같은 웹 레이어 로직을 그대로 실행한다. 만약 Controller 응답을 직접 만들어 반환하는 구조였다면 Controller 로직을 아예 타지 않으니 계약 검증 의미가 없어진다.
+
+`@SpringBootTest`를 사용하는 경우라면 Mock 대신 진짜 DB에 데이터를 넣는 코드가 들어간다.
+
+```kotlin
+@State(“project has unassigned namespaces”)
+fun projectHasUnassignedNamespaces() {
+    namespaceRepository.save(Namespace(“ns-1”, “project-1”))
+    namespaceRepository.save(Namespace(“ns-2”, “project-1”))
+}
+```
+
+`@State`는 “이 시나리오의 사전 조건을 준비하는 자리”이고, 그 안에 뭘 넣을지는 테스트 전략에 따라 달라진다.
 
 ## PactVerificationContext란 무엇인가
 
@@ -194,15 +229,60 @@ context.target = Spring6MockMvcTestTarget(mockMvc)
 이 한 줄로 Pact는 HTTP 서버 대신
 Spring MVC 내부 호출을 사용하게 된다.
 
+## 요청 정보는 어디서 오는가
+
+Pact가 `GET /namespaces?projectId=project-1` 같은 요청을 보낼 수 있는 이유는, Consumer 테스트가 생성한 **pact file에 이미 다 적혀 있기 때문**이다.
+
+```json
+{
+  "interactions": [
+    {
+      "providerState": "project has unassigned namespaces",
+      "description": "get unassigned namespaces",
+      "request": {
+        "method": "GET",
+        "path": "/namespaces",
+        "query": { "projectId": "project-1" }
+      },
+      "response": {
+        "status": 200,
+        "body": [{ "name": "ns-1" }, { "name": "ns-2" }]
+      }
+    }
+  ]
+}
+```
+
+요청 정보, 기대 응답, State 문자열 전부 pact file 안에 있다. `@State`는 사전 조건을 준비하는 역할일 뿐, 요청 정보를 알려주는 게 아니다.
+
+## MockMvc는 어떻게 Controller를 호출하는가
+
+`@WebMvcTest`가 띄운 Spring MVC 인프라에는 **DispatcherServlet**이 포함되어 있다. 실제 서버에서 요청을 라우팅하는 것과 동일한 컴포넌트다.
+
+```
+Pact가 MockMvc에 GET /namespaces 넣음
+  → MockMvc가 DispatcherServlet에 전달
+  → DispatcherServlet이 @GetMapping("/namespaces") 매칭
+  → NamespaceController 메서드 호출
+  → Controller가 UseCase.execute() 호출
+  → MockBean이 @State에서 세팅한 값 반환
+  → Controller가 응답 리턴
+```
+
+MockMvc는 진짜 HTTP 서버를 띄우지 않지만, Spring MVC의 라우팅 로직은 그대로 동작한다. 실제 운영에서 톰캣이 하는 일을 MockMvc가 톰캣 없이 대신하는 구조다.
+
+Pact는 UseCase를 직접 부르지 않는다. MockMvc → DispatcherServlet → Controller → Controller가 UseCase 호출. Pact는 맨 앞에서 MockMvc에 요청을 넣는 것까지만 한다.
+
 ## interaction 하나가 검증되는 전체 흐름
 
 interaction 하나가 검증될 때의 흐름은 다음과 같다.
 
 1. Pact가 pact file에서 interaction 하나를 선택한다
-2. 해당 interaction에 provider state가 있으면 `@State`를 실행한다
+2. 해당 interaction에 provider state가 있으면 `@State`를 실행한다 (Mock 세팅)
 3. `@BeforeEach`가 실행되어 MockMvc target이 설정된다
-4. Pact가 요청을 target으로 전달한다
-5. 응답을 계약과 비교한다
+4. `verifyInteraction()`이 target(MockMvc)에 pact file의 요청을 보낸다
+5. MockMvc → DispatcherServlet → Controller → UseCase(MockBean) → 응답 반환
+6. 돌아온 응답을 계약과 비교한다
 
 이 과정을 interaction 수만큼 반복한다.
 

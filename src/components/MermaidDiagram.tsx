@@ -56,7 +56,7 @@ function getCurrentTheme() {
   return document.documentElement.dataset.theme || 'dark'
 }
 
-export default function MermaidDiagram({ code }) {
+export default function MermaidDiagram({ code, onClickExpand }: { code: string; onClickExpand?: (svgHtml: string) => void }) {
   const [svg, setSvg] = useState('')
   const [error, setError] = useState(null)
   const [version, setVersion] = useState(0) // 테마 변경 시 재렌더 트리거
@@ -120,10 +120,11 @@ export default function MermaidDiagram({ code }) {
 
   return (
     <div
-      className="mermaid-diagram"
+      className="mermaid-diagram zoomable"
       // svg는 mermaid가 생성한 신뢰할 수 있는 출력 — securityLevel: 'loose'
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: svg }}
+      onClick={() => onClickExpand?.(svg)}
     />
   )
 }
