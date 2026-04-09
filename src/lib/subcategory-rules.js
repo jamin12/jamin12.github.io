@@ -38,6 +38,7 @@ export const SUBCATEGORY_RULES = {
     // kubernetes는 맨 마지막. argo-rollouts(kubernetes 태그도 포함)가 먼저 deployment로 빠진 뒤,
     // 순수 k8s 스토리지/권한 관련 글(Pv-pvc, storageClass 등)만 여기로 떨어짐
     { slug: 'kubernetes',    label: 'Kubernetes',     tags: ['k8s', 'kubernetes'] },
+    { slug: 'circuit-breaker', label: '서킷브레이커', tags: ['circuit-breaker'] },
   ],
 
   '코테': [

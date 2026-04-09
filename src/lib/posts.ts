@@ -25,6 +25,7 @@ export interface Post {
   draft: boolean
   readingTime: number
   cover: string
+  order: number
   series: string
   seriesOrder: number
   path: string

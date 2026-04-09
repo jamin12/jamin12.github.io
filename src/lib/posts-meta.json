@@ -1,157 +1,173 @@
 [
   {
-    "slug": "network-web",
+    "slug": "circuit-breaker-why",
     "category": "개념-정리",
-    "subcategory": "network",
-    "subcategoryLabel": "네트워크",
-    "title": "웹 기술과 HTTP",
-    "date": "2026-03-24",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "서킷브레이커 패턴은 왜 필요한가",
+    "date": "2026-04-08",
     "tags": [
-      "network",
-      "dns",
-      "http",
-      "url",
-      "web"
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 25,
+    "readingTime": 3,
     "cover": "",
+    "order": 1,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/network-web"
+    "path": "/posts/circuit-breaker-why"
   },
   {
-    "slug": "network-vpn",
+    "slug": "circuit-breaker-states",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "서킷브레이커의 3가지 상태: Closed, Open, Half-Open",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 2,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-states"
+  },
+  {
+    "slug": "circuit-breaker-threshold",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "서킷브레이커는 어떤 기준으로 Open 되는가",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 3,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-threshold"
+  },
+  {
+    "slug": "circuit-breaker-recovery",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "서킷브레이커의 복구 과정",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 4,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-recovery"
+  },
+  {
+    "slug": "circuit-breaker-where",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "서킷브레이커를 어디에 붙이고 어디에는 붙이지 않는가",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 5,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-where"
+  },
+  {
+    "slug": "circuit-breaker-mistakes",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "서킷브레이커 실무 오해와 잘못된 설정",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 6,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-mistakes"
+  },
+  {
+    "slug": "circuit-breaker-spring",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "Spring + Resilience4j로 서킷브레이커 적용하기",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 11,
+    "cover": "",
+    "order": 7,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-spring"
+  },
+  {
+    "slug": "network-core-concepts",
     "category": "개념-정리",
     "subcategory": "network",
     "subcategoryLabel": "네트워크",
-    "title": "VPN과 IPsec 터널링",
+    "title": "네트워크 핵심 개념 정리",
     "date": "2026-03-24",
     "tags": [
       "network",
-      "vpn",
-      "ipsec",
-      "tunneling"
+      "osi",
+      "tcp-ip",
+      "host",
+      "switch"
     ],
     "summary": "",
     "draft": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/network-vpn"
-  },
-  {
-    "slug": "network-nat",
-    "category": "개념-정리",
-    "subcategory": "network",
-    "subcategoryLabel": "네트워크",
-    "title": "NAT와 공유기 작동 원리",
-    "date": "2026-03-24",
-    "tags": [
-      "network",
-      "nat",
-      "router",
-      "port-forwarding",
-      "upnp"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 18,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/network-nat"
-  },
-  {
-    "slug": "network-load-balancing",
-    "category": "개념-정리",
-    "subcategory": "network",
-    "subcategoryLabel": "네트워크",
-    "title": "L4 부하분산과 GSLB",
-    "date": "2026-03-24",
-    "tags": [
-      "network",
-      "load-balancing",
-      "l4",
-      "gslb",
-      "cdn"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 8,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/network-load-balancing"
-  },
-  {
-    "slug": "network-l4",
-    "category": "개념-정리",
-    "subcategory": "network",
-    "subcategoryLabel": "네트워크",
-    "title": "L4 전송 계층",
-    "date": "2026-03-24",
-    "tags": [
-      "network",
-      "l4",
-      "tcp",
-      "udp",
-      "handshake"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 15,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/network-l4"
-  },
-  {
-    "slug": "network-l3",
-    "category": "개념-정리",
-    "subcategory": "network",
-    "subcategoryLabel": "네트워크",
-    "title": "L3 네트워크 계층",
-    "date": "2026-03-24",
-    "tags": [
-      "network",
-      "l3",
-      "ip",
-      "packet",
-      "cidr",
-      "arp"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 18,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/network-l3"
-  },
-  {
-    "slug": "network-l2",
-    "category": "개념-정리",
-    "subcategory": "network",
-    "subcategoryLabel": "네트워크",
-    "title": "L2 데이터 링크 계층",
-    "date": "2026-03-24",
-    "tags": [
-      "network",
-      "l2",
-      "ethernet",
-      "mac",
-      "lan"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 7,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/network-l2"
+    "path": "/posts/network-core-concepts"
   },
   {
     "slug": "network-device-architecture",
@@ -172,31 +188,171 @@
     "draft": false,
     "readingTime": 21,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-device-architecture"
   },
   {
-    "slug": "network-core-concepts",
+    "slug": "network-l2",
     "category": "개념-정리",
     "subcategory": "network",
     "subcategoryLabel": "네트워크",
-    "title": "네트워크 핵심 개념 정리",
+    "title": "L2 데이터 링크 계층",
     "date": "2026-03-24",
     "tags": [
       "network",
-      "osi",
-      "tcp-ip",
-      "host",
-      "switch"
+      "l2",
+      "ethernet",
+      "mac",
+      "lan"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 7,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/network-l2"
+  },
+  {
+    "slug": "network-l3",
+    "category": "개념-정리",
+    "subcategory": "network",
+    "subcategoryLabel": "네트워크",
+    "title": "L3 네트워크 계층",
+    "date": "2026-03-24",
+    "tags": [
+      "network",
+      "l3",
+      "ip",
+      "packet",
+      "cidr",
+      "arp"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 18,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/network-l3"
+  },
+  {
+    "slug": "network-l4",
+    "category": "개념-정리",
+    "subcategory": "network",
+    "subcategoryLabel": "네트워크",
+    "title": "L4 전송 계층",
+    "date": "2026-03-24",
+    "tags": [
+      "network",
+      "l4",
+      "tcp",
+      "udp",
+      "handshake"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 15,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/network-l4"
+  },
+  {
+    "slug": "network-load-balancing",
+    "category": "개념-정리",
+    "subcategory": "network",
+    "subcategoryLabel": "네트워크",
+    "title": "L4 부하분산과 GSLB",
+    "date": "2026-03-24",
+    "tags": [
+      "network",
+      "load-balancing",
+      "l4",
+      "gslb",
+      "cdn"
     ],
     "summary": "",
     "draft": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/network-core-concepts"
+    "path": "/posts/network-load-balancing"
+  },
+  {
+    "slug": "network-nat",
+    "category": "개념-정리",
+    "subcategory": "network",
+    "subcategoryLabel": "네트워크",
+    "title": "NAT와 공유기 작동 원리",
+    "date": "2026-03-24",
+    "tags": [
+      "network",
+      "nat",
+      "router",
+      "port-forwarding",
+      "upnp"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 18,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/network-nat"
+  },
+  {
+    "slug": "network-vpn",
+    "category": "개념-정리",
+    "subcategory": "network",
+    "subcategoryLabel": "네트워크",
+    "title": "VPN과 IPsec 터널링",
+    "date": "2026-03-24",
+    "tags": [
+      "network",
+      "vpn",
+      "ipsec",
+      "tunneling"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 8,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/network-vpn"
+  },
+  {
+    "slug": "network-web",
+    "category": "개념-정리",
+    "subcategory": "network",
+    "subcategoryLabel": "네트워크",
+    "title": "웹 기술과 HTTP",
+    "date": "2026-03-24",
+    "tags": [
+      "network",
+      "dns",
+      "http",
+      "url",
+      "web"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 25,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/network-web"
   },
   {
     "slug": "msa-saga-pattern-refactoring",
@@ -216,6 +372,7 @@
     "draft": false,
     "readingTime": 11,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/msa-saga-pattern-refactoring"
@@ -234,9 +391,34 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준3061번"
+  },
+  {
+    "slug": "elasticsearch-advanced-search-features",
+    "category": "개념-정리",
+    "subcategory": "elasticsearch",
+    "subcategoryLabel": "Elasticsearch",
+    "title": "Elasticsearch 검색 기능 심화",
+    "date": "2026-02-17",
+    "tags": [
+      "elasticsearch",
+      "fuzziness",
+      "multi_match",
+      "highlight",
+      "multi-field",
+      "autocomplete"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 10,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/elasticsearch-advanced-search-features"
   },
   {
     "slug": "elasticsearch-mapping-search-queries",
@@ -259,53 +441,10 @@
     "draft": false,
     "readingTime": 16,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elasticsearch-mapping-search-queries"
-  },
-  {
-    "slug": "elasticsearch-advanced-search-features",
-    "category": "개념-정리",
-    "subcategory": "elasticsearch",
-    "subcategoryLabel": "Elasticsearch",
-    "title": "Elasticsearch 검색 기능 심화",
-    "date": "2026-02-17",
-    "tags": [
-      "elasticsearch",
-      "fuzziness",
-      "multi_match",
-      "highlight",
-      "multi-field",
-      "autocomplete"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 10,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/elasticsearch-advanced-search-features"
-  },
-  {
-    "slug": "elasticsearch-nori-korean-search",
-    "category": "개념-정리",
-    "subcategory": "elasticsearch",
-    "subcategoryLabel": "Elasticsearch",
-    "title": "Elasticsearch 한글 검색과 Nori Analyzer",
-    "date": "2026-02-16",
-    "tags": [
-      "elasticsearch",
-      "nori",
-      "analyzer",
-      "korean"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 6,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/elasticsearch-nori-korean-search"
   },
   {
     "slug": "elasticsearch-analyzer-search-optimization",
@@ -324,9 +463,32 @@
     "draft": false,
     "readingTime": 12,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elasticsearch-analyzer-search-optimization"
+  },
+  {
+    "slug": "elasticsearch-nori-korean-search",
+    "category": "개념-정리",
+    "subcategory": "elasticsearch",
+    "subcategoryLabel": "Elasticsearch",
+    "title": "Elasticsearch 한글 검색과 Nori Analyzer",
+    "date": "2026-02-16",
+    "tags": [
+      "elasticsearch",
+      "nori",
+      "analyzer",
+      "korean"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 7,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/elasticsearch-nori-korean-search"
   },
   {
     "slug": "elastic-기본개념",
@@ -342,8 +504,9 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 7,
+    "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elastic-기본개념"
@@ -366,11 +529,54 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 22,
+    "readingTime": 23,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/argo-rollouts-canary"
+  },
+  {
+    "slug": "blue-green",
+    "category": "개념-정리",
+    "subcategory": "deployment",
+    "subcategoryLabel": "배포 전략",
+    "title": "블루그린 배포",
+    "date": "2026-02-05",
+    "tags": [
+      "blue-green",
+      "devops",
+      "배포"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/blue-green"
+  },
+  {
+    "slug": "canary",
+    "category": "개념-정리",
+    "subcategory": "deployment",
+    "subcategoryLabel": "배포 전략",
+    "title": "카나리 배포",
+    "date": "2026-02-05",
+    "tags": [
+      "canary",
+      "devops",
+      "배포"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 4,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/canary"
   },
   {
     "slug": "rollout-bluegreen",
@@ -390,49 +596,10 @@
     "draft": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/rollout-bluegreen"
-  },
-  {
-    "slug": "canary",
-    "category": "개념-정리",
-    "subcategory": "deployment",
-    "subcategoryLabel": "배포 전략",
-    "title": "카나리 배포",
-    "date": "2026-02-05",
-    "tags": [
-      "canary",
-      "devops",
-      "배포"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 4,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/canary"
-  },
-  {
-    "slug": "blue-green",
-    "category": "개념-정리",
-    "subcategory": "deployment",
-    "subcategoryLabel": "배포 전략",
-    "title": "블루그린 배포",
-    "date": "2026-02-05",
-    "tags": [
-      "blue-green",
-      "devops",
-      "배포"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 6,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/blue-green"
   },
   {
     "slug": "hackerRank-castle-on-the-grid",
@@ -449,6 +616,7 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/hackerRank-castle-on-the-grid"
@@ -468,32 +636,12 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 13,
+    "readingTime": 14,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/jackson-polymorphic-type-handling"
-  },
-  {
-    "slug": "redis-streams-03-offset",
-    "category": "개념-정리",
-    "subcategory": "redis",
-    "subcategoryLabel": "Redis Streams",
-    "title": "Redis Streams Offset - 메시지 진행 상태 관리",
-    "date": "2026-01-21",
-    "tags": [
-      "redis",
-      "streams",
-      "offset",
-      "valkey"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 7,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/redis-streams-03-offset"
   },
   {
     "slug": "redis-streams-02-consumer-group",
@@ -510,11 +658,34 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 7,
+    "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/redis-streams-02-consumer-group"
+  },
+  {
+    "slug": "redis-streams-03-offset",
+    "category": "개념-정리",
+    "subcategory": "redis",
+    "subcategoryLabel": "Redis Streams",
+    "title": "Redis Streams Offset - 메시지 진행 상태 관리",
+    "date": "2026-01-21",
+    "tags": [
+      "redis",
+      "streams",
+      "offset",
+      "valkey"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 8,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/redis-streams-03-offset"
   },
   {
     "slug": "redis-streams-01-basic",
@@ -532,6 +703,7 @@
     "draft": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/redis-streams-01-basic"
@@ -550,6 +722,7 @@
     "draft": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준2607번"
@@ -570,6 +743,7 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/프로세스와-유휴프로세스"
@@ -590,8 +764,9 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 14,
+    "readingTime": 15,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/spring-event-listener-mechanism"
@@ -611,6 +786,7 @@
     "draft": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/SR-저장의의미"
@@ -630,8 +806,9 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 44,
+    "readingTime": 46,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/spring-event-system-deep-dive"
@@ -651,6 +828,7 @@
     "draft": false,
     "readingTime": 12,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 5,
     "path": "/posts/gradle-pact-test-ordering"
@@ -669,6 +847,7 @@
     "draft": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/Impersonate"
@@ -685,8 +864,9 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 7,
+    "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준11568번"
@@ -705,6 +885,7 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 4,
     "path": "/posts/pact-broker"
@@ -726,28 +907,31 @@
     "draft": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/@Valid와-@Validated의-올바른-위치와-AOP-동작-원리-분석"
   },
   {
-    "slug": "overview",
+    "slug": "application",
     "category": "개념-정리",
     "subcategory": "monitoring",
     "subcategoryLabel": "모니터링",
-    "title": "Overview",
+    "title": "Application",
     "date": "2026-01-04",
     "tags": [
       "monitoring",
+      "jvm",
       "grafana"
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 6,
+    "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
-    "seriesOrder": 5,
-    "path": "/posts/overview"
+    "seriesOrder": 6,
+    "path": "/posts/application"
   },
   {
     "slug": "db",
@@ -765,29 +949,30 @@
     "draft": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 7,
     "path": "/posts/db"
   },
   {
-    "slug": "application",
+    "slug": "overview",
     "category": "개념-정리",
     "subcategory": "monitoring",
     "subcategoryLabel": "모니터링",
-    "title": "Application",
+    "title": "Overview",
     "date": "2026-01-04",
     "tags": [
       "monitoring",
-      "jvm",
       "grafana"
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 7,
+    "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
-    "seriesOrder": 6,
-    "path": "/posts/application"
+    "seriesOrder": 5,
+    "path": "/posts/overview"
   },
   {
     "slug": "where-4단계-처리-과정",
@@ -804,11 +989,34 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 14,
+    "readingTime": 15,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/where-4단계-처리-과정"
+  },
+  {
+    "slug": "4xx,5xx,rsp",
+    "category": "개념-정리",
+    "subcategory": "monitoring",
+    "subcategoryLabel": "모니터링",
+    "title": "4xx, 5xx rate/ RPS",
+    "date": "2026-01-01",
+    "tags": [
+      "4xx/5xx-rate",
+      "RPS",
+      "러너스하이2_주제2",
+      "monitoring"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 4,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/4xx,5xx,rsp"
   },
   {
     "slug": "p95_p99",
@@ -827,30 +1035,10 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/p95_p99"
-  },
-  {
-    "slug": "4xx,5xx,rsp",
-    "category": "개념-정리",
-    "subcategory": "monitoring",
-    "subcategoryLabel": "모니터링",
-    "title": "4xx, 5xx rate/ RPS",
-    "date": "2026-01-01",
-    "tags": [
-      "4xx/5xx-rate",
-      "RPS",
-      "러너스하이2_주제2",
-      "monitoring"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 3,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/4xx,5xx,rsp"
   },
   {
     "slug": "gitaction",
@@ -868,6 +1056,7 @@
     "draft": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "CI 개선기",
     "seriesOrder": 2,
     "path": "/posts/gitaction"
@@ -886,9 +1075,30 @@
     "draft": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "CI 개선기",
     "seriesOrder": 1,
     "path": "/posts/CI-주제-선정"
+  },
+  {
+    "slug": "grafana-tls",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "Grafana TLS 연결 문제 해결",
+    "date": "2025-12-28",
+    "tags": [
+      "monitoring",
+      "tls"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 9,
+    "cover": "",
+    "order": 0,
+    "series": "모니터링 구축기",
+    "seriesOrder": 3,
+    "path": "/posts/grafana-tls"
   },
   {
     "slug": "prometheus-spring-boot-connection",
@@ -906,28 +1116,10 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 4,
     "path": "/posts/prometheus-spring-boot-connection"
-  },
-  {
-    "slug": "grafana-tls",
-    "category": "트러블-슈팅",
-    "subcategory": "",
-    "subcategoryLabel": "",
-    "title": "Grafana TLS 연결 문제 해결",
-    "date": "2025-12-28",
-    "tags": [
-      "monitoring",
-      "tls"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 8,
-    "cover": "",
-    "series": "모니터링 구축기",
-    "seriesOrder": 3,
-    "path": "/posts/grafana-tls"
   },
   {
     "slug": "tls",
@@ -945,63 +1137,10 @@
     "draft": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/tls"
-  },
-  {
-    "slug": "prometeus",
-    "category": "트러블-슈팅",
-    "subcategory": "",
-    "subcategoryLabel": "",
-    "title": "Prometeus 설치 (503 no healthy upstream)",
-    "date": "2025-12-26",
-    "tags": [
-      "monitoring"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 6,
-    "cover": "",
-    "series": "모니터링 구축기",
-    "seriesOrder": 2,
-    "path": "/posts/prometeus"
-  },
-  {
-    "slug": "storageClass",
-    "category": "개념-정리",
-    "subcategory": "kubernetes",
-    "subcategoryLabel": "Kubernetes",
-    "title": "StorageClass",
-    "date": "2025-12-26",
-    "tags": [
-      "k8s"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 5,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/storageClass"
-  },
-  {
-    "slug": "Pv-pvc",
-    "category": "개념-정리",
-    "subcategory": "kubernetes",
-    "subcategoryLabel": "Kubernetes",
-    "title": "PV(Persistent Volume)",
-    "date": "2025-12-26",
-    "tags": [
-      "k8s"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 5,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/Pv-pvc"
   },
   {
     "slug": "NFS-볼륨",
@@ -1017,9 +1156,67 @@
     "draft": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/NFS-볼륨"
+  },
+  {
+    "slug": "prometeus",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "Prometeus 설치 (503 no healthy upstream)",
+    "date": "2025-12-26",
+    "tags": [
+      "monitoring"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 0,
+    "series": "모니터링 구축기",
+    "seriesOrder": 2,
+    "path": "/posts/prometeus"
+  },
+  {
+    "slug": "Pv-pvc",
+    "category": "개념-정리",
+    "subcategory": "kubernetes",
+    "subcategoryLabel": "Kubernetes",
+    "title": "PV(Persistent Volume)",
+    "date": "2025-12-26",
+    "tags": [
+      "k8s"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/Pv-pvc"
+  },
+  {
+    "slug": "storageClass",
+    "category": "개념-정리",
+    "subcategory": "kubernetes",
+    "subcategoryLabel": "Kubernetes",
+    "title": "StorageClass",
+    "date": "2025-12-26",
+    "tags": [
+      "k8s"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/storageClass"
   },
   {
     "slug": "poc-및-피드백",
@@ -1035,6 +1232,7 @@
     "draft": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 3,
     "path": "/posts/poc-및-피드백"
@@ -1051,8 +1249,9 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 2,
+    "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 1,
     "path": "/posts/모니터링-주제-선정"
@@ -1071,8 +1270,9 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 11,
+    "readingTime": 12,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/async-taskdecorator-faq"
@@ -1093,6 +1293,7 @@
     "draft": false,
     "readingTime": 11,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/pact_provider_test"
@@ -1111,8 +1312,9 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 9,
+    "readingTime": 10,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/pact_consumer_test"
@@ -1133,27 +1335,10 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/pact-용어"
-  },
-  {
-    "slug": "주제찾기",
-    "category": "개념-정리",
-    "subcategory": "cdc",
-    "subcategoryLabel": "Pact · CDC",
-    "title": "주제 선정",
-    "date": "2025-12-18",
-    "tags": [
-      "cdc"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 3,
-    "cover": "",
-    "series": "CDC 도입기",
-    "seriesOrder": 1,
-    "path": "/posts/주제찾기"
   },
   {
     "slug": "기술선정",
@@ -1169,9 +1354,29 @@
     "draft": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 2,
     "path": "/posts/기술선정"
+  },
+  {
+    "slug": "주제찾기",
+    "category": "개념-정리",
+    "subcategory": "cdc",
+    "subcategoryLabel": "Pact · CDC",
+    "title": "주제 선정",
+    "date": "2025-12-18",
+    "tags": [
+      "cdc"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 3,
+    "cover": "",
+    "order": 0,
+    "series": "CDC 도입기",
+    "seriesOrder": 1,
+    "path": "/posts/주제찾기"
   },
   {
     "slug": "백준2636번",
@@ -1186,30 +1391,12 @@
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 5,
+    "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준2636번"
-  },
-  {
-    "slug": "json-multi-dto",
-    "category": "트러블-슈팅",
-    "subcategory": "",
-    "subcategoryLabel": "",
-    "title": "하나의 class로 여러가지의 dto를 받는 방법",
-    "date": "2025-12-13",
-    "tags": [
-      "json",
-      "dto"
-    ],
-    "summary": "",
-    "draft": false,
-    "readingTime": 20,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/json-multi-dto"
   },
   {
     "slug": "백준15990번",
@@ -1225,29 +1412,32 @@
     "draft": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준15990번"
   },
   {
-    "slug": "jsbundle",
+    "slug": "app,document",
     "category": "개념-정리",
     "subcategory": "nextjs",
     "subcategoryLabel": "Next.js",
-    "title": "Next.js에서 말하는 “JS bundle”란 무엇인가",
+    "title": "Next.js에서 말하는 “_app.tsx”와 “_document.tsx”는 무엇인가",
     "date": "2025-12-13",
     "tags": [
       "Next.js",
-      "jsbundle",
+      "_app.tsx",
+      "_document.tsx",
       "nextJs"
     ],
     "summary": "",
     "draft": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/jsbundle"
+    "path": "/posts/app,document"
   },
   {
     "slug": "component란",
@@ -1265,30 +1455,51 @@
     "draft": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/component란"
   },
   {
-    "slug": "app,document",
+    "slug": "jsbundle",
     "category": "개념-정리",
     "subcategory": "nextjs",
     "subcategoryLabel": "Next.js",
-    "title": "Next.js에서 말하는 “_app.tsx”와 “_document.tsx”는 무엇인가",
+    "title": "Next.js에서 말하는 “JS bundle”란 무엇인가",
     "date": "2025-12-13",
     "tags": [
       "Next.js",
-      "_app.tsx",
-      "_document.tsx",
+      "jsbundle",
       "nextJs"
     ],
     "summary": "",
     "draft": false,
-    "readingTime": 4,
+    "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/app,document"
+    "path": "/posts/jsbundle"
+  },
+  {
+    "slug": "json-multi-dto",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "하나의 class로 여러가지의 dto를 받는 방법",
+    "date": "2025-12-13",
+    "tags": [
+      "json",
+      "dto"
+    ],
+    "summary": "",
+    "draft": false,
+    "readingTime": 21,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/json-multi-dto"
   },
   {
     "slug": "raw-데이터-조회속도-개선",
@@ -1305,6 +1516,7 @@
     "draft": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/raw-데이터-조회속도-개선"
@@ -1323,6 +1535,7 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준11722번"
@@ -1341,6 +1554,7 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준1309번"
@@ -1359,6 +1573,7 @@
     "draft": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준11051번"

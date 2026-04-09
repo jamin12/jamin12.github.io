@@ -69,14 +69,22 @@ export async function generatePostsIndex() {
       readingTime: calcReadingTime(content),
       // 선택 필드: frontmatter `cover: ./images/foo.png` (홈 카드 대표 이미지)
       cover: data.cover || '',
+      // 같은 날짜 글의 표시 순서 (없으면 0 → 이름순 폴백)
+      order: data.order ? Number(data.order) : 0,
       // 시리즈: 카테고리·태그와 독립적인 순서 있는 글 묶음
       series: data.series || '',
       seriesOrder: data.seriesOrder ? Number(data.seriesOrder) : 0,
       path: `/posts/${slug}`,
     })
   }
-  // 날짜 내림차순 (최신순)
-  posts.sort((a, b) => (a.date < b.date ? 1 : -1))
+  // 날짜 내림차순 (최신순), 같은 날짜면 order 오름차순, order 없으면 slug 이름순
+  posts.sort((a, b) => {
+    if (a.date !== b.date) return a.date < b.date ? 1 : -1
+    const oa = a.order || Infinity
+    const ob = b.order || Infinity
+    if (oa !== ob) return oa - ob
+    return a.slug.localeCompare(b.slug)
+  })
 
   await mkdir(path.dirname(OUTPUT), { recursive: true })
   await writeFile(OUTPUT, JSON.stringify(posts, null, 2) + '\n', 'utf8')
