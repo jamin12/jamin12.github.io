@@ -1,9 +1,15 @@
 import { Link } from 'react-router'
 import { seriesList, formatCategory } from '../lib/posts'
+import SEOHead from '../components/SEOHead'
 
 export default function SeriesPage() {
   return (
     <div className="page-series">
+      <SEOHead
+        title="Series"
+        description="순서대로 읽으면 흐름이 이어지는 글 묶음"
+        path="/series"
+      />
       <header className="page-series__header">
         <h1 className="page-series__title">Series</h1>
         <p className="page-series__desc">

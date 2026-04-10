@@ -21,6 +21,7 @@ import { rehypeMermaidPassthrough } from '../lib/rehype-mermaid-passthrough'
 import TOC from '../components/TOC'
 import MermaidDiagram from '../components/MermaidDiagram'
 import Lightbox from '../components/Lightbox'
+import SEOHead from '../components/SEOHead'
 
 const remarkPlugins = [remarkGfm, remarkMath]
 const rehypePlugins = [
@@ -131,6 +132,14 @@ export default function PostDetail() {
 
   return (
     <div className="page-post">
+      <SEOHead
+        title={post.title}
+        description={post.summary || `${post.title} — ${formatCategory(post.category)}`}
+        path={`/posts/${slug}`}
+        type="article"
+        publishedTime={post.date}
+        tags={post.tags}
+      />
       <div className="post-layout">
         <article className="post">
           <header className="post__header">

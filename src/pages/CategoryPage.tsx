@@ -6,6 +6,7 @@ import {
   formatCategory,
 } from '../lib/posts'
 import PostCards from '../components/PostCards'
+import SEOHead from '../components/SEOHead'
 
 export default function CategoryPage() {
   const { category, subcategory } = useParams()
@@ -58,6 +59,11 @@ export default function CategoryPage() {
   // 하위 그룹이 정의돼 있으면 그룹별 섹션으로 렌더, 아니면 flat 목록
   return (
     <div className="page-list">
+      <SEOHead
+        title={activeSub ? `${label} — ${activeSubDef?.label}` : label}
+        description={`${label} 카테고리의 글 모음 (${allPosts.length}개)`}
+        path={activeSub ? `/categories/${encodeURIComponent(category)}/${activeSub}` : `/categories/${encodeURIComponent(category)}`}
+      />
       <header className="page-header">
         <p className="page-header__kicker">카테고리</p>
         <h1 className="page-header__title">{label}</h1>

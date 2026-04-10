@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-sitemap.mjs && node scripts/prerender-meta.mjs",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
@@ -15,6 +15,7 @@
     "mermaid": "^11.14.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-helmet-async": "^3.0.0",
     "react-markdown": "^10.1.0",
     "react-router": "^7.14.0",
     "rehype-autolink-headings": "^7.1.0",

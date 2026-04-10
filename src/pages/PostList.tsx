@@ -3,6 +3,7 @@ import { publicPosts, categories, tags, formatCategory } from '../lib/posts'
 import PostCards from '../components/PostCards'
 import LatestGrid from '../components/LatestGrid'
 import SeriesStrip from '../components/SeriesStrip'
+import SEOHead from '../components/SEOHead'
 
 // ── 홈 노출 설정 ──
 const POSTS_PER_CATEGORY = 5 // `03 카테고리별 최근` 각 섹션의 글 수
@@ -31,6 +32,7 @@ export default function PostList() {
 
   return (
     <div className="page-home">
+      <SEOHead />
       {/* 01 최신 글 */}
       <section className="home-section">
         <header className="home-section__header">

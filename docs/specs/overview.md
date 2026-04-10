@@ -141,3 +141,4 @@ Slug Encoder           Vite base
 | [layout.md](layout.md) | UI 프레임, 타이포그래피, 반응형, 다크모드 |
 | [deployment.md](deployment.md) | GitHub Pages 배포, Vite base 경로, SPA 폴백 |
 | [series.md](series.md) | 시리즈 — 카테고리·태그 독립적인 순서 있는 글 묶음, frontmatter 스키마, UI 설계 |
+| [seo.md](seo.md) | SEO — 메타 태그, sitemap, 프리렌더, robots.txt, 소셜 공유 |

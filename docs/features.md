@@ -59,7 +59,19 @@
 - [x] 빈 상태 (빈 카테고리/태그, 없는 글)
 - [x] 읽는 시간 표시 (한국어 분당 500자 기준)
 
-## 배포 → [specs/deployment.md](specs/deployment.md)
+## SEO → [specs/seo.md](specs/seo.md)
+
+- [x] 기본 메타 태그 (description, OG, Twitter Card) — `index.html` 정적 선언
+- [x] 클라이언트 동적 메타 (`react-helmet-async`) — 페이지별 title/description/OG 교체
+- [x] robots.txt — `public/robots.txt`
+- [x] sitemap.xml 자동 생성 — `scripts/generate-sitemap.mjs`, 빌드 후 실행
+- [x] 빌드 타임 프리렌더 — `scripts/prerender-meta.mjs`, 라우트별 HTML에 메타 태그 주입 (소셜 크롤러 대응)
+- [x] 404.html SPA 폴백 — 프리렌더 스크립트에서 자동 생성
+- [ ] JSON-LD 구조화 데이터
+- [ ] OG 이미지 (cover → og:image)
+- [ ] Google Search Console / 네이버 서치어드바이저 등록
+
+## ���포 → [specs/deployment.md](specs/deployment.md)
 
 - [ ] GitHub Pages 배포 (`gh-pages` 패키지)
 - [ ] Vite `base` 경로 repo명 대응

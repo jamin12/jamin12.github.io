@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router'
 import { getPostsByTag } from '../lib/posts'
 import PostCards from '../components/PostCards'
+import SEOHead from '../components/SEOHead'
 
 export default function TagPage() {
   const { tag } = useParams()
@@ -8,6 +9,11 @@ export default function TagPage() {
 
   return (
     <div className="page-list">
+      <SEOHead
+        title={`#${tag}`}
+        description={`"${tag}" 태그가 붙은 글 모음`}
+        path={`/tags/${encodeURIComponent(tag)}`}
+      />
       <header className="page-header">
         <p className="page-header__kicker">태그</p>
         <h1 className="page-header__title">#{tag}</h1>

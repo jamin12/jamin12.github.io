@@ -115,9 +115,20 @@ Windows bash(현 환경)에서는 `cp`가 작동한다. Node 스크립트로 작
 | 명령 | 설명 |
 |------|------|
 | `pnpm dev` | 로컬 개발 서버 (hot reload) |
-| `pnpm build` | `dist/` 생성 (404.html 포함) |
+| `pnpm build` | `dist/` 생성 + sitemap.xml + 라우트별 HTML 프리렌더 + 404.html |
 | `pnpm preview` | 빌드 결과 로컬 확인 (배포 전 필수) |
 | `pnpm deploy` | `gh-pages -d dist` 실행 |
+
+### 빌드 파이프라인 상세 (2026-04-10 추가)
+
+```
+pnpm build
+  = vite build
+  → node scripts/generate-sitemap.mjs   (posts-meta.json → dist/sitemap.xml)
+  → node scripts/prerender-meta.mjs     (각 라우트별 index.html에 메타 태그 주입 + 404.html 생성)
+```
+
+sitemap과 프리렌더 스크립트는 `vite build` 이후 순차 실행된다. 상세는 [specs/seo.md](seo.md) 참조.
 
 ### 배포 체크리스트
 
