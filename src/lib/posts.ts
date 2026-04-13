@@ -89,6 +89,10 @@ export const posts: Post[] = (metaJson as Post[]).filter(
 // 직접 URL(/posts/<slug>)로는 접근 가능 — getPostBySlug는 전체 posts 사용.
 export const publicPosts: Post[] = posts.filter((p) => !p.private)
 
+// ── 비밀 글 배열 ──
+// /9901 경로에서만 노출되는 private 글 목록
+export const privatePosts: Post[] = posts.filter((p) => p.private)
+
 // ── 카테고리 인덱스 ──
 export const categories: CategoryInfo[] = [...new Set(publicPosts.map((p) => p.category))]
   .map((name) => ({
