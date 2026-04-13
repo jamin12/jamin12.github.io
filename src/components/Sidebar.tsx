@@ -139,7 +139,11 @@ export default function Sidebar() {
         )
       })()}
 
-      <div className="sidebar__footer" />
+      <div className="sidebar__footer">
+        <Link to="/about" className="sidebar__social sidebar__social--about" aria-label="About">
+          About
+        </Link>
+      </div>
     </aside>
   )
 }

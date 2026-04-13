@@ -5,6 +5,7 @@ import CategoryPage from './pages/CategoryPage'
 import TagPage from './pages/TagPage'
 import SeriesPage from './pages/SeriesPage'
 import SeriesDetailPage from './pages/SeriesDetailPage'
+import AboutPage from './pages/AboutPage'
 import Sidebar from './components/Sidebar'
 
 import ScrollToTop from './components/ScrollToTop'
@@ -59,6 +60,7 @@ export default function App() {
             <Route path="/series" element={<SeriesPage />} />
             <Route path="/series/:name" element={<SeriesDetailPage />} />
             <Route path="/tags/:tag" element={<TagPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
