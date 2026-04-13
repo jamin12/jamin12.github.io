@@ -6,7 +6,7 @@ import TagPage from './pages/TagPage'
 import SeriesPage from './pages/SeriesPage'
 import SeriesDetailPage from './pages/SeriesDetailPage'
 import Sidebar from './components/Sidebar'
-import ThemeToggle from './components/ThemeToggle'
+
 import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 
@@ -39,7 +39,6 @@ export default function App() {
             <span className="app__topbar-avatar" aria-hidden="true">J</span>
             <span>jaminLog</span>
           </Link>
-          <ThemeToggle />
         </header>
         <main className={`app__main ${isPostDetail ? 'app__main--post' : ''}`}>
           <Routes>

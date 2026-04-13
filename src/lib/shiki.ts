@@ -24,12 +24,11 @@ import rust from 'shiki/langs/rust.mjs'
 import java from 'shiki/langs/java.mjs'
 import kotlin from 'shiki/langs/kotlin.mjs'
 
-// 테마 — 라이트/다크 듀얼
+// 테마 — 라이트 전용
 import githubLight from 'shiki/themes/github-light.mjs'
-import githubDark from 'shiki/themes/github-dark.mjs'
 
 export const highlighter = createHighlighterCoreSync({
-  themes: [githubLight, githubDark],
+  themes: [githubLight],
   langs: [
     js,
     ts,

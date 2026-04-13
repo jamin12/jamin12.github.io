@@ -13,66 +13,46 @@ import { useEffect, useRef, useState } from 'react'
 // ─────────────────────────────────────────
 
 let mermaidInstance = null
-let currentTheme = null
+let initialized = false
 
-async function getMermaid(theme) {
+async function getMermaid() {
   if (!mermaidInstance) {
     const mod = await import('mermaid')
     mermaidInstance = mod.default
   }
-  if (theme !== currentTheme) {
+  if (!initialized) {
     mermaidInstance.initialize({
       startOnLoad: false,
-      theme: theme === 'dark' ? 'dark' : 'default',
+      theme: 'default',
       securityLevel: 'loose',
       fontFamily: 'inherit',
-      themeVariables:
-        theme === 'dark'
-          ? {
-              darkMode: true,
-              background: '#111116',
-              primaryColor: '#14141a',
-              primaryTextColor: '#f5f5f7',
-              primaryBorderColor: '#2b2b33',
-              lineColor: '#5b5b63',
-              secondaryColor: '#1f1f24',
-              tertiaryColor: '#0a0a0b',
-            }
-          : {
-              background: '#ffffff',
-              primaryColor: '#f5f5f7',
-              primaryTextColor: '#0a0a0b',
-              primaryBorderColor: '#d4d4dc',
-              lineColor: '#6b6b73',
-            },
+      themeVariables: {
+        background: '#ffffff',
+        primaryColor: '#f5f5f7',
+        primaryTextColor: '#0a0a0b',
+        primaryBorderColor: '#d4d4dc',
+        lineColor: '#6b6b73',
+      },
     })
-    currentTheme = theme
+    initialized = true
   }
   return mermaidInstance
-}
-
-function getCurrentTheme() {
-  if (typeof document === 'undefined') return 'dark'
-  return document.documentElement.dataset.theme || 'dark'
 }
 
 export default function MermaidDiagram({ code, onClickExpand }: { code: string; onClickExpand?: (svgHtml: string) => void }) {
   const [svg, setSvg] = useState('')
   const [error, setError] = useState(null)
-  const [version, setVersion] = useState(0) // 테마 변경 시 재렌더 트리거
   const idRef = useRef(
     `mermaid-${Math.random().toString(36).slice(2, 11)}`
   )
 
-  // 렌더 (code 또는 version이 바뀔 때마다)
   useEffect(() => {
     if (!code) return
     let alive = true
     const render = async () => {
       try {
-        const mermaid = await getMermaid(getCurrentTheme())
-        // 매 렌더마다 새 id를 써야 mermaid 내부 DOM 충돌이 안 남
-        const id = `${idRef.current}-${version}`
+        const mermaid = await getMermaid()
+        const id = `${idRef.current}-${Date.now()}`
         const { svg: rendered } = await mermaid.render(id, code)
         if (alive) {
           setSvg(rendered)
@@ -89,22 +69,7 @@ export default function MermaidDiagram({ code, onClickExpand }: { code: string; 
     return () => {
       alive = false
     }
-  }, [code, version])
-
-  // 테마 변경 감지 — <html data-theme> 속성 변경을 관찰
-  useEffect(() => {
-    if (typeof document === 'undefined') return
-    const observer = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        if (m.attributeName === 'data-theme') {
-          setVersion((v) => v + 1)
-          return
-        }
-      }
-    })
-    observer.observe(document.documentElement, { attributes: true })
-    return () => observer.disconnect()
-  }, [])
+  }, [code])
 
   if (error) {
     return (

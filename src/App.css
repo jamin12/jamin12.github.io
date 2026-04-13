@@ -7,34 +7,34 @@
    구조·기각 기록: docs/specs/layout.md §2.5
    ───────────────────────────────────────── */
 
-/* ── 디자인 토큰 (다크 기본) ── */
+/* ── 디자인 토큰 (라이트 전용) ── */
 :root {
-  /* 배경 — 3층 레이어 */
-  --bg: #0a0a0b;
-  --bg-subtle: #111116;
-  --bg-hover: #14141a;
-  --bg-elevated: #17171d;
+  /* 배경 */
+  --bg: #fafafa;
+  --bg-subtle: #ffffff;
+  --bg-hover: #f5f5f7;
+  --bg-elevated: #ffffff;
 
-  /* 텍스트 — 다층 투명도 */
-  --text: #f5f5f7;
-  --text-secondary: #c4c4cc;
-  --text-muted: #8b8b93;
-  --text-faint: #5b5b63;
+  /* 텍스트 */
+  --text: #0a0a0b;
+  --text-secondary: #3a3a40;
+  --text-muted: #6b6b73;
+  --text-faint: #9b9ba3;
 
   /* 경계 */
-  --border: #1f1f24;
-  --border-hover: #2b2b33;
-  --border-muted: #16161a;
+  --border: #e8e8ec;
+  --border-hover: #d4d4dc;
+  --border-muted: #f2f2f5;
 
   /* 코드 */
-  --code-bg: #14141a;
-  --pre-bg: #0f0f13;
+  --code-bg: #f2f2f5;
+  --pre-bg: #f6f6f8;
 
   /* 브랜드 포인트 */
   --accent: #2b5bff;
   --accent-hover: #5577ff;
   --accent-fg: #ffffff;
-  --accent-tint: rgba(43, 91, 255, 0.12);
+  --accent-tint: rgba(43, 91, 255, 0.08);
 
   /* 타이포 스택 */
   --font-sans: 'Inter', 'Pretendard Variable', Pretendard, -apple-system,
@@ -43,23 +43,6 @@
   --font-display: 'Fraunces', 'Noto Serif KR', 'Pretendard Variable', Pretendard,
     Georgia, 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', 'D2Coding', 'Consolas', monospace;
-}
-
-[data-theme='light'] {
-  --bg: #fafafa;
-  --bg-subtle: #ffffff;
-  --bg-hover: #f5f5f7;
-  --bg-elevated: #ffffff;
-  --text: #0a0a0b;
-  --text-secondary: #3a3a40;
-  --text-muted: #6b6b73;
-  --text-faint: #9b9ba3;
-  --border: #e8e8ec;
-  --border-hover: #d4d4dc;
-  --border-muted: #f2f2f5;
-  --code-bg: #f2f2f5;
-  --pre-bg: #f6f6f8;
-  --accent-tint: rgba(43, 91, 255, 0.08);
 }
 
 /* ── 전역 ── */
@@ -529,35 +512,6 @@ body {
   margin: 0;
 }
 
-/* 테마 토글 버튼 — 텍스트 라벨 (LIGHT / DARK) */
-.theme-toggle {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  min-width: 68px;
-  height: 34px;
-  padding: 0 0.9rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.15s, background 0.15s, border-color 0.15s;
-}
-
-.theme-toggle:hover {
-  color: var(--text);
-  background: var(--bg-subtle);
-  border-color: var(--border-hover);
-}
-
-.theme-toggle:active {
-  transform: scale(0.97);
-}
 
 /* ─────────────────────────────────────────
    홈 섹션 프레임 — CSS counter 01/02/03/04
@@ -1850,12 +1804,6 @@ body {
   color: inherit;
 }
 
-/* shiki 듀얼 테마 */
-[data-theme='dark'] .post__body .shiki,
-[data-theme='dark'] .post__body .shiki span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-}
 
 .post__body blockquote {
   border-left: 2px solid var(--accent);

@@ -41,7 +41,7 @@ const rehypePlugins = [
     rehypeShikiFromHighlighter,
     highlighter,
     {
-      themes: { light: 'github-light', dark: 'github-dark' },
+      theme: 'github-light',
     },
   ],
 ]

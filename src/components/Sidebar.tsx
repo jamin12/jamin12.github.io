@@ -7,7 +7,6 @@ import {
   getPostBySlug,
 } from '../lib/posts'
 import { getCategoryLetter } from '../lib/category-meta'
-import ThemeToggle from './ThemeToggle'
 
 // ≥ 1024px에서만 렌더. 모바일/태블릿은 `.app__topbar` 사용 (App.jsx)
 // 브랜드 블록이 이미 홈 링크 역할을 하므로 별도의 "홈" 네비 항목은 두지 않음.
@@ -140,9 +139,7 @@ export default function Sidebar() {
         )
       })()}
 
-      <div className="sidebar__footer">
-        <ThemeToggle />
-      </div>
+      <div className="sidebar__footer" />
     </aside>
   )
 }
