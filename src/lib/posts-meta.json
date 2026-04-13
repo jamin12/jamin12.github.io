@@ -1771,5 +1771,28 @@
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준11051번"
+  },
+  {
+    "slug": "graph-query-speed-optimization",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "그래프 조회 속도 개선",
+    "date": "2024-10-13",
+    "tags": [
+      "대용량-데이터",
+      "인덱스",
+      "집계",
+      "캐싱"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/graph-query-speed-optimization"
   }
 ]
