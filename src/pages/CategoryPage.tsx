@@ -25,6 +25,11 @@ export default function CategoryPage() {
   if (activeSub && activeSubDef) {
     return (
       <div className="page-list">
+        <SEOHead
+          title={`${label} — ${activeSubDef.label}`}
+          description={`${label} · ${activeSubDef.label} 하위 카테고리의 글 모음 (${activeSubDef.count}개)`}
+          path={`/categories/${encodeURIComponent(category)}/${activeSub}`}
+        />
         <header className="page-header">
           <p className="page-header__kicker">
             <Link to={`/categories/${encodeURIComponent(category)}`}>
