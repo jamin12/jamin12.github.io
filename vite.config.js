@@ -35,5 +35,5 @@ function postsIndexPlugin() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [postsIndexPlugin(), react()],
-  base: './',
+  base: '/',
 })
