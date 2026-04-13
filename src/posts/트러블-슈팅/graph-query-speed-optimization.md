@@ -1,7 +1,7 @@
 ---
 title: 그래프 조회 속도 개선
 date: 2024-10-13
-tags: [대용량-데이터, 인덱스, 집계, 캐싱]
+tags: [대용량-데이터, 인덱스, 집계, 캐싱, 팩터리-메서드-패턴]
 ---
 
 2천만 건이 있는 테이블에서 그래프 데이터를 조회하는데 시간이 점점 느려지기 시작했다. 데이터가 쌓이면서 기존 쿼리로는 감당이 안 되는 수준이 된 것이다.
@@ -59,11 +59,39 @@ NoSQL이 대용량 읽기/쓰기에 강하다는 이야기가 있어서, 가장 
 
 배치 작업에 추가 JOB을 붙여서 일일 단위, 월간 단위로 데이터를 사전 집계해 별도 테이블에 저장하도록 개발했다. 원본 2천만 건을 매번 훑는 대신, 이미 계산된 집계 데이터에서 읽어오는 구조다.
 
-문제는 기존 관제값, 일일 관제값, 월간 관제값 — 이 3개 테이블을 프론트엔드 요청에 따라 적절히 골라서 접근해야 한다는 것이었다. 팩터리 메서드 패턴을 적용해서 프론트엔드 파라미터에 따라 서로 다른 구현체를 반환하도록 설계했다.
+문제는 테이블이 3개로 나뉘면서 생겼다. 같은 관제값 데이터인데 기간타입에 따라 원본 테이블, 일일 집계 테이블, 월간 집계 테이블을 각각 따로 조회해야 했다. 서비스 로직에서 if-else로 분기를 태우면 테이블이 추가될 때마다 분기가 늘어나고, 조회 로직과 테이블 선택 로직이 뒤섞여 코드가 복잡해진다.
+
+팩터리 메서드 패턴을 적용해서 이 문제를 해결했다. 기간타입을 넘기면 팩터리가 알아서 맞는 서비스를 반환하는 구조다.
+
+```java
+@Service
+@RequiredArgsConstructor
+public class ControlValuesServiceFactory {
+    private final ControlValueService controlValueService;
+    private final ControlValueDailyAggregateService controlValueDailyAggregateService;
+    private final ControlValueMonthlyAggregateService controlValueMonthlyAggregateService;
+
+    public ControlValueProvider<?> getService(PeriodQueryDateFormat primaryDateFormat) {
+        return switch (primaryDateFormat) {
+            case DAY_MINUTE, DAY_HOUR -> controlValueService;
+            case WEEK, MONTH, DATE_RANGE -> controlValueDailyAggregateService;
+            case YEAR, YEARS -> controlValueMonthlyAggregateService;
+        };
+    }
+}
+```
+
+호출하는 쪽에서는 어떤 테이블에서 가져오는지 신경 쓸 필요가 없다. 팩터리에 기간타입만 넘기면 된다.
+
+```java
+ControlValueProvider<?> controlValueProviderService = controlValuesServiceFactory.getService(primaryDateFormat);
+List<? extends ControlValueInterface> controlValues = controlValueProviderService.getControlValues(
+    controlPointIds, startDate, endDate);
+```
 
 ![image](./images/graph-query-6.png)
 
-요청이 일일 단위면 일일 집계 테이블로, 월간 단위면 월간 집계 테이블로, 상세 데이터가 필요하면 원본 테이블로 — 각 상황에 맞는 테이블에 자동으로 접근한다.
+이렇게 분리해두니 나중에 집계 테이블 종류가 추가되더라도 팩터리 클래스의 switch에 한 줄만 추가하면 되고, 서비스 로직은 건드릴 필요가 없어졌다.
 
 ![image](./images/graph-query-7.png)
 

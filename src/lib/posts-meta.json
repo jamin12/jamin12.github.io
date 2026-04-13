@@ -1783,16 +1783,41 @@
       "대용량-데이터",
       "인덱스",
       "집계",
-      "캐싱"
+      "캐싱",
+      "팩터리-메서드-패턴"
     ],
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 5,
+    "readingTime": 8,
     "cover": "",
     "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/graph-query-speed-optimization"
+  },
+  {
+    "slug": "bulk-data-download-oom",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "대용량 데이터 다운로드",
+    "date": "2024-10-06",
+    "tags": [
+      "대용량-데이터",
+      "비동기",
+      "영속성",
+      "OOM",
+      "StreamingResponseBody"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 13,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/bulk-data-download-oom"
   }
 ]
