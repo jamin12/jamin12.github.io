@@ -1797,6 +1797,29 @@
     "path": "/posts/graph-query-speed-optimization"
   },
   {
+    "slug": "async-test-awaitility",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "비동기 테스트 처리",
+    "date": "2024-10-07",
+    "tags": [
+      "테스트",
+      "비동기",
+      "awaitility",
+      "transactional"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/async-test-awaitility"
+  },
+  {
     "slug": "bulk-data-download-oom",
     "category": "트러블-슈팅",
     "subcategory": "",
@@ -1813,7 +1836,7 @@
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 13,
+    "readingTime": 22,
     "cover": "",
     "order": 0,
     "series": "",
