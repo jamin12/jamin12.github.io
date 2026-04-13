@@ -1773,6 +1773,32 @@
     "path": "/posts/백준11051번"
   },
   {
+    "slug": "modbus-data-collection",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "Modbus 센서 데이터 수집",
+    "date": "2024-12-28",
+    "tags": [
+      "modbus",
+      "kotlin",
+      "serial-통신",
+      "센서",
+      "jmod",
+      "influxdb",
+      "aws"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 9,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/modbus-data-collection"
+  },
+  {
     "slug": "graph-query-speed-optimization",
     "category": "트러블-슈팅",
     "subcategory": "",
