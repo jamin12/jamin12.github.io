@@ -40,6 +40,8 @@ export const SUBCATEGORY_RULES = {
     { slug: 'kubernetes',    label: 'Kubernetes',     tags: ['k8s', 'kubernetes'] },
     { slug: 'circuit-breaker', label: '서킷브레이커', tags: ['circuit-breaker'] },
     { slug: 'saga',            label: 'Saga · Outbox',  tags: ['saga', 'outbox'] },
+    { slug: 'coroutine',       label: 'Coroutine',      tags: ['coroutine'] },
+    { slug: 'spring-reactive', label: 'Spring Reactive', tags: ['spring-reactive', 'reactive'] },
   ],
 
   '코테': [
