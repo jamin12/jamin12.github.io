@@ -1,7 +1,9 @@
 ---
-title: "Saga + Outbox 패턴 (2) — Status, 재시도, 보상 트랜잭션"
+title: "MSA Saga 여정 (5) — Status, 재시도, 보상 트랜잭션"
 date: 2026-04-12
 tags: [saga, outbox, 분산-트랜잭션, msa, 보상-트랜잭션]
+series: MSA Saga 여정
+seriesOrder: 5
 ---
 
 ## 1. Status 흐름

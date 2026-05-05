@@ -430,11 +430,11 @@
     "path": "/posts/mock-interview-spel-aop"
   },
   {
-    "slug": "saga-outbox-01-db-design",
+    "slug": "msa-saga-04-db-design",
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "Saga + Outbox 패턴 (1) — DB 설계: 왜 테이블 4개인가",
+    "title": "MSA Saga 여정 (4) — DB 설계: 왜 테이블 4개인가",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -449,16 +449,16 @@
     "readingTime": 11,
     "cover": "",
     "order": 0,
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/saga-outbox-01-db-design"
+    "series": "MSA Saga 여정",
+    "seriesOrder": 4,
+    "path": "/posts/msa-saga-04-db-design"
   },
   {
-    "slug": "saga-outbox-02-retry-compensation",
+    "slug": "msa-saga-05-retry-compensation",
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "Saga + Outbox 패턴 (2) — Status, 재시도, 보상 트랜잭션",
+    "title": "MSA Saga 여정 (5) — Status, 재시도, 보상 트랜잭션",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -473,16 +473,16 @@
     "readingTime": 4,
     "cover": "",
     "order": 0,
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/saga-outbox-02-retry-compensation"
+    "series": "MSA Saga 여정",
+    "seriesOrder": 5,
+    "path": "/posts/msa-saga-05-retry-compensation"
   },
   {
-    "slug": "saga-outbox-03-orchestration",
+    "slug": "msa-saga-06-orchestration",
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "Saga + Outbox 패턴 (3) — 오케스트레이션과 메시지 흐름",
+    "title": "MSA Saga 여정 (6) — 오케스트레이션과 메시지 흐름",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -497,16 +497,16 @@
     "readingTime": 5,
     "cover": "",
     "order": 0,
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/saga-outbox-03-orchestration"
+    "series": "MSA Saga 여정",
+    "seriesOrder": 6,
+    "path": "/posts/msa-saga-06-orchestration"
   },
   {
-    "slug": "saga-outbox-04-implementation",
+    "slug": "msa-saga-07-implementation",
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "Saga + Outbox 패턴 (4) — Stream 구성, 코드 구조, 브로커 안전망",
+    "title": "MSA Saga 여정 (7) — Stream 구성, 코드 구조, 브로커 안전망",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -521,9 +521,9 @@
     "readingTime": 14,
     "cover": "",
     "order": 0,
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/saga-outbox-04-implementation"
+    "series": "MSA Saga 여정",
+    "seriesOrder": 7,
+    "path": "/posts/msa-saga-07-implementation"
   },
   {
     "slug": "circuit-breaker-why",
@@ -897,11 +897,34 @@
     "path": "/posts/network-web"
   },
   {
-    "slug": "msa-saga-pattern-refactoring",
+    "slug": "msa-saga-01-usecase-rollback",
     "category": "트러블-슈팅",
     "subcategory": "",
     "subcategoryLabel": "",
-    "title": "MSA 환경에서 Saga 패턴 도입과 리팩터링 과정",
+    "title": "MSA Saga 여정 (1) — 유스케이스에 롤백을 직접 작성하던 시기",
+    "date": "2026-03-22",
+    "tags": [
+      "msa",
+      "saga",
+      "분산-트랜잭션",
+      "보상-트랜잭션"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 2,
+    "cover": "",
+    "order": 0,
+    "series": "MSA Saga 여정",
+    "seriesOrder": 1,
+    "path": "/posts/msa-saga-01-usecase-rollback"
+  },
+  {
+    "slug": "msa-saga-02-redis-stream-outbox",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "MSA Saga 여정 (2) — Redis Pub/Sub에서 Stream과 Outbox까지",
     "date": "2026-03-22",
     "tags": [
       "msa",
@@ -913,12 +936,36 @@
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 11,
+    "readingTime": 4,
     "cover": "",
     "order": 0,
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/msa-saga-pattern-refactoring"
+    "series": "MSA Saga 여정",
+    "seriesOrder": 2,
+    "path": "/posts/msa-saga-02-redis-stream-outbox"
+  },
+  {
+    "slug": "msa-saga-03-orchestration-simplification",
+    "category": "트러블-슈팅",
+    "subcategory": "",
+    "subcategoryLabel": "",
+    "title": "MSA Saga 여정 (3) — 중앙 오케스트레이션의 복잡성과 단순화",
+    "date": "2026-03-22",
+    "tags": [
+      "msa",
+      "saga",
+      "오케스트레이션",
+      "헥사고날",
+      "분산-트랜잭션"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 0,
+    "series": "MSA Saga 여정",
+    "seriesOrder": 3,
+    "path": "/posts/msa-saga-03-orchestration-simplification"
   },
   {
     "slug": "백준3061번",

@@ -1,7 +1,9 @@
 ---
-title: "Saga + Outbox 패턴 (1) — DB 설계: 왜 테이블 4개인가"
+title: "MSA Saga 여정 (4) — DB 설계: 왜 테이블 4개인가"
 date: 2026-04-12
 tags: [saga, outbox, 분산-트랜잭션, msa, 멱등성]
+series: MSA Saga 여정
+seriesOrder: 4
 ---
 
 ## 1. 출발점 — 테이블 2개

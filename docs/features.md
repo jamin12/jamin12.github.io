@@ -13,7 +13,7 @@
 - [x] 태그 인덱스 생성 (빈도순)
 - [x] 이미지 상대경로 참조 규칙 (`./images/*` → Vite 해시 URL 리졸버)
 - [x] draft 플래그 (프로덕션 빌드에서 목록·라우팅 제외, dev는 "초안" 배지)
-- [x] **시리즈** (2026-04-06) — 카테고리·태그 독립적인 순서 있는 글 묶음. frontmatter `series`/`seriesOrder` 필드. 데이터 레이어 완료 (`seriesList`, `getPostsBySeries`, `getSeriesNav`). 현재 3개 시리즈: CDC 도입기(5편), 모니터링 구축기(7편), CI 개선기(2편). 상세는 [specs/series.md](specs/series.md)
+- [x] **시리즈** (2026-04-06) — 카테고리·태그 독립적인 순서 있는 글 묶음. frontmatter `series`/`seriesOrder` 필드. 데이터 레이어 완료 (`seriesList`, `getPostsBySeries`, `getSeriesNav`). 카테고리를 넘나드는 시리즈 지원(회고 → 설계론 같은 두 막 구조). 등록된 시리즈 목록은 빌드 산출물에서 자동 추출. 상세는 [specs/series.md](specs/series.md)
 
 ## 렌더링 → [specs/rendering.md](specs/rendering.md)
 

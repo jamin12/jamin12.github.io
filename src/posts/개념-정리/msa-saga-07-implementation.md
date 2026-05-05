@@ -1,7 +1,9 @@
 ---
-title: "Saga + Outbox 패턴 (4) — Stream 구성, 코드 구조, 브로커 안전망"
+title: "MSA Saga 여정 (7) — Stream 구성, 코드 구조, 브로커 안전망"
 date: 2026-04-12
 tags: [saga, outbox, redis-stream, consumer-group, msa]
+series: MSA Saga 여정
+seriesOrder: 7
 ---
 
 ## 1. Stream(토픽) 구성 옵션
