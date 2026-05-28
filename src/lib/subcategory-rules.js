@@ -28,6 +28,7 @@ export const SUBCATEGORY_RULES = {
     // 내용은 Jackson 관련이라 spring으로 묶이면 안 됨
     { slug: 'spring',        label: 'Spring',         tags: ['spring', 'spring-boot', 'event', 'listener', 'valid', 'validated'] },
     { slug: 'nextjs',        label: 'Next.js',        tags: ['Next.js', 'nextJs'] },
+    { slug: 'react',         label: 'React',          tags: ['react', 'react-native', 'tanstack-query'] },
     { slug: 'jackson',       label: 'Jackson',        tags: ['jackson'] },
     // redis 규칙은 streams 태그만 잡음 — jackson-polymorphic이 redis 태그도 가지기 때문
     { slug: 'redis',         label: 'Redis Streams',  tags: ['streams'] },
