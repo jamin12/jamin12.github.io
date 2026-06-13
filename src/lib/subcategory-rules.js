@@ -43,6 +43,7 @@ export const SUBCATEGORY_RULES = {
     { slug: 'saga',            label: 'Saga · Outbox',  tags: ['saga', 'outbox'] },
     { slug: 'coroutine',       label: 'Coroutine',      tags: ['coroutine'] },
     { slug: 'spring-reactive', label: 'Spring Reactive', tags: ['spring-reactive', 'reactive'] },
+    { slug: 'go',              label: 'Go',             tags: ['go'] },
   ],
 
   '코테': [
