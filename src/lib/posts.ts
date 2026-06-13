@@ -65,6 +65,14 @@ export interface SeriesNav {
   all: Post[]
 }
 
+export interface CategoryNav {
+  category: string
+  current: number
+  total: number
+  prev: Post | null
+  next: Post | null
+}
+
 // ── 본문 lazy 로더 ──
 // eager: false (기본값). 각 .md 파일은 별도 dynamic chunk로 분리됨
 const bodyModules = import.meta.glob('../posts/**/*.md', {
@@ -189,6 +197,25 @@ export function getSeriesNav(slug: string): SeriesNav | null {
     prev: idx > 0 ? ordered[idx - 1] : null,
     next: idx < ordered.length - 1 ? ordered[idx + 1] : null,
     all: ordered,
+  }
+}
+
+// ── 카테고리 네비게이션 ──
+// 시리즈가 없는 글의 이전/다음 이동. 같은 카테고리 안에서 시간순으로 움직인다.
+// 이전 = 더 오래된 글, 다음 = 더 최신 글 (current는 오래된 글부터 1).
+// publicPosts 기준이라 private 글은 네비에 끼지 않고, private 글 자신도 null.
+export function getCategoryNav(slug: string): CategoryNav | null {
+  const post = posts.find((p) => p.slug === slug)
+  if (!post) return null
+  const ordered = getPostsByCategory(post.category) // 날짜 내림차순 (최신순)
+  const idx = ordered.findIndex((p) => p.slug === slug)
+  if (idx === -1) return null
+  return {
+    category: post.category,
+    current: ordered.length - idx,
+    total: ordered.length,
+    prev: idx < ordered.length - 1 ? ordered[idx + 1] : null,
+    next: idx > 0 ? ordered[idx - 1] : null,
   }
 }
 

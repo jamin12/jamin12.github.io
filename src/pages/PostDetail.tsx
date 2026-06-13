@@ -12,6 +12,7 @@ import {
   getPostBySlug,
   getPostBodyPromise,
   getSeriesNav,
+  getCategoryNav,
   resolveImageSrc,
   formatCategory,
 } from '../lib/posts'
@@ -64,6 +65,8 @@ export default function PostDetail() {
   // 미해결 상태에선 App.jsx의 <Suspense>가 fallback을 노출
   const body = use(getPostBodyPromise(post.category, slug))
   const seriesNav = getSeriesNav(slug)
+  // 시리즈 글은 시리즈 네비가 우선 — 카테고리 네비는 시리즈 없는 글에만 노출
+  const categoryNav = seriesNav ? null : getCategoryNav(slug)
   const [lightbox, setLightbox] = useState<React.ReactNode | null>(null)
 
   const components = {
@@ -229,6 +232,48 @@ export default function PostDetail() {
                       <span className="series-nav__dir">다음 →</span>
                       <span className="series-nav__title">
                         {seriesNav.next.seriesOrder}. {seriesNav.next.title}
+                      </span>
+                    </Link>
+                  ) : (
+                    <div />
+                  )}
+                </div>
+              </nav>
+            )}
+            {categoryNav && (categoryNav.prev || categoryNav.next) && (
+              <nav className="series-nav">
+                <div className="series-nav__header">
+                  <span className="series-nav__label">
+                    {formatCategory(categoryNav.category)}
+                  </span>
+                  <span className="series-nav__pos">
+                    {categoryNav.current} / {categoryNav.total}
+                  </span>
+                </div>
+                <div className="series-nav__links">
+                  {categoryNav.prev ? (
+                    <Link
+                      to={`/posts/${encodeURIComponent(categoryNav.prev.slug)}`}
+                      className="series-nav__link series-nav__link--prev"
+                      viewTransition
+                    >
+                      <span className="series-nav__dir">← 이전</span>
+                      <span className="series-nav__title">
+                        {categoryNav.prev.title}
+                      </span>
+                    </Link>
+                  ) : (
+                    <div />
+                  )}
+                  {categoryNav.next ? (
+                    <Link
+                      to={`/posts/${encodeURIComponent(categoryNav.next.slug)}`}
+                      className="series-nav__link series-nav__link--next"
+                      viewTransition
+                    >
+                      <span className="series-nav__dir">다음 →</span>
+                      <span className="series-nav__title">
+                        {categoryNav.next.title}
                       </span>
                     </Link>
                   ) : (
