@@ -79,12 +79,12 @@ export async function generatePostsIndex() {
       path: `/posts/${slug}`,
     })
   }
-  // 날짜 내림차순 (최신순), 같은 날짜면 order 오름차순, order 없으면 slug 이름순
+  // order 오름차순 (작은 게 위, 없으면 맨 아래), 같은 order면 날짜 내림차순(최신순), 그다음 slug 이름순
   posts.sort((a, b) => {
-    if (a.date !== b.date) return a.date < b.date ? 1 : -1
     const oa = a.order || Infinity
     const ob = b.order || Infinity
     if (oa !== ob) return oa - ob
+    if (a.date !== b.date) return a.date < b.date ? 1 : -1
     return a.slug.localeCompare(b.slug)
   })
 
