@@ -201,21 +201,22 @@ export function getSeriesNav(slug: string): SeriesNav | null {
 }
 
 // ── 카테고리 네비게이션 ──
-// 시리즈가 없는 글의 이전/다음 이동. 같은 카테고리 안에서 시간순으로 움직인다.
-// 이전 = 더 오래된 글, 다음 = 더 최신 글 (current는 오래된 글부터 1).
+// 시리즈가 없는 글의 이전/다음 이동. 같은 카테고리 안에서 정렬 순서대로 움직인다.
+// ordered는 order 오름차순(순위 높은 글이 위) → 같은 order면 최신순.
+// 이전 = 순위 더 높은 글(리스트 위쪽), 다음 = 순위 더 낮은 글(리스트 아래쪽). current는 위에서부터 1.
 // publicPosts 기준이라 private 글은 네비에 끼지 않고, private 글 자신도 null.
 export function getCategoryNav(slug: string): CategoryNav | null {
   const post = posts.find((p) => p.slug === slug)
   if (!post) return null
-  const ordered = getPostsByCategory(post.category) // 날짜 내림차순 (최신순)
+  const ordered = getPostsByCategory(post.category)
   const idx = ordered.findIndex((p) => p.slug === slug)
   if (idx === -1) return null
   return {
     category: post.category,
-    current: ordered.length - idx,
+    current: idx + 1,
     total: ordered.length,
-    prev: idx < ordered.length - 1 ? ordered[idx + 1] : null,
-    next: idx > 0 ? ordered[idx - 1] : null,
+    prev: idx > 0 ? ordered[idx - 1] : null,
+    next: idx < ordered.length - 1 ? ordered[idx + 1] : null,
   }
 }
 
