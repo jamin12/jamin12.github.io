@@ -9,7 +9,10 @@ import SEOHead from '../components/SEOHead'
 const POSTS_PER_CATEGORY = 5 // `03 카테고리별 최근` 각 섹션의 글 수
 const LATEST_COUNT = 6 // `01 최신 글`의 카드 수
 
-// posts는 이미 날짜 내림차순이므로 각 카테고리의 첫 글 = 최신 글
+// publicPosts는 order 오름차순 우선 정렬이라 날짜순이 아니다.
+// 홈의 "최신/최근" 영역은 날짜 기준이어야 하므로 여기서 명시적으로 날짜 내림차순 정렬한다.
+const byDateDesc = (a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)
+
 function buildCategoryGroups() {
   const map = new Map()
   for (const post of publicPosts) {
@@ -17,17 +20,20 @@ function buildCategoryGroups() {
     map.get(post.category).push(post)
   }
   return [...map.entries()]
-    .map(([name, list]) => ({
-      name,
-      posts: list,
-      count: list.length,
-      latestDate: list[0]?.date || '',
-    }))
+    .map(([name, list]) => {
+      const byDate = [...list].sort(byDateDesc)
+      return {
+        name,
+        posts: byDate,
+        count: byDate.length,
+        latestDate: byDate[0]?.date || '',
+      }
+    })
     .sort((a, b) => (a.latestDate < b.latestDate ? 1 : -1))
 }
 
 export default function PostList() {
-  const latest = publicPosts.slice(0, LATEST_COUNT)
+  const latest = [...publicPosts].sort(byDateDesc).slice(0, LATEST_COUNT)
   const groups = buildCategoryGroups()
 
   return (
