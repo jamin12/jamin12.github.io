@@ -32,6 +32,7 @@ export const SUBCATEGORY_RULES = {
     { slug: 'jackson',       label: 'Jackson',        tags: ['jackson'] },
     // redis 규칙은 streams 태그만 잡음 — jackson-polymorphic이 redis 태그도 가지기 때문
     { slug: 'redis',         label: 'Redis Streams',  tags: ['streams'] },
+    { slug: 'kafka',         label: 'Kafka',          tags: ['kafka'] },
     { slug: 'monitoring',    label: '모니터링',        tags: ['monitoring'] },
     { slug: 'ci',            label: 'CI/CD',           tags: ['CI'] },
     { slug: 'cs',            label: 'CS 기초',         tags: ['cs'] },

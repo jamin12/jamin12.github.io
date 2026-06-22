@@ -1047,6 +1047,28 @@
     "path": "/posts/go-gateway-middleware-marshaler"
   },
   {
+    "slug": "kafka-basics",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka — 토픽·파티션·컨슈머 그룹의 동작 원리",
+    "date": "2026-06-22",
+    "tags": [
+      "kafka",
+      "partition",
+      "consumer-group"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 9,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-basics"
+  },
+  {
     "slug": "react-provider-context",
     "category": "개념-정리",
     "subcategory": "react",
@@ -2134,11 +2156,33 @@
     "path": "/posts/jackson-polymorphic-type-handling"
   },
   {
+    "slug": "redis-streams-01-basic",
+    "category": "개념-정리",
+    "subcategory": "redis",
+    "subcategoryLabel": "Redis Streams",
+    "title": "Redis Streams - 왜 필요하고 어떻게 동작하나",
+    "date": "2026-01-22",
+    "tags": [
+      "redis",
+      "streams",
+      "valkey"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 8,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/redis-streams-01-basic"
+  },
+  {
     "slug": "redis-streams-02-consumer-group",
     "category": "개념-정리",
     "subcategory": "redis",
     "subcategoryLabel": "Redis Streams",
-    "title": "Redis Streams Consumer Group - 메시지 분산 처리",
+    "title": "Redis Streams Consumer Group - 여러 워커가 안전하게 나눠 처리하기",
     "date": "2026-01-21",
     "tags": [
       "redis",
@@ -2161,8 +2205,8 @@
     "category": "개념-정리",
     "subcategory": "redis",
     "subcategoryLabel": "Redis Streams",
-    "title": "Redis Streams Offset - 메시지 진행 상태 관리",
-    "date": "2026-01-21",
+    "title": "Redis Streams - 워커가 죽으면 메시지는 어떻게 되나 (Offset과 Pending)",
+    "date": "2026-01-20",
     "tags": [
       "redis",
       "streams",
@@ -2172,34 +2216,12 @@
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 7,
+    "readingTime": 8,
     "cover": "",
     "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/redis-streams-03-offset"
-  },
-  {
-    "slug": "redis-streams-01-basic",
-    "category": "개념-정리",
-    "subcategory": "redis",
-    "subcategoryLabel": "Redis Streams",
-    "title": "Redis Streams 기초 - 메시지 추가와 조회",
-    "date": "2026-01-20",
-    "tags": [
-      "redis",
-      "streams",
-      "valkey"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 5,
-    "cover": "",
-    "order": 0,
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/redis-streams-01-basic"
   },
   {
     "slug": "백준2607번",

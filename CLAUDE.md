@@ -88,20 +88,6 @@ src/posts/
 | View Transition API로 페이지 전환·공유 요소 애니메이션 | `vercel-react-view-transitions` |
 | compound components, 재사용 API 설계, **React 19 API 변경 포함** | `vercel-composition-patterns` |
 
----
-
-## 이 프로젝트에서 자주 쓸 조합
-
-- **최초 1회** → `teach-impeccable` → `frontend-design`
-- **기본 페이지 레이아웃 & 타이포** → `arrange` + `typeset`
-- **마크다운 본문 가독성 (H1~H6, 코드블록, 인용)** → `typeset` → `polish`
-- **글 목록 ↔ 상세 전환 애니메이션** → `vercel-react-view-transitions` + `animate`
-- **모바일 대응** → `adapt`
-- **성능 이슈** → `optimize` → `vercel-react-best-practices`
-- **빈 카테고리·로딩·에러 상태** → `harden` + `onboard`
-- **개성이 부족할 때** → `bolder` 또는 `colorize` 또는 `delight`
-- **React 19 패턴·컴포지션 설계** → `vercel-composition-patterns`
-- **출시 전 전반 감사** → `critique` + `audit` → `polish`
 
 ---
 
