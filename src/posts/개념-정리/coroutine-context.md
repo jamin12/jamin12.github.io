@@ -2,6 +2,7 @@
 title: Coroutine Context
 date: 2024-12-12
 tags: [kotlin, coroutine, context, coroutineName, exceptionHandler]
+order: 5
 ---
 
 Coroutine Context는 코루틴이 실행될 때 이를 관리하고 제어하는 여러 요소들이 결합된 객체다. 여러 키-값 쌍으로 이루어진 데이터 구조이며, 구성 요소는 네 가지다.

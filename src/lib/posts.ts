@@ -26,6 +26,7 @@ export interface Post {
   private: boolean
   readingTime: number
   cover: string
+  order: number
   series: string
   seriesOrder: number
   path: string
@@ -201,8 +202,8 @@ export function getSeriesNav(slug: string): SeriesNav | null {
 
 // ── 카테고리 네비게이션 ──
 // 시리즈가 없는 글의 이전/다음 이동. 같은 카테고리 안에서 정렬 순서대로 움직인다.
-// ordered는 날짜 내림차순(최신 글이 위) → 같은 날짜면 slug 이름순.
-// 이전 = 더 최신 글(리스트 위쪽), 다음 = 더 오래된 글(리스트 아래쪽). current는 위에서부터 1.
+// ordered는 날짜 내림차순(최신 글이 위) → 같은 날짜면 order 오름차순 → slug 이름순.
+// 이전 = 리스트 위쪽 글, 다음 = 리스트 아래쪽 글. current는 위에서부터 1.
 // publicPosts 기준이라 private 글은 네비에 끼지 않고, private 글 자신도 null.
 export function getCategoryNav(slug: string): CategoryNav | null {
   const post = posts.find((p) => p.slug === slug)

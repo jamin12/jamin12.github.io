@@ -2,6 +2,7 @@
 title: "Go의 리포지토리와 모델 — 도메인과 DB를 떼어 놓기"
 date: 2026-06-13
 tags: [go, repository, clean-architecture, domain, orm]
+order: 13
 ---
 
 클린 아키텍처를 따르는 프로젝트는 도메인 객체(entity)와 DB 매핑 객체(model)를 **의도적으로 분리**한다. 둘을 따로 두고 그 사이를 변환기(converter)로 잇는다. 이 글은 Go 프로젝트를 기준으로 왜 굳이 나누는지, 그 비용은 무엇인지 정리한다.

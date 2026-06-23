@@ -2,6 +2,7 @@
 title: Channel과 Producer-Consumer 패턴
 date: 2026-04-22
 tags: [kotlin, coroutine, channel, 백프레셔, producer-consumer]
+order: 11
 ---
 
 Channel은 코루틴 간에 값을 주고받는 suspend 가능한 큐다. 자바의 `BlockingQueue`와 비슷한데, 스레드를 블로킹하는 대신 코루틴을 suspend한다는 점이 다르다.

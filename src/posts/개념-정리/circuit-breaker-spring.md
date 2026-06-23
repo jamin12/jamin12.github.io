@@ -2,6 +2,7 @@
 title: "Spring + Resilience4j로 서킷브레이커 적용하기"
 date: 2026-04-08
 tags: [circuit-breaker, fault-tolerance, msa]
+order: 7
 ---
 
 Spring에서는 보통 Resilience4j와 Spring Boot AOP 조합으로 서킷브레이커를 적용한다. 메서드 앞에 프록시가 끼어들어서 호출 전 상태 확인, 호출 실행, 결과 기록, 상태 전환을 대신 처리해주는 구조다. `resilience4j-spring-boot3`, `spring-boot-starter-aop`, `spring-boot-starter-actuator` 조합으로 시작한다.

@@ -2,6 +2,7 @@
 title: Reactive 디버깅
 date: 2025-03-03
 tags: [reactive, spring-reactive, debugging, checkpoint]
+order: 9
 ---
 
 리액티브 스트림에서 에러가 발생하면 일반적인 스택트레이스만으로는 어디서 문제가 생겼는지 파악하기 어렵다. Reactor는 이를 위해 여러 디버깅 도구를 제공한다.

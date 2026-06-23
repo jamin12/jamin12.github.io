@@ -2,6 +2,7 @@
 title: Context
 date: 2025-02-27
 tags: [reactive, spring-reactive, context]
+order: 8
 ---
 
 전통적인 ThreadLocal 방식은 스레드 전환이 잦은 Reactive 환경에서는 제대로 동작하지 않는다. Context는 이 한계를 극복하기 위해, 데이터 스트림 전반에 걸쳐 부가 정보를 안전하게 전달할 수 있도록 해주는 불변 객체다.

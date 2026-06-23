@@ -2,6 +2,7 @@
 title: Cold Sequence와 Hot Sequence
 date: 2025-01-30
 tags: [reactive, spring-reactive, cold-sequence, hot-sequence]
+order: 4
 ---
 
 Reactor에서 Flux와 Mono는 데이터 흐름의 성격에 따라 Cold Sequence 또는 Hot Sequence로 나뉜다.

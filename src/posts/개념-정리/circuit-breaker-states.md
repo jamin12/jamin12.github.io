@@ -2,6 +2,7 @@
 title: "서킷브레이커의 3가지 상태: Closed, Open, Half-Open"
 date: 2026-04-08
 tags: [circuit-breaker, fault-tolerance, msa]
+order: 2
 ---
 
 ## 실패 횟수만 세면 되지 않나?

@@ -71,15 +71,22 @@ export async function generatePostsIndex() {
       readingTime: calcReadingTime(content),
       // 선택 필드: frontmatter `cover: ./images/foo.png` (홈 카드 대표 이미지)
       cover: data.cover || '',
+      // 같은 날짜 글의 표시 순서 (없으면 0 → 그날 맨 아래, 이름순 폴백)
+      order: data.order ? Number(data.order) : 0,
       // 시리즈: 카테고리·태그와 독립적인 순서 있는 글 묶음
       series: data.series || '',
       seriesOrder: data.seriesOrder ? Number(data.seriesOrder) : 0,
       path: `/posts/${slug}`,
     })
   }
-  // 날짜 내림차순(최신순), 같은 날짜면 slug 이름순
+  // 날짜 내림차순(최신 위)이 1순위. 같은 날짜 안에서는 order 오름차순(작은 값이 위,
+  // 없으면 0 → 그날 맨 아래)이 2순위, 그래도 같으면 slug 이름순.
+  // → 최신 날짜가 위로 오면서, 같은 날 쓴 묶음은 글마다 박은 order 순서대로 읽힌다.
   posts.sort((a, b) => {
     if (a.date !== b.date) return a.date < b.date ? 1 : -1
+    const oa = a.order || Infinity
+    const ob = b.order || Infinity
+    if (oa !== ob) return oa - ob
     return a.slug.localeCompare(b.slug)
   })
 

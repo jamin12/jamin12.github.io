@@ -2,6 +2,7 @@
 title: "Go의 context — 취소와 타임아웃을 전파하는 끈"
 date: 2026-06-11
 tags: [go, context, cancellation, timeout]
+order: 10
 ---
 
 Go 서버 코드를 읽으면 거의 모든 함수의 첫 번째 인자가 `ctx context.Context`다. 처음엔 이게 뭔지, 왜 매번 들고 다녀야 하는지 의아하다. `context`는 Go 표준 라이브러리이고, "요청 하나가 사는 동안 취소·타임아웃·요청값을 모든 함수에 전달하는 끈"이다. 이 글은 그 정체와 동작을 정리한다.

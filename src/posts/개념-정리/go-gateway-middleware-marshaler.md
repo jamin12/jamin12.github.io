@@ -2,6 +2,7 @@
 title: "게이트웨이의 전·후처리 — 미들웨어와 마샬러"
 date: 2026-06-13
 tags: [go, grpc, grpc-gateway, middleware, interceptor, marshaler]
+order: 17
 ---
 
 gRPC + grpc-gateway 구조의 Go 서버는 HTTP 게이트웨이가 요청을 받아 gRPC 서버로 넘기고, 거기 있는 핸들러가 요청을 처리한다. 그런데 그 여정에서 게이트웨이와 gRPC 서버는 단순 전달만 하지 않는다. 인증·로깅·복호화·응답 포장 같은 **공통 처리**가 중간중간 끼어든다. Spring의 `Filter`, `Interceptor`, `@ControllerAdvice`, `ResponseBodyAdvice`가 하던 일이 여기선 어디에 있을까?

@@ -2,6 +2,7 @@
 title: Sinks
 date: 2025-02-11
 tags: [reactive, spring-reactive, sinks]
+order: 6
 ---
 
 리액티브 스트림에서 데이터 흐름은 보통 Publisher → Subscriber로 이어진다. 그런데 외부에서 발생한 이벤트를 리액티브 스트림에 주입해야 하는 경우가 있다. Mono나 Flux는 기본적으로 읽기 전용이라, 생성 시점에 값이 고정되고 이후에 외부에서 데이터를 밀어넣을 수 없다.

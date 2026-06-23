@@ -2,6 +2,7 @@
 title: 서킷브레이커의 복구 과정
 date: 2026-04-08
 tags: [circuit-breaker, fault-tolerance, msa]
+order: 4
 ---
 
 ## Open이 영원하면 안 된다

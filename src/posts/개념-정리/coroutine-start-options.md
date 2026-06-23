@@ -2,6 +2,7 @@
 title: Coroutine의 실행 옵션
 date: 2025-01-01
 tags: [kotlin, coroutine, coroutineStart, lazy, atomic]
+order: 10
 ---
 
 코루틴 빌더의 `start` 매개변수로 실행 방식을 제어할 수 있다. 네 가지 옵션이 있다.

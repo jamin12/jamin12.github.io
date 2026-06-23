@@ -2,6 +2,7 @@
 title: Dispatcher
 date: 2024-12-07
 tags: [kotlin, coroutine, dispatcher, 스레드-풀]
+order: 2
 ---
 
 Dispatcher는 코루틴이 실행될 스레드나 스레드 풀을 제어한다. UI 업데이트, 네트워크 요청, 데이터베이스 작업 등을 적합한 스레드에서 효율적으로 실행할 수 있게 해주는 역할이다.

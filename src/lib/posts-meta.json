@@ -16,9 +16,130 @@
     "private": false,
     "readingTime": 9,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/kafka-basics"
+  },
+  {
+    "slug": "go-transaction",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "Go의 트랜잭션 — 커넥션 풀과 context로 푸는 @Transactional",
+    "date": "2026-06-13",
+    "tags": [
+      "go",
+      "transaction",
+      "database",
+      "connection-pool",
+      "context"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 13,
+    "cover": "",
+    "order": 12,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-transaction"
+  },
+  {
+    "slug": "go-repository-model",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "Go의 리포지토리와 모델 — 도메인과 DB를 떼어 놓기",
+    "date": "2026-06-13",
+    "tags": [
+      "go",
+      "repository",
+      "clean-architecture",
+      "domain",
+      "orm"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 10,
+    "cover": "",
+    "order": 13,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-repository-model"
+  },
+  {
+    "slug": "go-grpc-gateway-two-servers",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "Go 서버에 왜 서버가 둘일까 — gRPC와 grpc-gateway",
+    "date": "2026-06-13",
+    "tags": [
+      "go",
+      "grpc",
+      "grpc-gateway",
+      "http2",
+      "architecture"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 14,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-grpc-gateway-two-servers"
+  },
+  {
+    "slug": "go-proto-codegen",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "proto가 모든 것의 출발점 — IDL과 코드 생성",
+    "date": "2026-06-13",
+    "tags": [
+      "go",
+      "grpc",
+      "protobuf",
+      "idl",
+      "codegen"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 7,
+    "cover": "",
+    "order": 15,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-proto-codegen"
+  },
+  {
+    "slug": "go-grpc-request-routing",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "요청은 어떻게 핸들러까지 도달하나 — 2단계 매핑",
+    "date": "2026-06-13",
+    "tags": [
+      "go",
+      "grpc",
+      "grpc-gateway",
+      "routing",
+      "servicedesc"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 8,
+    "cover": "",
+    "order": 16,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-grpc-request-routing"
   },
   {
     "slug": "go-gateway-middleware-marshaler",
@@ -40,146 +161,151 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 17,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/go-gateway-middleware-marshaler"
   },
   {
-    "slug": "go-grpc-gateway-two-servers",
+    "slug": "go-project-architecture",
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "Go 서버에 왜 서버가 둘일까 — gRPC와 grpc-gateway",
-    "date": "2026-06-13",
+    "title": "Go 프로젝트 구조와 클린 아키텍처",
+    "date": "2026-06-11",
     "tags": [
       "go",
-      "grpc",
-      "grpc-gateway",
-      "http2",
-      "architecture"
+      "architecture",
+      "clean-architecture",
+      "dependency-inversion"
     ],
     "summary": "",
     "draft": false,
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 1,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/go-grpc-gateway-two-servers"
+    "path": "/posts/go-project-architecture"
   },
   {
-    "slug": "go-grpc-request-routing",
+    "slug": "go-type-system",
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "요청은 어떻게 핸들러까지 도달하나 — 2단계 매핑",
-    "date": "2026-06-13",
+    "title": "Go에는 클래스가 없다",
+    "date": "2026-06-11",
     "tags": [
       "go",
-      "grpc",
-      "grpc-gateway",
-      "routing",
-      "servicedesc"
+      "struct",
+      "type",
+      "interface",
+      "encapsulation"
     ],
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 8,
+    "readingTime": 6,
     "cover": "",
+    "order": 2,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/go-grpc-request-routing"
+    "path": "/posts/go-type-system"
   },
   {
-    "slug": "go-proto-codegen",
+    "slug": "go-struct-method",
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "proto가 모든 것의 출발점 — IDL과 코드 생성",
-    "date": "2026-06-13",
+    "title": "Go의 struct와 메서드",
+    "date": "2026-06-11",
     "tags": [
       "go",
-      "grpc",
-      "protobuf",
-      "idl",
-      "codegen"
+      "struct",
+      "method",
+      "receiver"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 3,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-struct-method"
+  },
+  {
+    "slug": "go-interface",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "Go의 인터페이스 — implements가 없다",
+    "date": "2026-06-11",
+    "tags": [
+      "go",
+      "interface",
+      "duck-typing",
+      "structural-typing"
     ],
     "summary": "",
     "draft": false,
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 4,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/go-proto-codegen"
+    "path": "/posts/go-interface"
   },
   {
-    "slug": "go-repository-model",
+    "slug": "go-pointer",
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "Go의 리포지토리와 모델 — 도메인과 DB를 떼어 놓기",
-    "date": "2026-06-13",
-    "tags": [
-      "go",
-      "repository",
-      "clean-architecture",
-      "domain",
-      "orm"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 10,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-repository-model"
-  },
-  {
-    "slug": "go-transaction",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go의 트랜잭션 — 커넥션 풀과 context로 푸는 @Transactional",
-    "date": "2026-06-13",
-    "tags": [
-      "go",
-      "transaction",
-      "database",
-      "connection-pool",
-      "context"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 13,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-transaction"
-  },
-  {
-    "slug": "go-context",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go의 context — 취소와 타임아웃을 전파하는 끈",
+    "title": "Go의 포인터와 값 복사",
     "date": "2026-06-11",
     "tags": [
       "go",
-      "context",
-      "cancellation",
-      "timeout"
+      "pointer",
+      "value-semantics",
+      "shallow-copy",
+      "gc"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 7,
+    "cover": "",
+    "order": 5,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-pointer"
+  },
+  {
+    "slug": "go-variable-function",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "Go의 변수 선언과 함수",
+    "date": "2026-06-11",
+    "tags": [
+      "go",
+      "variable",
+      "function",
+      "multiple-return",
+      "short-declaration"
     ],
     "summary": "",
     "draft": false,
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 6,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/go-context"
+    "path": "/posts/go-variable-function"
   },
   {
     "slug": "go-error-panic-defer",
@@ -200,6 +326,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 7,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/go-error-panic-defer"
@@ -224,32 +351,10 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 8,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/go-function-type-closure"
-  },
-  {
-    "slug": "go-fx-di",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go의 의존성 주입 — uber-fx로 보는 빈 조립",
-    "date": "2026-06-11",
-    "tags": [
-      "go",
-      "fx",
-      "dependency-injection",
-      "uber-fx",
-      "di"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 7,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-fx-di"
   },
   {
     "slug": "go-goroutine",
@@ -270,144 +375,57 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 9,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/go-goroutine"
   },
   {
-    "slug": "go-interface",
+    "slug": "go-context",
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "Go의 인터페이스 — implements가 없다",
+    "title": "Go의 context — 취소와 타임아웃을 전파하는 끈",
     "date": "2026-06-11",
     "tags": [
       "go",
-      "interface",
-      "duck-typing",
-      "structural-typing"
+      "context",
+      "cancellation",
+      "timeout"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 6,
+    "cover": "",
+    "order": 10,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/go-context"
+  },
+  {
+    "slug": "go-fx-di",
+    "category": "개념-정리",
+    "subcategory": "go",
+    "subcategoryLabel": "Go",
+    "title": "Go의 의존성 주입 — uber-fx로 보는 빈 조립",
+    "date": "2026-06-11",
+    "tags": [
+      "go",
+      "fx",
+      "dependency-injection",
+      "uber-fx",
+      "di"
     ],
     "summary": "",
     "draft": false,
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 11,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/go-interface"
-  },
-  {
-    "slug": "go-pointer",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go의 포인터와 값 복사",
-    "date": "2026-06-11",
-    "tags": [
-      "go",
-      "pointer",
-      "value-semantics",
-      "shallow-copy",
-      "gc"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 7,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-pointer"
-  },
-  {
-    "slug": "go-project-architecture",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go 프로젝트 구조와 클린 아키텍처",
-    "date": "2026-06-11",
-    "tags": [
-      "go",
-      "architecture",
-      "clean-architecture",
-      "dependency-inversion"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 6,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-project-architecture"
-  },
-  {
-    "slug": "go-struct-method",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go의 struct와 메서드",
-    "date": "2026-06-11",
-    "tags": [
-      "go",
-      "struct",
-      "method",
-      "receiver"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 5,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-struct-method"
-  },
-  {
-    "slug": "go-type-system",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go에는 클래스가 없다",
-    "date": "2026-06-11",
-    "tags": [
-      "go",
-      "struct",
-      "type",
-      "interface",
-      "encapsulation"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 6,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-type-system"
-  },
-  {
-    "slug": "go-variable-function",
-    "category": "개념-정리",
-    "subcategory": "go",
-    "subcategoryLabel": "Go",
-    "title": "Go의 변수 선언과 함수",
-    "date": "2026-06-11",
-    "tags": [
-      "go",
-      "variable",
-      "function",
-      "multiple-return",
-      "short-declaration"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 6,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/go-variable-function"
+    "path": "/posts/go-fx-di"
   },
   {
     "slug": "react-provider-context",
@@ -426,6 +444,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/react-provider-context"
@@ -446,6 +465,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/tanstack-query-client"
@@ -468,6 +488,7 @@
     "private": false,
     "readingTime": 10,
     "cover": "",
+    "order": 0,
     "series": "실시간 로그 스트리밍 구축기",
     "seriesOrder": 3,
     "path": "/posts/websocket-관리-계층-진화"
@@ -490,6 +511,7 @@
     "private": false,
     "readingTime": 9,
     "cover": "",
+    "order": 0,
     "series": "실시간 로그 스트리밍 구축기",
     "seriesOrder": 5,
     "path": "/posts/websocket-세션-방어"
@@ -511,6 +533,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "실시간 로그 스트리밍 구축기",
     "seriesOrder": 1,
     "path": "/posts/websocket-주제-선정"
@@ -533,6 +556,7 @@
     "private": false,
     "readingTime": 10,
     "cover": "",
+    "order": 0,
     "series": "실시간 로그 스트리밍 구축기",
     "seriesOrder": 7,
     "path": "/posts/websocket-책임-분리-리팩토링"
@@ -554,6 +578,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "실시간 로그 스트리밍 구축기",
     "seriesOrder": 2,
     "path": "/posts/websocket-프로토콜-선정"
@@ -577,6 +602,7 @@
     "private": false,
     "readingTime": 18,
     "cover": "",
+    "order": 0,
     "series": "실시간 로그 스트리밍 구축기",
     "seriesOrder": 4,
     "path": "/posts/websocket-kotlin-flow-pipeline"
@@ -599,6 +625,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "실시간 로그 스트리밍 구축기",
     "seriesOrder": 6,
     "path": "/posts/websocket-subscriptionid-중복"
@@ -622,6 +649,7 @@
     "private": false,
     "readingTime": 12,
     "cover": "",
+    "order": 11,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-channel"
@@ -645,6 +673,7 @@
     "private": false,
     "readingTime": 12,
     "cover": "",
+    "order": 12,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-flow"
@@ -669,6 +698,7 @@
     "private": true,
     "readingTime": 16,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-bulk-download"
@@ -693,6 +723,7 @@
     "private": true,
     "readingTime": 13,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-ci-runner"
@@ -717,6 +748,7 @@
     "private": true,
     "readingTime": 11,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-ecs-cloudmap"
@@ -740,6 +772,7 @@
     "private": true,
     "readingTime": 13,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-event-driven-saga"
@@ -764,6 +797,7 @@
     "private": true,
     "readingTime": 13,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-msa-ddd"
@@ -788,6 +822,7 @@
     "private": true,
     "readingTime": 11,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-observability"
@@ -812,6 +847,7 @@
     "private": true,
     "readingTime": 13,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-query-optimization"
@@ -835,6 +871,7 @@
     "private": true,
     "readingTime": 15,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-redis-aggregation"
@@ -858,6 +895,7 @@
     "private": true,
     "readingTime": 12,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/mock-interview-spel-aop"
@@ -881,6 +919,7 @@
     "private": false,
     "readingTime": 11,
     "cover": "",
+    "order": 0,
     "series": "MSA Saga 여정",
     "seriesOrder": 4,
     "path": "/posts/msa-saga-04-db-design"
@@ -904,6 +943,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "MSA Saga 여정",
     "seriesOrder": 5,
     "path": "/posts/msa-saga-05-retry-compensation"
@@ -927,6 +967,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "MSA Saga 여정",
     "seriesOrder": 6,
     "path": "/posts/msa-saga-06-orchestration"
@@ -950,16 +991,17 @@
     "private": false,
     "readingTime": 14,
     "cover": "",
+    "order": 0,
     "series": "MSA Saga 여정",
     "seriesOrder": 7,
     "path": "/posts/msa-saga-07-implementation"
   },
   {
-    "slug": "circuit-breaker-mistakes",
+    "slug": "circuit-breaker-why",
     "category": "개념-정리",
     "subcategory": "circuit-breaker",
     "subcategoryLabel": "서킷브레이커",
-    "title": "서킷브레이커 실무 오해와 잘못된 설정",
+    "title": "서킷브레이커 패턴은 왜 필요한가",
     "date": "2026-04-08",
     "tags": [
       "circuit-breaker",
@@ -969,53 +1011,12 @@
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 6,
+    "readingTime": 3,
     "cover": "",
+    "order": 1,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/circuit-breaker-mistakes"
-  },
-  {
-    "slug": "circuit-breaker-recovery",
-    "category": "개념-정리",
-    "subcategory": "circuit-breaker",
-    "subcategoryLabel": "서킷브레이커",
-    "title": "서킷브레이커의 복구 과정",
-    "date": "2026-04-08",
-    "tags": [
-      "circuit-breaker",
-      "fault-tolerance",
-      "msa"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 5,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/circuit-breaker-recovery"
-  },
-  {
-    "slug": "circuit-breaker-spring",
-    "category": "개념-정리",
-    "subcategory": "circuit-breaker",
-    "subcategoryLabel": "서킷브레이커",
-    "title": "Spring + Resilience4j로 서킷브레이커 적용하기",
-    "date": "2026-04-08",
-    "tags": [
-      "circuit-breaker",
-      "fault-tolerance",
-      "msa"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 10,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/circuit-breaker-spring"
+    "path": "/posts/circuit-breaker-why"
   },
   {
     "slug": "circuit-breaker-states",
@@ -1034,6 +1035,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 2,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/circuit-breaker-states"
@@ -1055,9 +1057,32 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 3,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/circuit-breaker-threshold"
+  },
+  {
+    "slug": "circuit-breaker-recovery",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "서킷브레이커의 복구 과정",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 5,
+    "cover": "",
+    "order": 4,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-recovery"
   },
   {
     "slug": "circuit-breaker-where",
@@ -1076,16 +1101,17 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 5,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/circuit-breaker-where"
   },
   {
-    "slug": "circuit-breaker-why",
+    "slug": "circuit-breaker-mistakes",
     "category": "개념-정리",
     "subcategory": "circuit-breaker",
     "subcategoryLabel": "서킷브레이커",
-    "title": "서킷브레이커 패턴은 왜 필요한가",
+    "title": "서킷브레이커 실무 오해와 잘못된 설정",
     "date": "2026-04-08",
     "tags": [
       "circuit-breaker",
@@ -1095,11 +1121,34 @@
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 3,
+    "readingTime": 6,
     "cover": "",
+    "order": 6,
     "series": "",
     "seriesOrder": 0,
-    "path": "/posts/circuit-breaker-why"
+    "path": "/posts/circuit-breaker-mistakes"
+  },
+  {
+    "slug": "circuit-breaker-spring",
+    "category": "개념-정리",
+    "subcategory": "circuit-breaker",
+    "subcategoryLabel": "서킷브레이커",
+    "title": "Spring + Resilience4j로 서킷브레이커 적용하기",
+    "date": "2026-04-08",
+    "tags": [
+      "circuit-breaker",
+      "fault-tolerance",
+      "msa"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 10,
+    "cover": "",
+    "order": 7,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/circuit-breaker-spring"
   },
   {
     "slug": "network-core-concepts",
@@ -1120,6 +1169,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-core-concepts"
@@ -1144,6 +1194,7 @@
     "private": false,
     "readingTime": 21,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-device-architecture"
@@ -1167,6 +1218,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-l2"
@@ -1191,6 +1243,7 @@
     "private": false,
     "readingTime": 18,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-l3"
@@ -1214,6 +1267,7 @@
     "private": false,
     "readingTime": 15,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-l4"
@@ -1237,6 +1291,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-load-balancing"
@@ -1260,6 +1315,7 @@
     "private": false,
     "readingTime": 18,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-nat"
@@ -1282,6 +1338,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-vpn"
@@ -1305,6 +1362,7 @@
     "private": false,
     "readingTime": 25,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/network-web"
@@ -1327,6 +1385,7 @@
     "private": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "MSA Saga 여정",
     "seriesOrder": 1,
     "path": "/posts/msa-saga-01-usecase-rollback"
@@ -1350,6 +1409,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "MSA Saga 여정",
     "seriesOrder": 2,
     "path": "/posts/msa-saga-02-redis-stream-outbox"
@@ -1373,6 +1433,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "MSA Saga 여정",
     "seriesOrder": 3,
     "path": "/posts/msa-saga-03-orchestration-simplification"
@@ -1392,6 +1453,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준3061번"
@@ -1416,6 +1478,7 @@
     "private": false,
     "readingTime": 10,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elasticsearch-advanced-search-features"
@@ -1442,6 +1505,7 @@
     "private": false,
     "readingTime": 16,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elasticsearch-mapping-search-queries"
@@ -1464,6 +1528,7 @@
     "private": false,
     "readingTime": 12,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elasticsearch-analyzer-search-optimization"
@@ -1486,6 +1551,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elasticsearch-nori-korean-search"
@@ -1507,6 +1573,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/elastic-기본개념"
@@ -1532,6 +1599,7 @@
     "private": false,
     "readingTime": 22,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/argo-rollouts-canary"
@@ -1553,6 +1621,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/blue-green"
@@ -1574,6 +1643,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/canary"
@@ -1597,6 +1667,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/rollout-bluegreen"
@@ -1617,6 +1688,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/hackerRank-castle-on-the-grid"
@@ -1639,6 +1711,7 @@
     "private": false,
     "readingTime": 13,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/jackson-polymorphic-type-handling"
@@ -1660,6 +1733,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/redis-streams-01-basic"
@@ -1682,6 +1756,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/redis-streams-02-consumer-group"
@@ -1704,6 +1779,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/redis-streams-03-offset"
@@ -1723,6 +1799,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준2607번"
@@ -1744,6 +1821,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/프로세스와-유휴프로세스"
@@ -1767,6 +1845,7 @@
     "private": false,
     "readingTime": 14,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/spring-event-listener-mechanism"
@@ -1787,6 +1866,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/SR-저장의의미"
@@ -1809,6 +1889,7 @@
     "private": false,
     "readingTime": 44,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/spring-event-system-deep-dive"
@@ -1829,6 +1910,7 @@
     "private": false,
     "readingTime": 12,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 5,
     "path": "/posts/gradle-pact-test-ordering"
@@ -1848,6 +1930,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/Impersonate"
@@ -1867,6 +1950,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준11568번"
@@ -1886,6 +1970,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 4,
     "path": "/posts/pact-broker"
@@ -1908,6 +1993,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/@Valid와-@Validated의-올바른-위치와-AOP-동작-원리-분석"
@@ -1929,6 +2015,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 6,
     "path": "/posts/application"
@@ -1950,6 +2037,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 7,
     "path": "/posts/db"
@@ -1970,6 +2058,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 5,
     "path": "/posts/overview"
@@ -1992,6 +2081,7 @@
     "private": false,
     "readingTime": 14,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/where-4단계-처리-과정"
@@ -2014,6 +2104,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/4xx,5xx,rsp"
@@ -2036,6 +2127,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/p95_p99"
@@ -2057,6 +2149,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "CI 개선기",
     "seriesOrder": 2,
     "path": "/posts/gitaction"
@@ -2076,6 +2169,7 @@
     "private": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "CI 개선기",
     "seriesOrder": 1,
     "path": "/posts/CI-주제-선정"
@@ -2096,6 +2190,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 3,
     "path": "/posts/grafana-tls"
@@ -2117,6 +2212,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 4,
     "path": "/posts/prometheus-spring-boot-connection"
@@ -2138,6 +2234,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/tls"
@@ -2157,6 +2254,7 @@
     "private": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/NFS-볼륨"
@@ -2176,6 +2274,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 2,
     "path": "/posts/prometeus"
@@ -2195,6 +2294,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/Pv-pvc"
@@ -2214,6 +2314,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/storageClass"
@@ -2233,6 +2334,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 3,
     "path": "/posts/poc-및-피드백"
@@ -2252,6 +2354,7 @@
     "private": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "모니터링 구축기",
     "seriesOrder": 1,
     "path": "/posts/모니터링-주제-선정"
@@ -2273,6 +2376,7 @@
     "private": false,
     "readingTime": 11,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/async-taskdecorator-faq"
@@ -2294,6 +2398,7 @@
     "private": false,
     "readingTime": 16,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/pact_provider_test"
@@ -2315,6 +2420,7 @@
     "private": false,
     "readingTime": 9,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/pact_consumer_test"
@@ -2336,6 +2442,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/pact-용어"
@@ -2355,6 +2462,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 2,
     "path": "/posts/기술선정"
@@ -2374,6 +2482,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "CDC 도입기",
     "seriesOrder": 1,
     "path": "/posts/주제찾기"
@@ -2394,6 +2503,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준2636번"
@@ -2413,6 +2523,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준15990번"
@@ -2435,6 +2546,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/app,document"
@@ -2456,6 +2568,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/component란"
@@ -2477,6 +2590,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/jsbundle"
@@ -2497,6 +2611,7 @@
     "private": false,
     "readingTime": 20,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/json-multi-dto"
@@ -2517,6 +2632,7 @@
     "private": false,
     "readingTime": 2,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/raw-데이터-조회속도-개선"
@@ -2536,6 +2652,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준11722번"
@@ -2555,6 +2672,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준1309번"
@@ -2574,6 +2692,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/백준11051번"
@@ -2596,6 +2715,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 9,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-debugging"
@@ -2617,6 +2737,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 8,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-context"
@@ -2640,6 +2761,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 7,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-scheduler"
@@ -2661,6 +2783,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 6,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-sinks"
@@ -2682,6 +2805,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 5,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-backpressure"
@@ -2704,6 +2828,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 4,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-cold-hot-sequence"
@@ -2726,6 +2851,7 @@
     "private": false,
     "readingTime": 2,
     "cover": "",
+    "order": 3,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-mono-flux"
@@ -2748,6 +2874,7 @@
     "private": false,
     "readingTime": 2,
     "cover": "",
+    "order": 2,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-streams"
@@ -2768,6 +2895,7 @@
     "private": false,
     "readingTime": 1,
     "cover": "",
+    "order": 1,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/reactive-system"
@@ -2791,6 +2919,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 9,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-shared-state"
@@ -2814,6 +2943,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 10,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-start-options"
@@ -2839,6 +2969,7 @@
     "private": false,
     "readingTime": 9,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/modbus-data-collection"
@@ -2861,6 +2992,7 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 8,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-suspend"
@@ -2884,6 +3016,7 @@
     "private": false,
     "readingTime": 7,
     "cover": "",
+    "order": 7,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-exception"
@@ -2906,6 +3039,7 @@
     "private": false,
     "readingTime": 5,
     "cover": "",
+    "order": 6,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-structured-concurrency"
@@ -2929,6 +3063,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 5,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-context"
@@ -2953,6 +3088,7 @@
     "private": false,
     "readingTime": 3,
     "cover": "",
+    "order": 4,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-deferred-async"
@@ -2976,9 +3112,32 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 3,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-job"
+  },
+  {
+    "slug": "coroutine-run-blocking",
+    "category": "개념-정리",
+    "subcategory": "coroutine",
+    "subcategoryLabel": "Coroutine",
+    "title": "runBlocking",
+    "date": "2024-12-07",
+    "tags": [
+      "kotlin",
+      "coroutine",
+      "runBlocking"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 2,
+    "cover": "",
+    "order": 1,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/coroutine-run-blocking"
   },
   {
     "slug": "coroutine-dispatcher",
@@ -2998,30 +3157,10 @@
     "private": false,
     "readingTime": 4,
     "cover": "",
+    "order": 2,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/coroutine-dispatcher"
-  },
-  {
-    "slug": "coroutine-run-blocking",
-    "category": "개념-정리",
-    "subcategory": "coroutine",
-    "subcategoryLabel": "Coroutine",
-    "title": "runBlocking",
-    "date": "2024-12-07",
-    "tags": [
-      "kotlin",
-      "coroutine",
-      "runBlocking"
-    ],
-    "summary": "",
-    "draft": false,
-    "private": false,
-    "readingTime": 2,
-    "cover": "",
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/coroutine-run-blocking"
   },
   {
     "slug": "graph-query-speed-optimization",
@@ -3042,6 +3181,7 @@
     "private": false,
     "readingTime": 8,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/graph-query-speed-optimization"
@@ -3064,6 +3204,7 @@
     "private": false,
     "readingTime": 6,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/async-test-awaitility"
@@ -3087,6 +3228,7 @@
     "private": false,
     "readingTime": 22,
     "cover": "",
+    "order": 0,
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/bulk-data-download-oom"

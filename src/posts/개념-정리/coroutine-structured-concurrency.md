@@ -2,6 +2,7 @@
 title: 구조화된 동시성
 date: 2024-12-21
 tags: [kotlin, coroutine, structured-concurrency, coroutineScope]
+order: 6
 ---
 
 ## 실행환경 복사

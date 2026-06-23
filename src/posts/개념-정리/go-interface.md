@@ -2,6 +2,7 @@
 title: "Go의 인터페이스 — implements가 없다"
 date: 2026-06-11
 tags: [go, interface, duck-typing, structural-typing]
+order: 4
 ---
 
 Go에도 인터페이스가 있다. 그런데 자바·코틀린처럼 `class Foo implements Bar`라고 선언하는 곳이 어디에도 없다. 그러면 어떤 타입이 어떻게 그 인터페이스의 구현체가 되는 걸까. 답은 Go 인터페이스의 핵심이자 자바와 가장 다른 지점이다. **Go는 구현을 선언하지 않는다. 메서드만 갖추면 자동으로 구현체가 된다.**

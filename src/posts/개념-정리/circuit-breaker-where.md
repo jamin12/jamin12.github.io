@@ -2,6 +2,7 @@
 title: 서킷브레이커를 어디에 붙이고 어디에는 붙이지 않는가
 date: 2026-04-08
 tags: [circuit-breaker, fault-tolerance, msa]
+order: 5
 ---
 
 서킷브레이커를 개념으로만 알면 "좋은 거니까 다 붙이면 되겠네?"라고 생각하기 쉬웠다. 실제로는 아니었다.

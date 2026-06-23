@@ -2,6 +2,7 @@
 title: "Go의 함수 타입과 클로저, struct 태그"
 date: 2026-06-11
 tags: [go, function-type, closure, factory, struct-tag, reflection]
+order: 8
 ---
 
 Go에서 함수는 일급 객체다. 변수에 담고, 인자로 넘기고, 반환할 수 있다. 이걸 이용한 함수 타입·클로저·팩토리 패턴은 실무 코드에서 자주 나온다. 마지막으로 struct 태그도 함께 정리한다. 둘 다 처음 보면 정체를 알기 어려운 문법이다.

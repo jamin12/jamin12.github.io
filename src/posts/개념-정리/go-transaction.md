@@ -2,6 +2,7 @@
 title: "Go의 트랜잭션 — 커넥션 풀과 context로 푸는 @Transactional"
 date: 2026-06-13
 tags: [go, transaction, database, connection-pool, context]
+order: 12
 ---
 
 스프링에서 트랜잭션은 `@Transactional` 한 줄이다. 프록시가 메서드 앞에서 트랜잭션을 열고, 정상 종료하면 커밋하고, 예외가 나면 롤백한다. 어떻게 일어나는지 안 보여도 된다. Go에는 그런 어노테이션 마법이 없다. 트랜잭션의 시작·커밋·롤백을 코드로 직접 다루고, "지금 트랜잭션 안인지"도 직접 전파한다. 이 글은 그 메커니즘을 커넥션 풀부터 차근히 정리한다.

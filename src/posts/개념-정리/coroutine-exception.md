@@ -2,6 +2,7 @@
 title: 코루틴에서의 예외 처리
 date: 2024-12-22
 tags: [kotlin, coroutine, exception, supervisorJob, supervisorScope]
+order: 7
 ---
 
 ## 예외 전파

@@ -2,6 +2,7 @@
 title: Deferred, async/await, withContext
 date: 2024-12-09
 tags: [kotlin, coroutine, async, await, withContext, deferred]
+order: 4
 ---
 
 ## Deferred와 async/await

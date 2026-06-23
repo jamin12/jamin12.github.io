@@ -2,6 +2,7 @@
 title: runBlocking
 date: 2024-12-07
 tags: [kotlin, coroutine, runBlocking]
+order: 1
 ---
 
 `runBlocking`은 비동기 코드를 동기적인 환경으로 가져오는 역할을 한다.

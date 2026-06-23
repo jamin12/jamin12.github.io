@@ -2,6 +2,7 @@
 title: 서킷브레이커 실무 오해와 잘못된 설정
 date: 2026-04-08
 tags: [circuit-breaker, fault-tolerance, msa]
+order: 6
 ---
 
 ## 실패만 막아주는 패턴이 아니다
