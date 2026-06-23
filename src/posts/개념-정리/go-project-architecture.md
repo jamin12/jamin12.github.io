@@ -2,7 +2,6 @@
 title: "Go 프로젝트 구조와 클린 아키텍처"
 date: 2026-06-11
 tags: [go, architecture, clean-architecture, dependency-inversion]
-order: 1
 ---
 
 Spring Boot에 익숙한 상태로 Go 서버 코드를 처음 열면 가장 먼저 막히는 건 문법이 아니라 구조다. `@RestController`, `@Service`, `@Repository`가 한 클래스에 모여 있는 MVC를 기대하지만, 실무 Go 프로젝트는 대부분 클린 아키텍처를 따르고 패키지가 역할별로 잘게 나뉘어 있다.

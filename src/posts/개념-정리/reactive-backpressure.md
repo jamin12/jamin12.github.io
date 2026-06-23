@@ -2,7 +2,6 @@
 title: Backpressure
 date: 2025-02-01
 tags: [reactive, spring-reactive, backpressure]
-order: 5
 ---
 
 Backpressure는 Producer가 Consumer보다 빠르게 데이터를 생성할 때, 소비자의 속도에 맞춰 생산자가 데이터를 공급하도록 조절하는 메커니즘이다.

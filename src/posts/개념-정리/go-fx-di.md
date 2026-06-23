@@ -2,7 +2,6 @@
 title: "Go의 의존성 주입 — uber-fx로 보는 빈 조립"
 date: 2026-06-11
 tags: [go, fx, dependency-injection, uber-fx, di]
-order: 11
 ---
 
 스프링은 `@Service`, `@Repository`, `@Autowired` 어노테이션만 붙이면 프레임워크가 객체를 만들고 주입한다. Go에는 그런 마법이 없다. 대신 **uber-fx** 같은 DI 라이브러리로 의존성을 명시적으로 조립한다. 이 글은 fx가 어떻게 "빈"을 등록하고 주입하는지, 스프링과 비교하며 정리한다.

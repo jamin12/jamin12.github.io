@@ -2,7 +2,6 @@
 title: "Go 서버에 왜 서버가 둘일까 — gRPC와 grpc-gateway"
 date: 2026-06-13
 tags: [go, grpc, grpc-gateway, http2, architecture]
-order: 14
 ---
 
 Spring 개발자가 규모 있는 Go 서버를 처음 열면 `@RestController`도, `@GetMapping`도, URL 문자열조차 코드에서 잘 안 보인다. 분명 `POST /api/notices`로 호출되는 API인데, 그 경로를 코드에서 검색해도 안 나온다. 어디서 받아서 어디로 흐르는 걸까?

@@ -2,7 +2,6 @@
 title: suspend 함수
 date: 2024-12-27
 tags: [kotlin, coroutine, suspend, continuation]
-order: 8
 ---
 
 suspend 함수는 코루틴 내에서만 호출할 수 있는 특수한 함수다. 실행 중 특정 시점에서 중단되었다가 필요할 때 다시 재개할 수 있다.

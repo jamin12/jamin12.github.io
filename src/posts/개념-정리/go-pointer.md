@@ -2,7 +2,6 @@
 title: "Go의 포인터와 값 복사"
 date: 2026-06-11
 tags: [go, pointer, value-semantics, shallow-copy, gc]
-order: 5
 ---
 
 자바·코틀린과 Go가 크게 다른 부분이 `*`와 `&`다. 자바는 객체를 무조건 참조로 다루고 그 "참조"를 JVM이 숨겨주지만, Go는 값으로 복사할지 참조로 가리킬지를 직접 고른다. 그 선택 도구가 `*`와 `&`다.

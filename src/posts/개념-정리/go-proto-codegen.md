@@ -2,7 +2,6 @@
 title: "proto가 모든 것의 출발점 — IDL과 코드 생성"
 date: 2026-06-13
 tags: [go, grpc, protobuf, idl, codegen]
-order: 15
 ---
 
 gRPC + grpc-gateway로 만든 Go 서버를 처음 열면 당황스러운 점이 하나 있다. `POST /api/notices`라는 URL도, 그 핸들러를 연결하는 매핑 코드도 프로젝트에서 검색이 안 된다. Spring이라면 `@PostMapping("/api/notices")`가 어딘가 있을 텐데, 여기엔 없다.

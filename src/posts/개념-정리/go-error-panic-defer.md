@@ -2,7 +2,6 @@
 title: "Go의 에러, panic, defer"
 date: 2026-06-11
 tags: [go, error, panic, recover, defer]
-order: 7
 ---
 
 자바·코틀린은 실패를 예외로 다룬다. `throw`로 던지고 `try-catch`로 잡는다. Go는 이 모델을 거의 버렸다. 예상 가능한 실패는 에러를 값으로 반환하고, 정말 치명적인 상황에만 `panic`을 쓴다. 그리고 정리 작업은 `defer`로 예약한다. 이 세 가지가 Go의 실패·자원 관리 방식이다.

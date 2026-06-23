@@ -9,8 +9,8 @@ import SEOHead from '../components/SEOHead'
 const POSTS_PER_CATEGORY = 5 // `03 카테고리별 최근` 각 섹션의 글 수
 const LATEST_COUNT = 6 // `01 최신 글`의 카드 수
 
-// publicPosts는 order 오름차순 우선 정렬이라 날짜순이 아니다.
-// 홈의 "최신/최근" 영역은 날짜 기준이어야 하므로 여기서 명시적으로 날짜 내림차순 정렬한다.
+// publicPosts는 이미 날짜 내림차순이지만, 홈의 "최신/최근" 영역이 날짜 기준임을
+// 코드에서 명시적으로 보장하기 위해 여기서도 날짜 내림차순으로 정렬한다.
 const byDateDesc = (a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)
 
 function buildCategoryGroups() {

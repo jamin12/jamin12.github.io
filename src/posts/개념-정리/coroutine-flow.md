@@ -2,7 +2,6 @@
 title: Flow와 Cold Stream
 date: 2026-04-22
 tags: [kotlin, coroutine, flow, callbackFlow, cold-stream]
-order: 12
 ---
 
 Flow는 **비동기로 값을 여러 개 차례로 내보내는 스트림**이다. 함수가 값을 하나 반환한다면, Flow는 시간에 걸쳐 값을 여러 개 뱉어낸다.

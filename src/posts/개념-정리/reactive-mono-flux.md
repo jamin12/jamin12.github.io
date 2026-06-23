@@ -2,7 +2,6 @@
 title: Mono와 Flux
 date: 2025-01-29
 tags: [reactive, spring-reactive, mono, flux]
-order: 3
 ---
 
 Mono와 Flux는 리액티브 프로그래밍의 핵심 요소로, 데이터 스트림을 논블로킹 방식으로 비동기 처리할 수 있게 해준다.

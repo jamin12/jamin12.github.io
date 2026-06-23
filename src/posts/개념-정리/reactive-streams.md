@@ -2,7 +2,6 @@
 title: 리액티브 스트림 구성요소
 date: 2025-01-25
 tags: [reactive, spring-reactive, publisher, subscriber]
-order: 2
 ---
 
 리액티브 스트림의 핵심 구성요소를 정리한다.

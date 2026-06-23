@@ -2,7 +2,6 @@
 title: "Go에는 클래스가 없다"
 date: 2026-06-11
 tags: [go, struct, type, interface, encapsulation]
-order: 2
 ---
 
 코틀린에는 클래스 종류가 여럿이다. 일반 `class`, `data class`, `value class`, `enum class`, `sealed class`, `object`. 상황에 맞는 종류를 골라 쓴다. Go로 넘어오면 이 선택지가 통째로 사라진다. **Go에는 클래스라는 개념 자체가 없다.**

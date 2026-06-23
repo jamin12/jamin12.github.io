@@ -2,7 +2,6 @@
 title: "요청은 어떻게 핸들러까지 도달하나 — 2단계 매핑"
 date: 2026-06-13
 tags: [go, grpc, grpc-gateway, routing, servicedesc]
-order: 16
 ---
 
 gRPC + grpc-gateway 구조의 Go 서버는 두 개의 서버가 한 프로세스에서 함께 돈다. 외부 요청을 받는 **HTTP 게이트웨이**와, 실제 핸들러가 사는 **gRPC 서버**다. 게이트웨이가 HTTP/JSON 요청을 받아 gRPC로 번역해 넘기는 구조다. 그리고 URL·메서드·메시지 타입은 proto 정의에서 코드로 생성된다.

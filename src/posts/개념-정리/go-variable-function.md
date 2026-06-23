@@ -2,7 +2,6 @@
 title: "Go의 변수 선언과 함수"
 date: 2026-06-11
 tags: [go, variable, function, multiple-return, short-declaration]
-order: 6
 ---
 
 문법 기초를 한 번 정리하고 넘어가면 Go 코드가 훨씬 빠르게 읽힌다. 이 글은 변수 선언(`:=`, `var`, `const`), 함수 시그니처, 다중 반환을 다룬다. 코틀린과 닮은 듯 미묘하게 다른 지점들이 있다.

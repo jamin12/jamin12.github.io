@@ -2,7 +2,6 @@
 title: 서킷브레이커는 어떤 기준으로 Open 되는가
 date: 2026-04-08
 tags: [circuit-breaker, fault-tolerance, msa]
-order: 3
 ---
 
 ## 아무 실패나 보고 Open 되면 안 된다
