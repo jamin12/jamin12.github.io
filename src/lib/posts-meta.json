@@ -1,5 +1,49 @@
 [
   {
+    "slug": "kafka-record-log-structure",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 레코드와 로그 — 메시지는 어떻게 생겼고 디스크에 어떻게 쌓이나",
+    "date": "2026-07-22",
+    "tags": [
+      "kafka",
+      "record",
+      "log"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 9,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-record-log-structure"
+  },
+  {
+    "slug": "kafka-broker-replication",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 브로커와 복제 — 파티션은 어디에 어떻게 저장되나",
+    "date": "2026-07-02",
+    "tags": [
+      "kafka",
+      "broker",
+      "replication"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 8,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-broker-replication"
+  },
+  {
     "slug": "kafka-basics",
     "category": "개념-정리",
     "subcategory": "kafka",
