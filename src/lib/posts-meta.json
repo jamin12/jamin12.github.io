@@ -1,5 +1,51 @@
 [
   {
+    "slug": "kafka-configuration",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 설정 — 어디서 정하고 언제 반영되나",
+    "date": "2026-08-15",
+    "tags": [
+      "kafka",
+      "configuration",
+      "broker",
+      "topic"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 9,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-configuration"
+  },
+  {
+    "slug": "kafka-consumer-lag",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka Lag — 컨슈머가 얼마나 밀렸는지 어떻게 아는가",
+    "date": "2026-08-15",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "lag",
+      "offset"
+    ],
+    "summary": "",
+    "draft": false,
+    "private": false,
+    "readingTime": 10,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-lag"
+  },
+  {
     "slug": "kafka-record-log-structure",
     "category": "개념-정리",
     "subcategory": "kafka",
@@ -14,7 +60,7 @@
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 9,
+    "readingTime": 12,
     "cover": "",
     "order": 0,
     "series": "",
