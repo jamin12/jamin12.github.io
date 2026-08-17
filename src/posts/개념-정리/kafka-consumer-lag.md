@@ -93,36 +93,3 @@ Lag을 컨슈머가 보고하는 값으로 오해하기 쉽다. 그렇지 않다
 member ID를 개발자가 지정할 수 없고 **브로커가 세션마다 새로 발급한다**는 점이 리밸런싱 동작을 설명한다. 컨슈머 하나가 재시작하면 브로커 입장에서는 알던 멤버가 사라지고 낯선 멤버가 새로 합류한 것으로 보인다. 그래서 코드 한 줄 안 바뀐 롤링 배포에도 리밸런싱이 인스턴스 수만큼 반복된다.
 
 이를 피하려고 `group.instance.id`를 인스턴스마다 고정해 두는 방식이 Static Membership이다. 이 값이 있으면 브로커는 짧은 재시작을 "같은 멤버가 잠깐 자리를 비웠다"로 취급하고 재배정을 생략한다. 진도를 이어받게 하는 것은 `group.id`가, 재배정 자체를 생략하게 하는 것은 `group.instance.id`가 담당하는 셈이다.
-
----
-
-## 부록 — 명령어 치트시트
-
-`kafka-consumer-groups` 하나로 위 값들을 전부 조회한다. `--bootstrap-server`는 공통이라 생략해 적었다.
-
-| 명령 | 용도 |
-|---|---|
-| `--list` | 존재하는 컨슈머 그룹 ID 목록 |
-| `--describe --group <group>` | 파티션별 offset·Lag·담당 컨슈머 |
-| `--describe --all-groups` | 모든 그룹을 한 번에 |
-| `--describe --group <group> --members` | 멤버 목록과 각자 맡은 파티션 수 |
-| `--describe --group <group> --state` | 그룹 상태(Stable / Empty / PreparingRebalance …) |
-| `--delete --group <group>` | 그룹과 커밋된 offset 삭제 |
-| `--reset-offsets --group <group> --topic <topic> --to-earliest --execute` | 진도를 되감아 재처리 |
-
-`--describe`의 출력 컬럼이 본문의 값들과 그대로 대응한다.
-
-```
-TOPIC  PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG  CONSUMER-ID  HOST  CLIENT-ID
-```
-
-주기적으로 갱신해 보려면 반복 실행하면 된다.
-
-```bash
-while true; do
-  kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group group_01
-  sleep 5
-done
-```
-
-`--reset-offsets`는 그룹에 활성 멤버가 있으면 실패한다. 컨슈머를 모두 내린 뒤 실행해야 하고, `--execute` 없이 실행하면 무엇이 바뀔지만 미리 보여준다.

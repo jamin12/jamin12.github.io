@@ -4,11 +4,11 @@ date: 2026-08-15
 tags: [kafka, configuration, broker, topic]
 ---
 
-Kafka의 설정 파라미터는 수백 개다. 전부 외우는 건 의미가 없고, 필요할 때 문서에서 찾으면 된다. 정작 막히는 건 다른 지점이다 — 이 값을 **어디에 써야 하고, 재기동이 필요하고, 이미 만들어진 토픽에는 적용되는가**. 설정을 판별하는 축 두 개와 계층 규칙 하나를 알면 이 질문들이 정리된다.
+Kafka의 설정 파라미터는 수백 개다. 전부 외우는 건 의미가 없고, 필요할 때 문서에서 찾으면 된다. 정작 막히는 건 다른 지점이다 — 이 값을 **어디에 써야 하고, 재기동이 필요하고, 이미 만들어진 토픽에는 적용되는가**. 설정이 누구의 것인지, 언제 반영되는지, 그리고 계층 규칙 하나 — 이 셋을 알면 이 질문들이 정리된다.
 
-## 축 1 — 서버가 갖는 설정과 클라이언트가 갖는 설정
+## 서버가 갖는 설정과 클라이언트가 갖는 설정
 
-첫 번째 축은 그 설정이 **누구의 것인가**이다. 크게 네 레벨이 있고, 이 넷은 다시 서버 쪽과 클라이언트 쪽으로 갈린다.
+먼저 볼 것은 그 설정이 **누구의 것인가**이다. 크게 네 레벨이 있고, 이 넷은 다시 서버 쪽과 클라이언트 쪽으로 갈린다.
 
 | 레벨 | 어디에 있나 | 예 |
 |---|---|---|
@@ -27,9 +27,9 @@ Kafka의 설정 파라미터는 수백 개다. 전부 외우는 건 의미가 �
 
 물론 서버가 개입할 여지가 전혀 없지는 않다. `min.insync.replicas`는 토픽 레벨 설정이라, `acks=all`로 들어온 쓰기가 몇 개의 복제본에 도달해야 성공으로 볼지를 서버가 정한다. 하지만 이것도 프로듀서가 `acks=all`을 골랐을 때만 의미가 있다. 서버는 클라이언트의 선택에 조건을 붙일 수는 있어도 선택 자체를 대신하지는 못한다.
 
-## 축 2 — 재기동이 필요한 설정과 그렇지 않은 설정
+## 재기동이 필요한 설정과 그렇지 않은 설정
 
-두 번째 축은 **언제 반영되는가**이다.
+다음은 **언제 반영되는가**이다.
 
 | 구분 | 반영 방법 |
 |---|---|
@@ -85,40 +85,3 @@ flowchart LR
 오른쪽으로 갈수록 우선순위가 높다. 아래 계층에 값이 걸려 있으면 위 계층을 고쳐도 반영되지 않는다. "분명히 설정을 바꿨는데 동작이 그대로"인 상황은 대개 이것이다 — `server.properties`를 고치고 재기동까지 했는데, 그 토픽에 예전에 걸어둔 override가 남아 있어서 계속 그 값이 이기고 있는 경우.
 
 그래서 설정을 다룰 때 중요한 습관은 "내가 어디에 무엇을 썼는지" 기억하는 것이 아니라, **지금 실제로 적용된 값이 무엇인지를 조회해서 확인하는 것**이다. 설정을 바꾼 직후와, 이상 동작을 조사할 때 양쪽 모두에서.
-
----
-
-## 부록 — 명령어 치트시트
-
-서버 쪽(브로커·토픽) 설정은 `kafka-configs`로 조회하고 변경한다. `--bootstrap-server`는 공통이라 생략해 적었다.
-
-대상은 `--entity-type`과 `--entity-name` 두 개로 지정한다.
-
-| `--entity-type` | `--entity-name`에 넣는 값 |
-|---|---|
-| `brokers` | 브로커 ID (기본 설정이면 `0`) |
-| `topics` | 토픽 이름 |
-
-| 작업 | 명령 |
-|---|---|
-| 조회 | `--entity-type topics --entity-name <topic> --all --describe` |
-| 변경 | `--entity-type topics --entity-name <topic> --alter --add-config max.message.bytes=2088005` |
-| 원복 | `--entity-type topics --entity-name <topic> --alter --delete-config max.message.bytes` |
-
-값을 설정하는데 `--add-config`인 것이 어색하지만, 앞의 `--alter`가 동사이고 뒤가 목적이라고 보면 된다. 원복도 `--alter --delete-config`이며, **삭제할 때는 파라미터명만 쓰고 값은 쓰지 않는다.**
-
-`--all --describe`는 출력이 매우 길어서 그대로 보기 어렵다. 필요한 것만 걸러 쓴다.
-
-```bash
-kafka-configs --bootstrap-server localhost:9092 \
-  --entity-type topics --entity-name multi-part-topic \
-  --all --describe | grep retention
-```
-
-클라이언트(프로듀서·컨슈머) 설정은 이 명령의 대상이 아니다. 애플리케이션 코드에서 지정한다.
-
-```java
-Properties props = new Properties();
-props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-props.put(ProducerConfig.ACKS_CONFIG, "all");
-```
