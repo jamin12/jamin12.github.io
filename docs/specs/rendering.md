@@ -47,9 +47,9 @@
 
 **처리 흐름**
 
-1. **rehype-mermaid-passthrough** (로컬 플러그인, `src/lib/rehype-mermaid-passthrough.js`): hast 트리에서 `<pre><code class="language-mermaid">` 패턴을 찾아 `<div class="mermaid-block" data-mermaid-code="...">` 로 교체. shiki 체인 **앞에** 두어 shiki가 mermaid 언어를 보지 못하게 차단
-2. **react-markdown `components.div` 오버라이드** (PostDetail.jsx): `mermaid-block` 클래스를 감지하면 `<MermaidDiagram code={...}>` 으로 렌더
-3. **MermaidDiagram 컴포넌트** (`src/components/MermaidDiagram.jsx`): `mermaid` 라이브러리를 **dynamic import**로 지연 로드(~1MB 이상). 첫 호출 시에만 초기화되고 module-scope에서 싱글턴으로 캐시. `mermaid.render(id, code)`의 SVG 출력을 `dangerouslySetInnerHTML`로 주입
+1. **rehype-mermaid-passthrough** (로컬 플러그인, `src/lib/rehype-mermaid-passthrough.ts`): hast 트리에서 `<pre><code class="language-mermaid">` 패턴을 찾아 `<div class="mermaid-block" data-mermaid-code="...">` 로 교체. shiki 체인 **앞에** 두어 shiki가 mermaid 언어를 보지 못하게 차단
+2. **react-markdown `components.div` 오버라이드** (PostDetail.tsx): `mermaid-block` 클래스를 감지하면 `<MermaidDiagram code={...}>` 으로 렌더
+3. **MermaidDiagram 컴포넌트** (`src/components/MermaidDiagram.tsx`): `mermaid` 라이브러리를 **dynamic import**로 지연 로드(~1MB 이상). 첫 호출 시에만 초기화되고 module-scope에서 싱글턴으로 캐시. `mermaid.render(id, code)`의 SVG 출력을 `dangerouslySetInnerHTML`로 주입
 
 **테마 토글 대응**
 
@@ -105,7 +105,7 @@ mermaid.render가 throw하면 에러 메시지 + 원본 코드를 `.mermaid-diag
 
 결과: **PostDetail chunk에 shiki + KaTeX가 격리**되어(gzip 약 316 KB) 홈/카테고리/태그 페이지 진입 시 하이라이팅·수식 엔진을 내려받지 않는다. 글 읽기 시점에만 로드.
 
-본문 자체도 lazy로 분리되어 글당 별도 chunk가 되었다. 글 상세 진입 시 `PostDetail` chunk + 해당 글의 body chunk 두 개만 내려오는 구조. 상세는 [content.md의 로딩 전략](content.md#4-로딩-전략--메타-즉시--본문-lazy).
+본문 자체도 lazy로 분리되어 글당 별도 chunk가 되었다. 글 상세 진입 시 `PostDetail` chunk + 해당 글의 body chunk 두 개만 내려오는 구조. 상세는 [content.md의 로딩 전략](content.md#3-로딩-전략--메타-즉시--본문-lazy).
 
 ### 수식 렌더링 (KaTeX)
 
@@ -114,13 +114,13 @@ Jekyll에서 이관된 코테/개념정리 글 일부에 LaTeX 수식이 있어 
 | 항목 | 값 |
 |------|-----|
 | 지원 문법 | 인라인 `$E=mc^2$`, 블록 `$$...$$` |
-| CSS | `import 'katex/dist/katex.min.css'` (`PostDetail.jsx` 최상단) |
+| CSS | `import 'katex/dist/katex.min.css'` (`PostDetail.tsx` 최상단) |
 | 번들 비용 | PostDetail chunk 기준 gzip +80 KB |
 | 대안 | MathJax (번들 더 큼), KaTeX 미지원 (기각 — 코테 글 가독성 포기) |
 
 ### 하이라이터 초기화 코드
 
-`src/lib/shiki.js`에서 하이라이터를 한 번만 생성하고, `@shikijs/rehype/core`가 이를 rehype 플러그인으로 감싼다.
+`src/lib/shiki.ts`에서 하이라이터를 한 번만 생성하고, `@shikijs/rehype/core`가 이를 rehype 플러그인으로 감싼다.
 
 ```js
 import { createHighlighterCoreSync } from 'shiki/core'
@@ -137,12 +137,11 @@ export const highlighter = createHighlighterCoreSync({
 })
 ```
 
-### 지원 언어 (초기)
+### 지원 언어
 
-기본 세트: `js`, `ts`, `jsx`, `tsx`, `html`, `css`, `json`, `bash`, `md`, `yaml`, `sql`, `python`, `go`, `rust`, `java`, `kotlin`
+16개 기본 세트를 `src/lib/shiki.ts`에서 직접 import한다. 작성자 관점의 목록은 [`writing/style.md`](../writing/style.md#코드블록--지원-언어가-정해져-있다) 참조.
 
-- 그 외 언어는 필요할 때 추가 (shiki는 언어 모듈을 선택적으로 로드)
-- 언어 미지정 코드블록은 plain text로 표시
+전부 넣지 않는 이유: shiki 기본 bundle은 수백 개 언어를 포함해 번들이 크게 불어난다. 필요한 언어가 생기면 그때 한 줄 추가하는 편이 싸다. 미지정·미지원 언어는 plain text로 떨어져 렌더가 깨지지는 않는다.
 
 ### 테마
 
@@ -242,3 +241,4 @@ TOC가 너무 세세해지면 훑어보기가 오히려 어려워진다. 3단계
 | **Content** | Post.body/category 소비, 이미지 맵 공유 |
 | **Routing** | 내부 링크/앵커 이동을 라우터와 연결 |
 | **Layout** | PostDetail이 렌더러를 래핑. 본문 타이포 스타일이 여기서 적용 |
+| **[writing/style.md](../writing/style.md)** | 이 렌더러가 처리하는 문법의 **작성자용 계약**. 표준 마크다운과 다른 부분만 |

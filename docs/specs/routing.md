@@ -14,11 +14,15 @@ URL과 화면을 매핑하는 계층이다. 사용자가 글 목록을 탐색하
 
 | 경로 | 화면 | 내용 |
 |------|------|------|
-| `/` | PostList | 4섹션 대시보드 (01 최신 글 · 02 카테고리 · 03 카테고리별 최근 · 04 태그). 상세는 [layout.md](layout.md#postlist-홈-) |
+| `/` | PostList | 4섹션 대시보드 (01 최신 글 · 02 카테고리 · 03 카테고리별 최근 · 04 태그). 상세는 [layout.md](layout.md#postlist-홈---2026-04-05-4차-dev-dashboard-구조) |
 | `/posts/:slug` | PostDetail | 글 본문 |
 | `/categories/:category` | CategoryPage | 해당 카테고리 글 목록 — 하위 그룹이 정의돼 있으면 group별 섹션으로 분할 |
 | `/categories/:category/:subcategory` | CategoryPage | 해당 카테고리 안의 특정 하위 그룹만. 같은 컴포넌트, URL 파라미터로 필터링 |
 | `/tags/:tag` | TagPage | 해당 태그 글 목록 |
+| `/series` | SeriesPage | 시리즈 인덱스 |
+| `/series/:name` | SeriesDetailPage | 한 시리즈의 전체 목차 |
+| `/about` | AboutPage | 소개 |
+| `/9901` | PrivateListPage | 목록·네비 어디에도 링크되지 않은 비공개 진입점. URL을 아는 사람만 들어온다 |
 | `*` (기타) | NotFound | 404 |
 
 ### 하위 카테고리 URL 설계 (2026-04 4차)
@@ -39,8 +43,7 @@ React Router v7에서 라우트 두 개를 등록(`/categories/:category` + `/ca
 
 | 경로 | 화면 |
 |------|------|
-| `/about` | About 페이지 |
-| `/search?q=...` | 검색 결과 |
+| `/search?q=...` | 검색 결과 — 클라이언트 검색(제목·태그). 미착수 |
 
 ---
 
@@ -172,7 +175,7 @@ React 19 + React Router v7은 View Transitions API를 기본 지원한다.
 
 초기엔 **글 목록 ↔ 상세** 하나만. 과도한 전환은 오히려 방해.
 
-CLAUDE.md에 `vercel-react-view-transitions` 스킬이 있으므로 실제 구현 단계에서 이 스킬을 호출한다.
+React의 View Transition API(`<ViewTransition>`, `addTransitionType`)를 쓴다. Link의 `viewTransition` prop + CSS crossfade 조합이 현재 구현.
 
 ---
 

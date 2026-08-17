@@ -43,20 +43,7 @@
 
 ## 4. Frontmatter 스키마
 
-```yaml
----
-title: 기술 선정
-date: 2025-12-18
-tags: [cdc]
-series: CDC 도입기
-seriesOrder: 2
----
-```
-
-| 필드 | 필수 | 타입 | 용도 |
-|------|------|------|------|
-| `series` | ⬜ | string | 시리즈 이름. 같은 문자열 = 같은 시리즈. 비어있으면 시리즈 미소속 |
-| `seriesOrder` | ⬜ | number | 시리즈 내 순서 (1부터). `series`가 있으면 필수 |
+필드 정의와 사용법은 [`writing/frontmatter.md`](../writing/frontmatter.md), 시리즈를 언제 쓰는지는 [`writing/organizing.md`](../writing/organizing.md#시리즈)에 있다. 요약하면 `series`(이름) + `seriesOrder`(1부터) 두 필드고, 같은 문자열이면 같은 시리즈다.
 
 ### 검증 규칙 (빌드 타임, 미구현 — 추후 추가 가능)
 
@@ -79,7 +66,7 @@ seriesOrder: 2
 
 ---
 
-## 6. 런타임 조회 (`posts.js`)
+## 6. 런타임 조회 (`posts.ts`)
 
 | export | 타입 | 용도 |
 |--------|------|------|
@@ -154,19 +141,11 @@ CDC 도입기  ·  2 / 5
 
 ---
 
-## 9. 새 시리즈를 추가하려면
-
-1. 시리즈에 포함할 글의 frontmatter에 `series`와 `seriesOrder`를 추가
-2. 같은 `series` 문자열을 사용하면 자동으로 묶임
-3. 카테고리는 글 내용에 맞게 자유롭게 배치 (시리즈와 무관)
-4. 빌드 시 자동으로 `posts-meta.json`에 반영
-
----
-
-## 10. 연관 도메인
+## 9. 연관 도메인
 
 | 도메인 | 관계 |
 |--------|------|
 | **Content** | frontmatter 스키마 확장 (`series`, `seriesOrder`). 빌드 파이프라인에서 메타 JSON에 주입 |
 | **Routing** | 글 상세 페이지에서 `getSeriesNav(slug)` 소비. 시리즈 인덱스 페이지 라우트 추가 가능 |
 | **Layout** | PostDetail에 시리즈 배너 + 이전/다음 네비 컴포넌트 추가 |
+| **[writing/organizing.md](../writing/organizing.md)** | 새 시리즈를 만드는 절차와 판단 기준 (시리즈 vs `order`) |

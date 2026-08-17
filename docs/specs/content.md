@@ -12,84 +12,37 @@
 
 ---
 
-## 2. 파일 구조 규약
+## 2. 입력 계약
 
-```
-src/posts/
-├── <카테고리>/
-│   ├── <slug>.md
-│   └── images/
-│       └── <이미지 파일>
-```
+파일 배치 규약과 frontmatter 필드 정의는 **작성자 계약**이므로 [`writing/organizing.md`](../writing/organizing.md#파일을-어디에-두나)와 [`writing/frontmatter.md`](../writing/frontmatter.md)가 원천이다. 여기 다시 적지 않는다 — 두 곳에 적으면 반드시 한쪽이 낡는다.
 
-### 규칙
+이 spec은 그 계약을 **왜 그렇게 정했고 파이프라인이 어떻게 처리하는지**만 다룬다.
 
-| 항목 | 규칙 | 이유 |
-|------|------|------|
-| 파일 위치 | `src/posts/<category>/<slug>.md` | Vite glob 패턴 대상 |
-| 카테고리 | 폴더명 그대로 (한글 가능) | 설정 파일 없이 폴더가 분류 |
-| 파일명 | `<slug>.md` | URL의 slug와 1:1 대응 |
-| 날짜 | frontmatter에만 | 파일명 중복 관리 방지 |
-| 이미지 | 카테고리 폴더 아래 `images/` | 글과 리소스를 같은 자리에 |
-
-### 예시
-
-```
-src/posts/
-├── http/
-│   ├── http-basics.md
-│   ├── rest-vs-rpc.md
-│   └── images/
-│       ├── tcp-handshake.png
-│       └── http-flow.svg
-└── react/
-    ├── use-hook.md
-    └── images/
-        └── use-hook-diagram.png
-```
-
----
-
-## 3. Frontmatter 스키마
-
-각 `.md` 파일 최상단에 YAML 형식으로 메타데이터를 선언한다.
-
-```markdown
----
-title: HTTP 기초
-date: 2026-04-05
-tags: [http, network]
-summary: HTTP의 기본 개념과 메서드, 상태 코드 정리
----
-
-본문 시작...
-```
-
-| 필드 | 필수 | 타입 | 용도 |
-|------|------|------|------|
-| `title` | ✅ | string | 글 제목 (목록/상세/탭 타이틀) |
-| `date` | ✅ | YYYY-MM-DD | 정렬 기준, 목록 표시 |
-| `tags` | ⬜ | string[] | 태그 필터 |
-| `summary` | ⬜ | string | 목록 카드의 미리보기 |
-| `draft` | ⬜ | boolean | true면 프로덕션 빌드 제외 |
-| `cover` | ⬜ | `./images/<파일>` | 홈의 SplitLatest 히어로/사이드 카드, 카테고리 페이지 카드의 대표 이미지. 본문 이미지와 같은 `./images/` 상대경로 규칙. 없으면 카테고리 이모지 + `--bg-subtle` 그라데이션 fallback |
-| `order` | ⬜ | number | **같은 날짜** 글의 표시 순서 (작은 값이 위). 정렬 2순위이며 날짜를 넘지 못한다. 없으면 그날 맨 아래(이름순). 같은 날 올린 묶음(개념 시리즈 등)의 읽는 순서 고정용 |
-| `series` | ⬜ | string | 시리즈 이름. 같은 문자열을 가진 글이 하나의 시리즈로 묶인다. 카테고리·태그와 독립 |
-| `seriesOrder` | ⬜ | number | 시리즈 내 순서 (1부터). `series`가 있으면 필수 |
-
-### 검증 규칙
-
-- `title` 또는 `date` 누락 시 빌드 경고, 해당 글 스킵
-- `date`가 미래면 경고만 하고 포함
-- `draft: true`는 프로덕션 빌드에서 제외, dev 모드에선 포함 (초안 미리보기)
+| 계약 | 그렇게 정한 이유 |
+|------|----------------|
+| 파일 위치 `src/posts/<category>/<slug>.md` | Vite glob 패턴의 대상. 경로 파싱만으로 카테고리가 나오므로 등록 절차가 필요 없다 |
+| 폴더명 = 카테고리 | 별도 카테고리 설정 파일을 두면 폴더와 어긋날 수 있다. 파일 시스템을 단일 원천으로 |
+| 날짜는 frontmatter에만 | 파일명에 날짜를 넣으면 이중 관리가 된다. 날짜 수정 시 URL(slug)까지 바뀌는 것도 피함 |
+| slug는 파일명 그대로 (한글 포함) | 파일 ↔ URL 대응이 명확. URL 인코딩은 라우터 단에서 → [routing.md](routing.md) |
+| 이미지는 카테고리 폴더 아래 `images/` | §5 참조 |
 
 ### 파서 선택
 
-`gray-matter`를 사용한다. Node 의존성이 없고 브라우저 번들에 포함 가능, YAML frontmatter 표준 지원.
+`gray-matter`를 사용한다. Node 의존성이 없어 브라우저 번들에 포함 가능하고, YAML frontmatter 표준을 지원한다.
+
+### `draft`는 런타임 필터다
+
+`draft: true` 글도 **번들에는 포함되고**, 목록·라우팅에서만 걸러진다. 접근 경로가 없으니 실질적으로는 안 보이지만 완전한 비공개는 아니다.
+
+번들에서 완전히 빼려면 `_drafts/` prefix + glob 패턴 분리가 필요한데, 아직 안 했다 — 초안이 민감한 내용을 담는 일이 없어 비용을 치를 이유가 없었다. 필요해지면 그때 분리한다.
+
+### 검증 강도
+
+`title`/`date` 누락만 스킵 처리하고 나머지는 통과시킨다. 시리즈 관련 검증(`seriesOrder` 누락·중복·번호 공백)은 아직 없다 — 개인 블로그 규모에서 오탐 없는 검증기를 만드는 비용이 얻는 것보다 크다고 판단. 시리즈가 늘어 실제로 순서가 어긋나는 일이 생기면 그때 추가한다.
 
 ---
 
-## 4. 로딩 전략 — 메타 즉시 + 본문 lazy
+## 3. 로딩 전략 — 메타 즉시 + 본문 lazy
 
 홈·카테고리·태그 같은 **목록 페이지**는 메타데이터(title/date/tags/summary/slug/category/readingTime)만 있으면 되고, **본문은 글 상세에 진입한 순간에만** 필요하다. 이 분리가 번들 구조의 기본이다.
 
@@ -133,7 +86,7 @@ const bodyModules = import.meta.glob('../posts/**/*.md', {
 })
 ```
 
-`src/lib/posts.js`의 `getPostBodyPromise(category, slug)`가 promise를 반환하고, `PostDetail`이 `const body = use(getPostBodyPromise(...))`로 동기처럼 받는다. 미해결 상태엔 `App.jsx`의 route-level `<Suspense>`가 fallback을 노출 (같은 Suspense가 PostDetail chunk 로드와 body 로드 두 단계를 모두 커버). promise는 모듈 레벨 `Map`에 캐시해 같은 글 재방문 시 재요청하지 않는다.
+`src/lib/posts.ts`의 `getPostBodyPromise(category, slug)`가 promise를 반환하고, `PostDetail`이 `const body = use(getPostBodyPromise(...))`로 동기처럼 받는다. 미해결 상태엔 `App.tsx`의 route-level `<Suspense>`가 fallback을 노출 (같은 Suspense가 PostDetail chunk 로드와 body 로드 두 단계를 모두 커버). promise는 모듈 레벨 `Map`에 캐시해 같은 글 재방문 시 재요청하지 않는다.
 
 ### 번들 실측 (2026-04-05 기준, 글 68개)
 
@@ -174,7 +127,7 @@ const bodyModules = import.meta.glob('../posts/**/*.md', {
 
 ---
 
-## 5. 카테고리·태그 인덱싱
+## 4. 카테고리·태그 인덱싱
 
 ### 카테고리 추출
 
@@ -199,13 +152,9 @@ const bodyModules = import.meta.glob('../posts/**/*.md', {
 
 ---
 
-## 6. 이미지 참조 규칙
+## 5. 이미지 참조 규칙
 
-마크다운 본문에서는 **상대경로**로 이미지를 참조한다.
-
-```markdown
-![TCP 핸드셰이크](./images/tcp-handshake.png)
-```
+작성자 규약(`./images/<파일>` 상대경로, 카테고리 폴더 아래 배치)은 [`writing/style.md`](../writing/style.md#이미지-경로) 참조. 여기서는 그 규약의 근거와 해석 방식만 다룬다.
 
 ### 해석 방식
 
@@ -220,7 +169,7 @@ Vite의 import 시스템이 런타임 동적 경로를 해석하지 못하므로
 
 ---
 
-## 7. 읽는 시간 계산
+## 6. 읽는 시간 계산
 
 Post 객체에 `readingTime` 필드를 넣어둔다. 매 렌더마다 다시 계산하지 않는다.
 
@@ -234,7 +183,7 @@ Post 객체에 `readingTime` 필드를 넣어둔다. 매 렌더마다 다시 계
 
 ---
 
-## 8. 외부 Jekyll 블로그에서의 마이그레이션
+## 7. 외부 Jekyll 블로그에서의 마이그레이션
 
 초기 글은 기존 Jekyll 블로그(`D:/project/personal/jamin12/`)에서 일괄 이관했다. 스크립트는 `scripts/migrate-posts.mjs`에 있고, 드라이런 기본·`--apply`로 실제 쓰기.
 
@@ -264,17 +213,13 @@ Jekyll이 `_posts/<주제폴더>/<slug>.md` + frontmatter `categories:` 배열�
 
 **우선순위 주의**: rule 배열은 "더 구체적인 규칙이 앞" 원칙. 예를 들어 `argo-rollouts-canary`는 `[kubernetes, argo-rollouts, canary, ...]` 태그를 가지므로, `deployment` 규칙이 `kubernetes` 규칙보다 먼저 와야 "배포 전략" 하위로 빠진다. 반대로 `Pv-pvc`처럼 `[k8s]`만 가진 순수 k8s 글은 deployment에 걸리지 않고 마지막 `kubernetes` 규칙으로 떨어진다. `jackson-polymorphic-type-handling`의 경우 `[jackson, serialization, redis, java]` 태그 중 `redis`가 있지만, 실제 내용은 Jackson 직렬화라 `jackson` 규칙을 `redis` 규칙보다 앞에 두고 `redis` 규칙은 `streams` 태그만 잡도록 한정했다.
 
-**검증**: 2026-04-05 기준 `posts-meta.json` 전수 검증에서 68/68 글이 의도한 하위 그룹에 들어감. 분포는 `docs/features.md`의 하위 카테고리 항목 참조.
+**검증**: 2026-04-05 기준 `posts-meta.json` 전수 검증에서 68/68 글이 의도한 하위 그룹에 들어감. 당시 분포는 개념-정리 (network 10 · elasticsearch 5 · kubernetes 4 · deployment 4 · spring 3 · cdc 3 · nextjs 3 · redis 3 · cs 2 · monitoring 2 · database 1 · jackson 1) / 코테 (dp 5 · graph 2 · math 1 · string 1) / 트러블-슈팅 (flat, 4글) / CDC·모니터링·CI-CD (시리즈로 묶여 하위 카테고리 불필요). 지금 값은 `posts-meta.json`이 원천이고, 이 숫자는 규칙 설계 시점의 근거로만 남긴다.
 
 **2026-04-13 추가**: `saga` / `outbox` 태그를 잡는 `Saga · Outbox` 서브 카테고리 신설. `saga` 규칙은 `circuit-breaker` 뒤에 배치 — 다른 규칙과 태그 충돌 없으므로 우선순위 이슈 없음. 트러블-슈팅 카테고리의 글들은 `saga` 태그를 가지지만 `트러블-슈팅: []`(빈 규칙)이라 서브 카테고리에 묶이지 않음 — 의도된 동작.
 
 **2026-05-05 갱신**: 트러블-슈팅의 Saga 리팩터링 회고와 개념-정리의 Saga + Outbox 설계 시리즈를 단일 시리즈로 통합. 두 글이 분리되어 있을 때 독자가 회고의 결론("단순 2테이블로 단순화 승리")과 설계의 결론("4테이블로 재정교화")을 충돌로만 읽고 흐름을 잇지 못한다는 판단이 근거. 회고(시간순 의사결정) → 설계론(현재 시점 결과)을 카테고리 넘나드는 시리즈의 두 막으로 묶어, 단순화에서 다시 정교화로 돌아온 결정 자체가 이력으로 보이게 했다. 태그·서브카테고리 규칙은 변동 없음(`saga` / `outbox` 태그가 그대로 `Saga · Outbox` 서브카테고리에 매핑).
 
-**새 주제가 생기면**
-1. 새 글에 적절한 태그 부여 (기존 태그 재활용 권장)
-2. 기존 태그로 분류가 안 되면 `src/lib/subcategory-rules.js`에 규칙 한 줄 추가
-3. 우선순위(rule 배열 순서) 재검토 — 새 rule이 기존 글을 재분류하지 않는지 전수 검증
-4. 빈 카테고리 rule(`트러블-슈팅: []`)은 유지 — 작은 카테고리에 억지 하위 그룹 만들지 않음
+**새 주제가 생겼을 때의 절차**는 작성자 쪽 일이라 [`writing/organizing.md`](../writing/organizing.md#하위-카테고리)에 있다.
 
 ### 카테고리 alias
 
@@ -322,18 +267,19 @@ const CATEGORY_ALIASES = {
 
 ---
 
-## 9. 시리즈 (Series)
+## 8. 시리즈 (Series)
 
 별도 도메인으로 분리. 상세는 **[series.md](series.md)** 참조.
 
-frontmatter에 `series`/`seriesOrder` 필드를 추가하여 카테고리·태그와 독립적인 순서 있는 글 묶음을 정의한다. 빌드 파이프라인에서 `posts-meta.json`에 주입되며, 런타임 조회 함수(`seriesList`, `getPostsBySeries`, `getSeriesNav`)를 `posts.js`에서 제공한다.
+frontmatter에 `series`/`seriesOrder` 필드를 추가하여 카테고리·태그와 독립적인 순서 있는 글 묶음을 정의한다. 빌드 파이프라인에서 `posts-meta.json`에 주입되며, 런타임 조회 함수(`seriesList`, `getPostsBySeries`, `getSeriesNav`)를 `posts.ts`에서 제공한다.
 
 ---
 
-## 10. 연관 도메인
+## 9. 연관 도메인
 
 | 도메인 | 관계 |
 |--------|------|
 | **Rendering** | Post.body를 받아 React 요소로 변환. 이미지 경로 해석 책임 |
 | **Routing** | Post.path/slug 기반 URL 매핑. 카테고리/태그 인덱스 사용 |
 | **Layout** | PostList/PostDetail 컴포넌트가 Post 객체 소비 |
+| **[writing/frontmatter.md](../writing/frontmatter.md)**, **[organizing.md](../writing/organizing.md)** | 이 파이프라인의 **입력 계약**. frontmatter 스키마·파일 배치·분류 규약의 원천 |

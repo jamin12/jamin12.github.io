@@ -86,7 +86,7 @@ CLAUDE.md에 적힌 `frontend-design` 원칙대로, 모든 AI 생성물이 수�
 | 카드 | 얇은 `1px solid var(--border)` + `--bg-subtle` 배경 틴트 + `border-radius: 10px`. Hover 시 배경·보더 한 단계 lift |
 | 참조 결 | **impeccable.style** (일순위: 서체·섹션 번호·editorial 문법) + Linear (다크 기준점·거대 제목) + 현재 Gumroad (얇은 카드 보더) |
 
-상세 원칙·팔레트·안티 레퍼런스는 프로젝트 루트의 [`.impeccable.md`](../../.impeccable.md)에 영구 저장. 재디자인 관련 모든 `teach-impeccable` 기반 스킬이 그 파일을 전제로 동작한다.
+상세 원칙·팔레트·안티 레퍼런스는 프로젝트 루트의 [`.impeccable.md`](../../.impeccable.md)에 영구 저장. 디자인·UI 작업 전에 그 파일을 먼저 읽는다.
 
 **왜 이 방향**: 2026-04 이전의 `src/App.css`는 §2.3이 금지한 "제네릭 AI 룩"에 근접했다 — 회색 + 파란 accent + 둥근 카드 + 가벼운 soft shadow. 그 반대 방향을 레퍼런스에서 찾았고, **impeccable.style이 editorial serif·섹션 번호·얇은 카드·핑크(→블루) 액센트로 구현한 패턴**이 가장 근접한 해였다. 개성은 장식이 아니라 **editorial 문법** 레이어에 녹인다.
 
@@ -132,8 +132,8 @@ CLAUDE.md에 적힌 `frontend-design` 원칙대로, 모든 AI 생성물이 수�
 
 ### Footer
 
-- GitHub, 연락처, 라이선스 한 줄
 - 글 끝에서만 보이면 충분
+- **현재는 빌드 정보 한 줄뿐이다.** GitHub·연락처 같은 외부 링크는 아직 없다 — 넣기로 했으나 미착수
 
 ### 본문 너비 (2026-04-05 4차에서 두 번 조정)
 
@@ -193,14 +193,14 @@ CLAUDE.md에 적힌 `frontend-design` 원칙대로, 모든 AI 생성물이 수�
 
 **왜 "그 외" 칩 블록을 삭제했는가** (3차에서 있던 요소): 02 CategoryGrid가 이미 **모든** 카테고리를 시각 카드로 노출하므로 하단에 같은 정보를 텍스트 칩으로 다시 보여줄 필요가 없어졌다. 태그만 하단에 남김.
 
-**숫자 조정**은 여전히 `src/pages/PostList.jsx` 상단 상수(`POSTS_PER_CATEGORY`). `MAX_CATEGORY_SECTIONS`는 CategoryGrid가 모든 카테고리를 다 보여주는 방향이 되면서 03 섹션에선 무제한이 되어 제거(현재 카테고리 4개라 제한 의미 없음. 5개 초과하면 재도입).
+**숫자 조정**은 여전히 `src/pages/PostList.tsx` 상단 상수(`POSTS_PER_CATEGORY`). `MAX_CATEGORY_SECTIONS`는 CategoryGrid가 모든 카테고리를 다 보여주는 방향이 되면서 03 섹션에선 무제한이 되어 제거(현재 카테고리 4개라 제한 의미 없음. 5개 초과하면 재도입).
 
 **대안과 기각 이유**
 
 | 후보 | 기각 이유 |
 |------|----------|
 | (A) 상단 상단에 Big Hero 1개 + 그 아래 카테고리 그리드 | Hero와 SplitLatest 히어로가 중복. SplitLatest 좌측 카드가 이미 Big Hero 역할 |
-| (B) 사이드바에 검색 넣기 | 검색은 2차 기능(`features.md`). 사이드바는 네비 전용 유지 |
+| (B) 사이드바에 검색 넣기 | 검색은 2차 기능([routing.md 확장 예정](routing.md#확장-예정-2차)). 사이드바는 네비 전용 유지 |
 | (C) 카테고리 그리드를 사이드바에 전부 넣기 | 사이드바가 너무 길어지고 모바일 대응이 어려움. 사이드바엔 리스트, 메인에 그리드로 이원화 |
 | (D) 카테고리별 색상 매핑 | 브랜드 색이 없는 한국어 카테고리명에 임의 색 배정은 제네릭 룩으로 회귀. Electric Blue 단일 액센트 규칙 위반. §2.5 참조 |
 
@@ -274,13 +274,13 @@ CLAUDE.md에 적힌 `frontend-design` 원칙대로, 모든 AI 생성물이 수�
 | 상단에 카테고리 칩 네비 유지 | 카테고리 섹션과 역할 중복, 노이즈 |
 | 카테고리 정렬을 글 수 기준 | 휴면 카테고리가 상위 고정되는 문제 |
 
-**숫자 조정**은 `src/pages/PostList.jsx` 상단 두 상수(`MAX_CATEGORY_SECTIONS`, `POSTS_PER_CATEGORY`)만 건드리면 된다. 디자인 확정 전 튜닝이 쉽도록 숫자를 데이터로 분리했다.
+**숫자 조정**은 `src/pages/PostList.tsx` 상단 두 상수(`MAX_CATEGORY_SECTIONS`, `POSTS_PER_CATEGORY`)만 건드리면 된다. 디자인 확정 전 튜닝이 쉽도록 숫자를 데이터로 분리했다.
 
 **카드 자체**는 `PostCards` 공통 컴포넌트를 재사용 (제목/summary/날짜/읽는 시간/카테고리/태그칩). 카테고리·태그 페이지와 동일한 카드 외관.
 
 **데스크톱 2열 그리드**: 1100px 이상에서 `.page-list`가 `grid-template-columns: 1fr 1fr`로 섹션을 2열 배치. 하단 "그 외/태그" 칩 블록은 `grid-column: 1 / -1`로 두 열 전체 폭. 홈 컨테이너는 `.app--wide`로 1040px까지 확장(PostDetail과 동일). 태블릿·모바일은 1열 유지. 이 디자인의 **이유**: 카테고리가 4~5개일 때 세로 길이를 절반으로 줄이고 카테고리 경계를 시각적으로 명확히 — 본문 720px 한 단일 칼럼에선 섹션이 그저 이어진 긴 리스트처럼 보여서 구조 파악이 어려웠다.
 
-**카테고리 이름 표시**: URL과 파일시스템엔 하이픈(`개념-정리`), 화면엔 공백(`개념 정리`). `formatCategory()` 헬퍼가 `posts.js`에 있고, 카드·섹션 헤더·상세 kicker·카테고리 페이지 타이틀에서 사용. 태그는 변환 안 함(영문 `spring-boot` 같은 것은 하이픈 유지).
+**카테고리 이름 표시**: URL과 파일시스템엔 하이픈(`개념-정리`), 화면엔 공백(`개념 정리`). `formatCategory()` 헬퍼가 `posts.ts`에 있고, 카드·섹션 헤더·상세 kicker·카테고리 페이지 타이틀에서 사용. 태그는 변환 안 함(영문 `spring-boot` 같은 것은 하이픈 유지).
 
 무한 스크롤·페이징은 홈이 아니라 카테고리/태그 페이지 쪽에서 글 50개 넘으면 검토.
 
@@ -303,7 +303,7 @@ CLAUDE.md에 적힌 `frontend-design` 원칙대로, 모든 AI 생성물이 수�
 - 데스크톱: 본문 + 오른쪽 TOC sticky
 - 태블릿/모바일: TOC는 본문 상단 접이식
 - 하단: 이전/다음 글 네비 — 시리즈 글은 시리즈 순서(`getSeriesNav`), 그 외 글은 같은 카테고리 정렬순(`getCategoryNav`, 날짜 내림차순 → 같은 날짜면 order 오름차순. 이전 = 리스트 위쪽 글, 다음 = 아래쪽 글). 두 네비는 `series-nav` 클래스의 박스 스타일을 공유 (헤더 라벨만 시리즈명 ↔ 카테고리명)
-- 코멘트/공유 버튼은 2차
+- 코멘트/공유 버튼은 2차. 댓글은 giscus 같은 GitHub Issues 기반이 후보 — 정적 사이트라 서버 없이 붙는 방식이어야 한다
 
 ### CategoryPage / TagPage
 
@@ -454,7 +454,7 @@ Content 파이프라인에서 미리 계산한 `readingTime` 필드를 사용한
 - PostList 카드: `약 7분`
 - PostDetail 상단: `약 7분 · 2026-04-05`
 
-계산식·기준은 [content.md](content.md#읽는-시간-계산) 참조.
+계산식·기준은 [content.md](content.md#6-읽는-시간-계산) 참조.
 
 ---
 

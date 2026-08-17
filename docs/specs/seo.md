@@ -134,7 +134,7 @@ pnpm build
 |------|------|------|
 | JSON-LD 구조화 데이터 | 미구현 | Google 리치 결과 (Article, BreadcrumbList) |
 | OG 이미지 | 미구현 | cover 이미지가 있는 글에 `og:image` 적용 |
-| RSS 피드 | 미구현 | features.md "2차"에 포함 |
+| RSS 피드 | 미구현 | `posts-meta.json`에서 생성 가능 — sitemap 스크립트와 같은 자리 |
 | Google Search Console 등록 | 미구현 | 배포 후 수동 등록 필요 |
 | 네이버 서치어드바이저 등록 | 미구현 | 한국어 블로그라 권장 |
 
