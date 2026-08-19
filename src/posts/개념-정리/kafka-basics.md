@@ -157,4 +157,8 @@ flowchart LR
 
 - **스케일링 안정화** — 오토스케일러에 쿨다운을 둬 잦은 증감을 억제한다.
 - **Static Membership** — `group.instance.id`를 고정해, 짧은 재시작은 같은 멤버로 보고 리밸런싱을 생략한다.
-- **Cooperative Rebalancing** — 전체를 멈추지 않고 영향받는 파티션만 옮긴다. 최신 Kafka의 기본값이다.
+- **Cooperative Rebalancing** — 전체를 멈추지 않고 영향받는 파티션만 옮긴다.
+
+셋 중 마지막은 오해하기 쉽다. Cooperative가 최신 Kafka의 기본값이라는 말이 흔히 돌지만 **그렇지 않다.** `partition.assignment.strategy`의 기본값은 `[RangeAssignor, CooperativeStickyAssignor]`라는 두 개짜리 목록이고, 앞에 있는 Range가 선택되므로 실제 동작은 eager다.
+
+기본값이 하필 두 개짜리 목록인 데엔 이유가 있다. 컨슈머들이 서로 다른 전략을 쓰는 순간은 그룹이 깨지는 순간이라, 전환을 한 번에 해야 한다. 목록으로 두면 모든 컨슈머가 Cooperative를 아는 상태를 먼저 만들어 놓고, 그다음 롤링 재시작으로 Range만 빼면 된다. 즉 기본값은 "Cooperative를 쓰고 있다"가 아니라 **"Cooperative로 넘어갈 준비가 되어 있다"**는 뜻이다. 실제로 쓰려면 목록에서 Range를 지워야 한다.
