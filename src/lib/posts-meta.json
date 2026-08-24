@@ -1,5 +1,28 @@
 [
   {
+    "slug": "kafka-producer-retry-timeout",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 프로듀서 전송과 재전송 — 언제까지 기다리고 언제 포기하나",
+    "date": "2026-08-24",
+    "tags": [
+      "kafka",
+      "producer",
+      "timeout",
+      "retry"
+    ],
+    "summary": "동기냐 비동기냐가 배치 크기를 정하고, 타임아웃은 레코드가 아니라 그 배치에 걸린다",
+    "draft": false,
+    "private": false,
+    "readingTime": 9,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-producer-retry-timeout"
+  },
+  {
     "slug": "kafka-producer-buffer",
     "category": "개념-정리",
     "subcategory": "kafka",
@@ -36,7 +59,7 @@
     "summary": "send()는 즉시 리턴하지 않고, 실패한 콜백은 성공처럼 보이는 로그를 남긴다",
     "draft": false,
     "private": false,
-    "readingTime": 8,
+    "readingTime": 9,
     "cover": "",
     "order": 0,
     "series": "",
