@@ -1,5 +1,28 @@
 [
   {
+    "slug": "kafka-consumer-poll-loop",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 컨슈머 poll 루프 — 어느 스레드가 무엇을 하나",
+    "date": "2026-08-27",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "java",
+      "offset"
+    ],
+    "summary": "poll은 부른 스레드를 붙잡고, 백그라운드 스레드는 heartbeat만 보낸다",
+    "draft": false,
+    "private": false,
+    "readingTime": 16,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-poll-loop"
+  },
+  {
     "slug": "kafka-producer-idempotence",
     "category": "개념-정리",
     "subcategory": "kafka",
