@@ -34,7 +34,10 @@ try (KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(propertie
 - **`poll`** — 브로커에서 레코드를 가져온다. 반환값은 레코드 하나가 아니라 여러 건이 담긴 `ConsumerRecords`라, 그것을 다시 루프로 펼쳐 `ConsumerRecord` 하나씩 꺼낸다.
 - **커밋** — 어디까지 읽었는지를 브로커의 내부 토픽 `__consumer_offsets`에 기록한다. 위 코드에 호출이 없고, `enable.auto.commit` 기본값에 따라 `poll` 안에서 처리된다.
 
-설정에서 프로듀서와 갈리는 자리가 둘이다. `key.serializer`·`value.serializer` 대신 `key.deserializer`·`value.deserializer`를 쓰고, `group.id`가 필수다. `group.id` 없이 `subscribe`를 부르면 `InvalidGroupIdException`이 난다 — 그룹 관리와 커밋 API가 전부 그룹 이름에 매여 있어서다.
+설정에서 프로듀서와 갈리는 자리가 둘이다.
+
+- **Deserializer를 지정한다.** 프로듀서의 `key.serializer`·`value.serializer` 자리에 `key.deserializer`·`value.deserializer`가 온다.
+- **`group.id`가 필수다.** 지정하지 않고 `subscribe`를 부르면 `InvalidGroupIdException`이 난다 — 그룹 관리와 커밋 API가 전부 그룹 이름에 매여 있어서다.
 
 ## poll은 부른 스레드를 붙잡는다
 
@@ -158,7 +161,7 @@ Kafka 4.0부터 컨슈머 그룹 프로토콜을 고를 수 있다. `group.proto
 |---|---|---|
 | `group.protocol` | `classic` · `consumer` | `classic` |
 
-4.2.1의 기본값이 `classic`이라, 설정을 건드리지 않은 컨슈머는 위에서 본 배치로 돈다. 새 프로토콜은 파티션 할당도 클라이언트가 아니라 브로커가 계산하고, `session.timeout.ms`·`heartbeat.interval.ms`도 클라이언트 설정에서 브로커 설정으로 옮겨간다. 어느 프로토콜로 도는지 모른 채 타임아웃을 조정하면 클라이언트에 적은 값이 아무 일도 하지 않을 수 있다.
+4.2.1의 기본값이 `classic`이라, 설정을 건드리지 않은 컨슈머는 위에서 본 배치로 돈다. [새 프로토콜](/posts/kafka-consumer-rebalance-protocol)은 파티션 할당도 클라이언트가 아니라 브로커가 계산하고, `session.timeout.ms`·`heartbeat.interval.ms`도 클라이언트 설정에서 브로커 설정으로 옮겨간다. 어느 프로토콜로 도는지 모른 채 타임아웃을 조정하면 클라이언트에 적은 값이 아무 일도 하지 않을 수 있다.
 
 ---
 
