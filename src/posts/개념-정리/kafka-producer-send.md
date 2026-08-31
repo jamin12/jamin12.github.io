@@ -135,7 +135,7 @@ flowchart TD
 | 균일도 | 항상 균일 | 짧게 보면 편중, 길게 보면 균일 |
 | 기본값 시기 | Kafka 2.4 이전 | Kafka 2.4 이후 |
 
-이후 버전에서 한 걸음 더 갔다. Kafka 3.3에서 `DefaultPartitioner`는 deprecated되고, 브로커의 응답 속도를 반영해 **느린 브로커의 파티션에는 덜 보내는** 방식이 기본이 되었다. 기준이 균일 분배에서 파티션이 소화하는 속도로 옮겨갔다.
+이후 버전에서 한 걸음 더 갔다. Kafka 3.3에서 `DefaultPartitioner`는 deprecated되고 4.0에서 삭제됐다. 지금은 `partitioner.class`를 비워 두면 파티션에 쌓인 바이트를 세어 옮겨 갈 시점을 정하고 느린 브로커의 파티션에는 덜 보내는 [내장 계층](/posts/kafka-custom-partitioner)이 그 일을 맡는다.
 
 컨슈머에도 `RoundRobin`과 `Sticky`라는 이름의 전략이 있는데, 그것은 **컨슈머 그룹에 파티션을 배정하는** 할당 전략이라 `partition.assignment.strategy`로 고르고, 여기서 말한 것은 **프로듀서가 레코드를 파티션에 넣는** 분배 전략이라 `partitioner.class`로 고른다. 이름만 같고 계층이 다르다.
 
