@@ -4,7 +4,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 커스텀 파티셔너 — 등록하는 순간 무엇이 꺼지나",
+    "title": "Kafka 커스텀 파티셔너 - 등록하는 순간 무엇이 꺼지나",
     "date": "2026-08-31",
     "tags": [
       "kafka",
@@ -15,7 +15,7 @@
     "summary": "커스텀 파티셔너를 등록하면 누적 바이트로 파티션을 고르던 계층이 통째로 빠진다",
     "draft": false,
     "private": false,
-    "readingTime": 18,
+    "readingTime": 16,
     "cover": "",
     "order": 0,
     "series": "",
