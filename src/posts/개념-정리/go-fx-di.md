@@ -1,5 +1,5 @@
 ---
-title: "Go의 의존성 주입 — uber-fx로 보는 빈 조립"
+title: "uber-fx로 하는 Go 의존성 주입"
 date: 2026-06-11
 tags: [go, fx, dependency-injection, uber-fx, di]
 order: 11

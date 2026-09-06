@@ -1,5 +1,5 @@
 ---
-title: "Go의 context — 취소와 타임아웃을 전파하는 끈"
+title: "Go의 context"
 date: 2026-06-11
 tags: [go, context, cancellation, timeout]
 order: 10

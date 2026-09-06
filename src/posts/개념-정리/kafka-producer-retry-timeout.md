@@ -1,5 +1,5 @@
 ---
-title: "Kafka 프로듀서 전송과 재전송 — 언제까지 기다리고 언제 포기하나"
+title: "Kafka 프로듀서의 재전송과 타임아웃"
 date: 2026-08-24
 tags: [kafka, producer, timeout, retry]
 summary: 동기냐 비동기냐가 배치 크기를 정하고, 타임아웃은 레코드가 아니라 그 배치에 걸린다

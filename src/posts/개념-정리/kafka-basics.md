@@ -1,5 +1,5 @@
 ---
-title: "Kafka — 토픽·파티션·컨슈머 그룹의 동작 원리"
+title: "Kafka 토픽, 파티션, 컨슈머 그룹"
 date: 2026-06-22
 tags: [kafka, partition, consumer-group]
 ---

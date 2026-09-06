@@ -1,5 +1,5 @@
 ---
-title: "MSA Saga 여정 (1) — 유스케이스에 롤백을 직접 작성하던 시기"
+title: "유스케이스 안에 직접 쓰던 롤백"
 date: 2026-03-22
 tags: [msa, saga, 분산-트랜잭션, 보상-트랜잭션]
 series: MSA Saga 여정

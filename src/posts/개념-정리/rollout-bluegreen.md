@@ -1,5 +1,5 @@
 ---
-title: Argo Rollouts - Blue-Green 배포
+title: "Argo Rollouts Blue-Green 배포"
 date: 2026-02-05
 tags: [kubernetes, argo-rollouts, blue-green, devops, k8s]
 ---

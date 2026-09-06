@@ -1,5 +1,5 @@
 ---
-title: "Kafka 커스텀 파티셔너 - 등록하는 순간 무엇이 꺼지나"
+title: "Kafka 커스텀 파티셔너"
 date: 2026-08-31
 tags: [kafka, producer, partitioner, java]
 summary: 커스텀 파티셔너를 등록하면 누적 바이트로 파티션을 고르던 계층이 통째로 빠진다

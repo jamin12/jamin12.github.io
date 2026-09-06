@@ -1,5 +1,5 @@
 ---
-title: "Jackson의 다형성 타입 처리: @JsonTypeInfo와 activateDefaultTyping의 역할 분담"
+title: "Jackson의 다형성 타입 처리"
 date: 2026-01-23
 tags: [jackson, serialization, redis, java]
 ---

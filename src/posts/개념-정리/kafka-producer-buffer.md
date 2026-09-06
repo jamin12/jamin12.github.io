@@ -1,5 +1,5 @@
 ---
-title: "Kafka 프로듀서 버퍼 — 배치는 어디에 쌓이고 어떻게 나가나"
+title: "Kafka 프로듀서 버퍼"
 date: 2026-08-22
 tags: [kafka, producer, batch]
 summary: 파티션마다 배치 큐가 있고, buffer.memory는 그 전체가 나눠 쓰는 풀 하나다

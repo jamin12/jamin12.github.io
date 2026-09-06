@@ -1,5 +1,5 @@
 ---
-title: HackerRank - Castle on the Grid
+title: "HackerRank Castle on the Grid"
 date: 2026-01-29
 tags: [bfs, graph]
 ---

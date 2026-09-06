@@ -1,5 +1,5 @@
 ---
-title: Argo Rollouts - Canary 배포
+title: "Argo Rollouts Canary 배포"
 date: 2026-02-06
 tags: [kubernetes, argo-rollouts, canary, nginx-ingress, istio, devops, k8s]
 ---

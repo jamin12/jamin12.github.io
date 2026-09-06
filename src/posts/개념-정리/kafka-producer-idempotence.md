@@ -1,5 +1,5 @@
 ---
-title: "Kafka 멱등 프로듀서 — 중복은 어떻게 걸러지고 언제 조용히 꺼지나"
+title: "Kafka 멱등 프로듀서"
 date: 2026-08-25
 tags: [kafka, producer, retry, configuration]
 summary: 브로커는 파티션마다 배치 5개분만 기억하고, 설정이 어긋나면 예외 없이 멱등성만 꺼진다

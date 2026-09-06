@@ -1,5 +1,5 @@
 ---
-title: "Kafka 브로커와 복제 — 파티션은 어디에 어떻게 저장되나"
+title: "Kafka 브로커와 복제"
 date: 2026-07-02
 tags: [kafka, broker, replication]
 ---

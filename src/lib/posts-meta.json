@@ -1,10 +1,33 @@
 [
   {
+    "slug": "kafka-consumer-fetch",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 컨슈머의 fetch 버퍼",
+    "date": "2026-09-06",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "configuration",
+      "java"
+    ],
+    "summary": "브로커에서 오는 단위는 바이트고 poll이 건네는 단위는 건수라, 둘 사이에 큐가 하나 있다",
+    "draft": false,
+    "private": false,
+    "readingTime": 19,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-fetch"
+  },
+  {
     "slug": "kafka-custom-partitioner",
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 커스텀 파티셔너 - 등록하는 순간 무엇이 꺼지나",
+    "title": "Kafka 커스텀 파티셔너",
     "date": "2026-08-31",
     "tags": [
       "kafka",
@@ -27,7 +50,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 컨슈머 poll 루프 — 어느 스레드가 무엇을 하나",
+    "title": "Kafka 컨슈머 poll 루프의 스레드",
     "date": "2026-08-27",
     "tags": [
       "kafka",
@@ -50,7 +73,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 리밸런싱 프로토콜 — 파티션 배정은 누가 계산하나",
+    "title": "Kafka 리밸런싱 프로토콜",
     "date": "2026-08-27",
     "tags": [
       "kafka",
@@ -72,7 +95,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 멱등 프로듀서 — 중복은 어떻게 걸러지고 언제 조용히 꺼지나",
+    "title": "Kafka 멱등 프로듀서",
     "date": "2026-08-25",
     "tags": [
       "kafka",
@@ -95,7 +118,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 프로듀서 전송과 재전송 — 언제까지 기다리고 언제 포기하나",
+    "title": "Kafka 프로듀서의 재전송과 타임아웃",
     "date": "2026-08-24",
     "tags": [
       "kafka",
@@ -118,7 +141,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 프로듀서 버퍼 — 배치는 어디에 쌓이고 어떻게 나가나",
+    "title": "Kafka 프로듀서 버퍼",
     "date": "2026-08-22",
     "tags": [
       "kafka",
@@ -140,7 +163,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 프로듀서 Java 클라이언트 — send() 뒤에서 실제로 일어나는 일",
+    "title": "Kafka 프로듀서 Java 클라이언트 내부",
     "date": "2026-08-19",
     "tags": [
       "kafka",
@@ -162,7 +185,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 설정 — 어디서 정하고 언제 반영되나",
+    "title": "Kafka 설정의 계층과 반영 시점",
     "date": "2026-08-15",
     "tags": [
       "kafka",
@@ -185,7 +208,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka Lag — 컨슈머가 얼마나 밀렸는지 어떻게 아는가",
+    "title": "Kafka 컨슈머 Lag",
     "date": "2026-08-15",
     "tags": [
       "kafka",
@@ -208,7 +231,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 프로듀서 — send()를 호출하면 무슨 일이 일어나나",
+    "title": "Kafka 프로듀서 send()의 경로",
     "date": "2026-08-13",
     "tags": [
       "kafka",
@@ -231,7 +254,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 레코드와 로그 — 메시지는 어떻게 생겼고 디스크에 어떻게 쌓이나",
+    "title": "Kafka 레코드와 로그 구조",
     "date": "2026-07-22",
     "tags": [
       "kafka",
@@ -253,7 +276,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka 브로커와 복제 — 파티션은 어디에 어떻게 저장되나",
+    "title": "Kafka 브로커와 복제",
     "date": "2026-07-02",
     "tags": [
       "kafka",
@@ -275,7 +298,7 @@
     "category": "개념-정리",
     "subcategory": "kafka",
     "subcategoryLabel": "Kafka",
-    "title": "Kafka — 토픽·파티션·컨슈머 그룹의 동작 원리",
+    "title": "Kafka 토픽, 파티션, 컨슈머 그룹",
     "date": "2026-06-22",
     "tags": [
       "kafka",
@@ -344,7 +367,7 @@
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "Go의 인터페이스 — implements가 없다",
+    "title": "Go의 암묵적 인터페이스",
     "date": "2026-06-11",
     "tags": [
       "go",
@@ -488,7 +511,7 @@
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "Go의 context — 취소와 타임아웃을 전파하는 끈",
+    "title": "Go의 context",
     "date": "2026-06-11",
     "tags": [
       "go",
@@ -511,7 +534,7 @@
     "category": "개념-정리",
     "subcategory": "go",
     "subcategoryLabel": "Go",
-    "title": "Go의 의존성 주입 — uber-fx로 보는 빈 조립",
+    "title": "uber-fx로 하는 Go 의존성 주입",
     "date": "2026-06-11",
     "tags": [
       "go",
@@ -557,7 +580,7 @@
     "category": "개념-정리",
     "subcategory": "react",
     "subcategoryLabel": "React",
-    "title": "QueryClient는 서버 상태를 다루는 매니저였다 — useQuery와 useMutation",
+    "title": "TanStack Query의 QueryClient",
     "date": "2026-05-28",
     "tags": [
       "react",
@@ -1008,7 +1031,7 @@
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "MSA Saga 여정 (4) — DB 설계: 왜 테이블 4개인가",
+    "title": "Saga의 테이블 설계",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -1032,7 +1055,7 @@
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "MSA Saga 여정 (5) — Status, 재시도, 보상 트랜잭션",
+    "title": "Saga의 상태, 재시도, 보상 트랜잭션",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -1056,7 +1079,7 @@
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "MSA Saga 여정 (6) — 오케스트레이션과 메시지 흐름",
+    "title": "Saga 오케스트레이션의 메시지 흐름",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -1080,7 +1103,7 @@
     "category": "개념-정리",
     "subcategory": "saga",
     "subcategoryLabel": "Saga · Outbox",
-    "title": "MSA Saga 여정 (7) — Stream 구성, 코드 구조, 브로커 안전망",
+    "title": "Saga의 Stream 구성과 코드 구조",
     "date": "2026-04-12",
     "tags": [
       "saga",
@@ -1126,7 +1149,7 @@
     "category": "개념-정리",
     "subcategory": "circuit-breaker",
     "subcategoryLabel": "서킷브레이커",
-    "title": "서킷브레이커의 3가지 상태: Closed, Open, Half-Open",
+    "title": "서킷브레이커의 세 가지 상태",
     "date": "2026-04-08",
     "tags": [
       "circuit-breaker",
@@ -1475,7 +1498,7 @@
     "category": "트러블-슈팅",
     "subcategory": "",
     "subcategoryLabel": "",
-    "title": "MSA Saga 여정 (1) — 유스케이스에 롤백을 직접 작성하던 시기",
+    "title": "유스케이스 안에 직접 쓰던 롤백",
     "date": "2026-03-22",
     "tags": [
       "msa",
@@ -1498,7 +1521,7 @@
     "category": "트러블-슈팅",
     "subcategory": "",
     "subcategoryLabel": "",
-    "title": "MSA Saga 여정 (2) — Redis Pub/Sub에서 Stream과 Outbox까지",
+    "title": "Redis Pub/Sub에서 Stream과 Outbox로",
     "date": "2026-03-22",
     "tags": [
       "msa",
@@ -1522,7 +1545,7 @@
     "category": "트러블-슈팅",
     "subcategory": "",
     "subcategoryLabel": "",
-    "title": "MSA Saga 여정 (3) — 중앙 오케스트레이션의 복잡성과 단순화",
+    "title": "중앙 오케스트레이션의 단순화",
     "date": "2026-03-22",
     "tags": [
       "msa",
@@ -1686,7 +1709,7 @@
     "category": "개념-정리",
     "subcategory": "deployment",
     "subcategoryLabel": "배포 전략",
-    "title": "Argo Rollouts - Canary 배포",
+    "title": "Argo Rollouts Canary 배포",
     "date": "2026-02-06",
     "tags": [
       "kubernetes",
@@ -1756,7 +1779,7 @@
     "category": "개념-정리",
     "subcategory": "deployment",
     "subcategoryLabel": "배포 전략",
-    "title": "Argo Rollouts - Blue-Green 배포",
+    "title": "Argo Rollouts Blue-Green 배포",
     "date": "2026-02-05",
     "tags": [
       "kubernetes",
@@ -1780,7 +1803,7 @@
     "category": "코테",
     "subcategory": "graph",
     "subcategoryLabel": "그래프 · BFS",
-    "title": "HackerRank - Castle on the Grid",
+    "title": "HackerRank Castle on the Grid",
     "date": "2026-01-29",
     "tags": [
       "bfs",
@@ -1801,7 +1824,7 @@
     "category": "개념-정리",
     "subcategory": "jackson",
     "subcategoryLabel": "Jackson",
-    "title": "Jackson의 다형성 타입 처리: @JsonTypeInfo와 activateDefaultTyping의 역할 분담",
+    "title": "Jackson의 다형성 타입 처리",
     "date": "2026-01-23",
     "tags": [
       "jackson",
@@ -1824,7 +1847,7 @@
     "category": "개념-정리",
     "subcategory": "redis",
     "subcategoryLabel": "Redis Streams",
-    "title": "Redis Streams - 왜 필요하고 어떻게 동작하나",
+    "title": "Redis Streams의 동작 원리",
     "date": "2026-01-22",
     "tags": [
       "redis",
@@ -1846,7 +1869,7 @@
     "category": "개념-정리",
     "subcategory": "redis",
     "subcategoryLabel": "Redis Streams",
-    "title": "Redis Streams Consumer Group - 여러 워커가 안전하게 나눠 처리하기",
+    "title": "Redis Streams Consumer Group",
     "date": "2026-01-21",
     "tags": [
       "redis",
@@ -1869,7 +1892,7 @@
     "category": "개념-정리",
     "subcategory": "redis",
     "subcategoryLabel": "Redis Streams",
-    "title": "Redis Streams - 워커가 죽으면 메시지는 어떻게 되나 (Offset과 Pending)",
+    "title": "Redis Streams의 Offset과 Pending",
     "date": "2026-01-20",
     "tags": [
       "redis",
@@ -2171,7 +2194,7 @@
     "category": "개념-정리",
     "subcategory": "database",
     "subcategoryLabel": "데이터베이스",
-    "title": "WHERE 절의 4단계 처리 과정: 논리부터 표현식까지",
+    "title": "WHERE 절의 4단계 처리 과정",
     "date": "2026-01-02",
     "tags": [
       "databases",
@@ -2467,7 +2490,7 @@
     "category": "트러블-슈팅",
     "subcategory": "",
     "subcategoryLabel": "",
-    "title": "비동기 호출과 TaskDecorator: SecurityContext 전파",
+    "title": "비동기 호출의 SecurityContext 전파",
     "date": "2025-12-22",
     "tags": [
       "비동기",
@@ -2745,7 +2768,7 @@
     "category": "코테",
     "subcategory": "dp",
     "subcategoryLabel": "DP",
-    "title": "백준 11722번 - 가장 긴 감소하는 부분 수열",
+    "title": "백준 11722번 가장 긴 감소하는 부분 수열",
     "date": "2025-12-10",
     "tags": [
       "dp"
@@ -2765,7 +2788,7 @@
     "category": "코테",
     "subcategory": "dp",
     "subcategoryLabel": "DP",
-    "title": "백준 1309번 - 동물원",
+    "title": "백준 1309번 동물원",
     "date": "2025-12-06",
     "tags": [
       "dp"

@@ -1,5 +1,5 @@
 ---
-title: Redis Streams - 워커가 죽으면 메시지는 어떻게 되나 (Offset과 Pending)
+title: "Redis Streams의 Offset과 Pending"
 date: 2026-01-20
 tags: [redis, streams, offset, valkey]
 ---

@@ -1,5 +1,5 @@
 ---
-title: "비동기 호출과 TaskDecorator: SecurityContext 전파"
+title: "비동기 호출의 SecurityContext 전파"
 date: 2025-12-22
 tags: [비동기, taskdecorator, security]
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Go의 인터페이스 — implements가 없다"
+title: "Go의 암묵적 인터페이스"
 date: 2026-06-11
 tags: [go, interface, duck-typing, structural-typing]
 order: 4

@@ -1,5 +1,5 @@
 ---
-title: "서킷브레이커의 3가지 상태: Closed, Open, Half-Open"
+title: "서킷브레이커의 세 가지 상태"
 date: 2026-04-08
 tags: [circuit-breaker, fault-tolerance, msa]
 order: 2

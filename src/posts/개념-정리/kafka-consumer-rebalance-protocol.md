@@ -1,5 +1,5 @@
 ---
-title: "Kafka 리밸런싱 프로토콜 — 파티션 배정은 누가 계산하나"
+title: "Kafka 리밸런싱 프로토콜"
 date: 2026-08-27
 tags: [kafka, consumer-group, broker]
 summary: classic은 컨슈머 하나가 배정표를 짜서 브로커에 제출하고, 새 프로토콜은 브로커가 직접 계산해 heartbeat에 실어 내려보낸다

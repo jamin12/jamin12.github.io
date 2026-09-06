@@ -1,5 +1,5 @@
 ---
-title: QueryClient는 서버 상태를 다루는 매니저였다 — useQuery와 useMutation
+title: "TanStack Query의 QueryClient"
 date: 2026-05-28
 tags: [react, tanstack-query]
 ---

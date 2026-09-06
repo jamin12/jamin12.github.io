@@ -1,5 +1,5 @@
 ---
-title: "MSA Saga 여정 (2) — Redis Pub/Sub에서 Stream과 Outbox까지"
+title: "Redis Pub/Sub에서 Stream과 Outbox로"
 date: 2026-03-22
 tags: [msa, saga, redis-stream, outbox-pattern, 분산-트랜잭션]
 series: MSA Saga 여정

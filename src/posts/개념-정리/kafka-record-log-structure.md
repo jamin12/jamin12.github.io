@@ -1,5 +1,5 @@
 ---
-title: "Kafka 레코드와 로그 — 메시지는 어떻게 생겼고 디스크에 어떻게 쌓이나"
+title: "Kafka 레코드와 로그 구조"
 date: 2026-07-22
 tags: [kafka, record, log]
 ---

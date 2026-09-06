@@ -1,5 +1,5 @@
 ---
-title: Redis Streams Consumer Group - 여러 워커가 안전하게 나눠 처리하기
+title: "Redis Streams Consumer Group"
 date: 2026-01-21
 tags: [redis, streams, consumer-group, valkey]
 ---

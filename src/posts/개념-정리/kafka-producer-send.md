@@ -1,5 +1,5 @@
 ---
-title: "Kafka 프로듀서 — send()를 호출하면 무슨 일이 일어나나"
+title: "Kafka 프로듀서 send()의 경로"
 date: 2026-08-13
 tags: [kafka, producer, partitioner, serializer]
 ---

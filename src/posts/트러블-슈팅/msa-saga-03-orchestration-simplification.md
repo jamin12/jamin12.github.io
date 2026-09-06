@@ -1,5 +1,5 @@
 ---
-title: "MSA Saga 여정 (3) — 중앙 오케스트레이션의 복잡성과 단순화"
+title: "중앙 오케스트레이션의 단순화"
 date: 2026-03-22
 tags: [msa, saga, 오케스트레이션, 헥사고날, 분산-트랜잭션]
 series: MSA Saga 여정

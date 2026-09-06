@@ -1,5 +1,5 @@
 ---
-title: "Kafka 설정 — 어디서 정하고 언제 반영되나"
+title: "Kafka 설정의 계층과 반영 시점"
 date: 2026-08-15
 tags: [kafka, configuration, broker, topic]
 ---

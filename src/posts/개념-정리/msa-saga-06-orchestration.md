@@ -1,5 +1,5 @@
 ---
-title: "MSA Saga 여정 (6) — 오케스트레이션과 메시지 흐름"
+title: "Saga 오케스트레이션의 메시지 흐름"
 date: 2026-04-12
 tags: [saga, outbox, 오케스트레이션, 코레오그래피, msa]
 series: MSA Saga 여정

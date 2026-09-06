@@ -1,5 +1,5 @@
 ---
-title: "MSA Saga 여정 (5) — Status, 재시도, 보상 트랜잭션"
+title: "Saga의 상태, 재시도, 보상 트랜잭션"
 date: 2026-04-12
 tags: [saga, outbox, 분산-트랜잭션, msa, 보상-트랜잭션]
 series: MSA Saga 여정

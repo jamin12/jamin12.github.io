@@ -1,5 +1,5 @@
 ---
-title: "Kafka 프로듀서 Java 클라이언트 — send() 뒤에서 실제로 일어나는 일"
+title: "Kafka 프로듀서 Java 클라이언트 내부"
 date: 2026-08-19
 tags: [kafka, producer, java]
 summary: send()는 즉시 리턴하지 않고, 실패한 콜백은 성공처럼 보이는 로그를 남긴다

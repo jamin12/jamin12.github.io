@@ -1,5 +1,5 @@
 ---
-title: Redis Streams - 왜 필요하고 어떻게 동작하나
+title: "Redis Streams의 동작 원리"
 date: 2026-01-22
 tags: [redis, streams, valkey]
 ---

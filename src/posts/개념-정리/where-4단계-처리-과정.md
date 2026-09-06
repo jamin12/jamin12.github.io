@@ -1,5 +1,5 @@
 ---
-title: "WHERE 절의 4단계 처리 과정: 논리부터 표현식까지"
+title: "WHERE 절의 4단계 처리 과정"
 date: 2026-01-02
 tags: [databases, where, optimizer, execution_plan]
 ---

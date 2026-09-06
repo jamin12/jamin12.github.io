@@ -1,5 +1,5 @@
 ---
-title: "Kafka Lag — 컨슈머가 얼마나 밀렸는지 어떻게 아는가"
+title: "Kafka 컨슈머 Lag"
 date: 2026-08-15
 tags: [kafka, consumer-group, lag, offset]
 ---
