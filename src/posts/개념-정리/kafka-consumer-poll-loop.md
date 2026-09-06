@@ -1,5 +1,5 @@
 ---
-title: "Kafka 컨슈머 poll 루프 — 어느 스레드가 무엇을 하나"
+title: "Kafka 컨슈머 poll 루프의 스레드"
 date: 2026-08-27
 tags: [kafka, consumer-group, java, offset]
 summary: poll은 부른 스레드를 붙잡고, 백그라운드 스레드는 heartbeat만 보낸다
@@ -59,7 +59,7 @@ flowchart TD
 
 ## 백그라운드 스레드는 heartbeat만 보낸다
 
-컨슈머에도 백그라운드 스레드가 하나 있다. `AbstractCoordinator`의 내부 클래스 `HeartbeatThread`이고, 스레드 이름은 `kafka-coordinator-heartbeat-thread`에 `group.id`를 이어 붙인 형태다.
+컨슈머에도 백그라운드 스레드가 하나 있다. `AbstractCoordinator`의 내부 클래스 `HeartbeatThread`이고, 스레드 이름은 `kafka-coordinator-heartbeat-thread`에 `group.id`를 이어 붙인 형태다. 컨슈머를 만들 때가 아니라 첫 `poll`이 코디네이터를 찾아 그룹에 합류하는 `ensureActiveGroup()` 안에서 만들어지므로, 디버거로 `coordinator` 필드를 열어 보면 첫 `poll` 전에는 `heartbeatThread`가 `null`이다.
 
 하는 일이 둘이다.
 
@@ -88,17 +88,7 @@ heartbeat를 별도 스레드로 뽑아낸 것은 Kafka 0.10.1의 결과다. 그
 
 `Duration.ofMillis(1000)`은 최대 대기 시간이다. 가져올 게 없을 때만 그 시간까지 기다리고, 버퍼에 레코드가 있으면 즉시 리턴한다. 무한 루프가 초당 한 바퀴 도는 것이 아니라 데이터가 들어오는 만큼 돈다.
 
-기다리는 층이 하나 더 있다. 브로커도 fetch 요청을 곧바로 처리하지 않고, 줄 만큼 쌓이거나 시간이 차기를 기다린다.
-
-| 설정 | 재는 것 | 기본값 (4.2.1) |
-|---|---|---|
-| `fetch.min.bytes` | 이만큼 모이면 응답한다 | `1` |
-| `fetch.max.wait.ms` | 덜 모였어도 이 시간이 지나면 응답한다 | `500` |
-| `max.poll.records` | `poll` 한 번이 반환하는 레코드 수 상한 | `500` |
-
-기본값이 1바이트라 브로커는 레코드가 하나만 있어도 곧바로 응답한다. `fetch.min.bytes`를 올리면 왕복이 줄고 그만큼 지연이 붙는데, 프로듀서가 [배치를 모아 보내는 것](/posts/kafka-producer-buffer)과 같은 축의 조율이다.
-
-`max.poll.records`가 자르는 것은 브로커에서 가져오는 양이 아니라 `poll`이 한 번에 건네주는 양이다. 버퍼에 그보다 많이 들어 있으면 다음 `poll`은 네트워크에 나가지 않고 남은 것을 꺼내 준다.
+기다리는 층이 하나 더 있다. 브로커도 fetch 요청을 곧바로 처리하지 않고, `fetch.min.bytes`만큼 쌓이거나 `fetch.max.wait.ms`가 차기를 기다린다. 기본값 1바이트에서는 레코드가 하나만 있어도 곧바로 응답한다. `max.poll.records`가 자르는 것은 브로커에서 가져오는 양이 아니라 `poll`이 한 번에 건네주는 양이라, 버퍼에 그보다 많이 들어 있으면 다음 `poll`은 네트워크에 나가지 않고 남은 것을 꺼내 준다. 브로커가 언제 얼마를 보내는지와 그 사이의 큐는 [컨슈머 fetch](/posts/kafka-consumer-fetch)에서 다룬다.
 
 ## 커밋은 poll 안에서 일어난다
 
