@@ -1,0 +1,98 @@
+---
+title: kubelet의 실행 방식
+date: 2025-05-30
+tags: [k8s, control-plane, kubelet]
+summary: kubelet이 자기 노드의 Pod 정의를 받는 방식, CRI로 컨테이너를 띄우는 과정, 상태를 보고하는 주기
+order: 3
+---
+## kubelet의 역할
+
+kubelet은 **자기 Node에 속한 Pod 정의를 감지해서**,
+그것이 제대로 실행되도록 하고, 실행 상태를 apiserver에 주기적으로 보고합니다.
+
+```mermaid
+sequenceDiagram
+    participant API as kube-apiserver
+    participant Node as kubelet
+    participant CRT as containerd
+    participant Runc as runc
+
+    API->>Node: Pod 정의 전달 (watch)
+    Node->>CRT: 컨테이너 생성 요청
+    CRT->>Runc: 실제 프로세스 실행
+    Runc-->>CRT: 실행 완료
+    CRT-->>Node: 컨테이너 정보 전달
+    Node-->>API: 상태 보고 (Pod: Running, Ready)
+
+```
+
+## kubelet이 정의를 받는 방식
+
+kubelet은 자신에게 스케줄링된 Pod 정의를 **kube-apiserver로부터 watch 방식으로 구독**하고 있습니다.
+
+```
+GET /api/v1/namespaces/default/pods?fieldSelector=spec.nodeName=worker-1&watch=true
+```
+
+`fieldSelector`로 자기 Node에 배정된 Pod만 감지합니다.
+
+이렇게 감지한 Pod 정의에는 아래의 정보가 있습니다.
+
+```json
+{
+  "metadata": { "name": "nginx-abc" },
+  "spec": {
+    "containers": [
+      { "name": "nginx", "image": "nginx:latest" }
+    ]
+  }
+}
+
+```
+
+## 실제 컨테이너 실행
+
+kubelet은 받은 Pod 정의를 실행할 때, 직접 프로세스를 띄우지 않습니다.
+대신 **CRI(Container Runtime Interface)**를 통해 `containerd` 같은 런타임에게 작업을 위임합니다.
+
+1. kubelet이 containerd에 "이 이미지로 컨테이너 만들어줘" 요청
+2. containerd가 runc로 cgroups, 네트워크, filesystem 구성 후 컨테이너 프로세스 시작
+3. 실행 후, containerd가 상태 정보를 kubelet에 전달
+
+## kubelet이 apiserver에 보고하는 방식
+
+kubelet은 모든 Pod의 상태(phase, Ready 상태, restart 횟수 등)를 **주기적으로 kube-apiserver에 PATCH** 형태로 보고합니다.
+
+```json
+{
+  "status": {
+    "phase": "Running",
+    "conditions": [
+      {
+        "type": "Ready",
+        "status": "True"
+      }
+    ]
+  }
+}
+```
+
+ReplicaSet 등의 controller가 **Ready 상태**를 기반으로 Pod 개수를 판단할 때 사용됩니다.
+
+### kubelet의 상태 보고 주기 (status sync 주기)
+
+#### 1. node-status-update-frequency
+
+- **kubelet이 kube-apiserver로 Node 자체 상태를 보내는 주기**
+- 기본값: `10초`
+
+#### 2. sync-frequency
+
+- **kubelet이 자신이 실행 중인 모든 Pod의 상태를 점검하는 주기**
+- 기본값: `1초`
+
+#### 3. statusManager 의 상태 Patch 반영
+
+- kubelet은 상태를 점검하면서 **Pod 상태에 변화가 있을 경우에만**
+    `PATCH` 요청을 통해 kube-apiserver에 보고합니다.
+- 상태가 바뀌지 않으면 굳이 매번 전송하지 않습니다.

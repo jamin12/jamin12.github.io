@@ -1,7 +1,7 @@
 ---
 title: NFS 볼륨
 date: 2025-12-26
-tags: [k8s]
+tags: [k8s, storage, volume]
 ---
 
 NFS(Network File System)는 원격 파일 시스템을 로컬 파일 시스템처럼 사용할 수 있게 하는 프로토콜입니다. 쿠버네티스에서는 NFS 볼륨을 통해 여러 파드가 네트워크를 통해 데이터를 쉽게 공유할 수 있습니다.

@@ -37,14 +37,16 @@ export const SUBCATEGORY_RULES = {
     { slug: 'ci',            label: 'CI/CD',           tags: ['CI'] },
     { slug: 'cs',            label: 'CS 기초',         tags: ['cs'] },
     { slug: 'database',      label: '데이터베이스',    tags: ['databases'] },
-    // kubernetes는 맨 마지막. argo-rollouts(kubernetes 태그도 포함)가 먼저 deployment로 빠진 뒤,
-    // 순수 k8s 스토리지/권한 관련 글(Pv-pvc, storageClass 등)만 여기로 떨어짐
-    { slug: 'kubernetes',    label: 'Kubernetes',     tags: ['k8s', 'kubernetes'] },
     { slug: 'circuit-breaker', label: '서킷브레이커', tags: ['circuit-breaker'] },
     { slug: 'saga',            label: 'Saga · Outbox',  tags: ['saga', 'outbox'] },
     { slug: 'coroutine',       label: 'Coroutine',      tags: ['coroutine'] },
     { slug: 'spring-reactive', label: 'Spring Reactive', tags: ['spring-reactive', 'reactive'] },
     { slug: 'go',              label: 'Go',             tags: ['go'] },
+    { slug: 'websocket',       label: 'WebSocket',      tags: ['websocket'] },
+    // k8s는 반드시 배열의 맨 끝. kubernetes 태그는 배포 전략(argo-rollouts), WebSocket(실시간 로그 스트리밍),
+    // Coroutine(Kotlin Flow 파이프라인) 글에도 붙어 있어서, 앞의 규칙이 먼저 가져간 뒤 순수 k8s 글만 여기로 떨어져야 함.
+    // 이 규칙 뒤에 새 규칙을 덧붙이다가 '실시간 로그 스트리밍' 글이 k8s로 들어간 적이 있다 (2026-09-08)
+    { slug: 'k8s',             label: 'k8s',            tags: ['k8s', 'kubernetes'] },
   ],
 
   '코테': [

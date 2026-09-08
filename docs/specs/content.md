@@ -219,6 +219,10 @@ Jekyll이 `_posts/<주제폴더>/<slug>.md` + frontmatter `categories:` 배열�
 
 **2026-05-05 갱신**: 트러블-슈팅의 Saga 리팩터링 회고와 개념-정리의 Saga + Outbox 설계 시리즈를 단일 시리즈로 통합. 두 글이 분리되어 있을 때 독자가 회고의 결론("단순 2테이블로 단순화 승리")과 설계의 결론("4테이블로 재정교화")을 충돌로만 읽고 흐름을 잇지 못한다는 판단이 근거. 회고(시간순 의사결정) → 설계론(현재 시점 결과)을 카테고리 넘나드는 시리즈의 두 막으로 묶어, 단순화에서 다시 정교화로 돌아온 결정 자체가 이력으로 보이게 했다. 태그·서브카테고리 규칙은 변동 없음(`saga` / `outbox` 태그가 그대로 `Saga · Outbox` 서브카테고리에 매핑).
 
+**2026-09-08 갱신**: k8s 강의 노트 42글이 들어오면서 `kubernetes` 서브 카테고리를 `k8s`(slug, label 모두)로 바꿨다. 태그 이름과 같게 맞춘 것이고 매칭 태그(`k8s`, `kubernetes`)는 그대로다. 같은 날 두 가지가 드러났다.
+- **"맨 마지막" 규칙이 실제로는 중간에 있었다.** 4차 이후 `circuit-breaker`, `saga`, `coroutine`, `spring-reactive`, `go` 규칙을 배열 끝에 덧붙이는 동안 `kubernetes` 규칙이 그 앞에 남았다. 그 결과 `kubernetes` 태그가 붙은 "실시간 로그 스트리밍" 시리즈 글 2편(`websocket-주제-선정`, `websocket-kotlin-flow-pipeline`)이 k8s 서브로 들어갔다. `k8s` 규칙을 배열 맨 끝으로 옮기고, 주석에 "새 규칙은 이 위에 넣는다"를 남겼다. 배열 순서가 곧 우선순위인 구조에서는 "마지막"이라는 약속이 파일을 고칠 때마다 깨질 수 있다.
+- **`websocket` 서브 카테고리 신설.** 실시간 로그 스트리밍 시리즈 6편 중 4편은 어느 규칙에도 걸리지 않아 서브 카테고리가 비어 있었다. `websocket` 태그를 잡는 규칙을 `go` 뒤, `k8s` 앞에 두었다. `websocket-kotlin-flow-pipeline`은 `websocket` 태그가 없고 `coroutine` 태그가 있어 Coroutine으로 간다. Kotlin Flow 파이프라인 글이라 그쪽이 맞다고 봤다.
+
 **새 주제가 생겼을 때의 절차**는 작성자 쪽 일이라 [`writing/organizing.md`](../writing/organizing.md#하위-카테고리)에 있다.
 
 ### 카테고리 alias

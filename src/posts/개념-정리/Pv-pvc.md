@@ -1,7 +1,7 @@
 ---
 title: PV(Persistent Volume)
 date: 2025-12-26
-tags: [k8s]
+tags: [k8s, storage, volume]
 ---
 
 ## PV(Persistent Volume)

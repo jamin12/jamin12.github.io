@@ -1,7 +1,7 @@
 ---
 title: StorageClass
 date: 2025-12-26
-tags: [k8s]
+tags: [k8s, storage, volume]
 ---
 
 StorageClass는 쿠버네티스에서 **스토리지 프로비저닝(Provisioning)을 자동화하고 관리하는 방법**을 제공합니다. StorageClass를 이용하면 관리자가 사전에 PV(Persistent Volume)를 수동으로 생성하지 않고도 사용자가 요청(PVC, Persistent Volume Claim)하는 순간 동적으로 PV를 자동 생성하여 바인딩할 수 있습니다.
