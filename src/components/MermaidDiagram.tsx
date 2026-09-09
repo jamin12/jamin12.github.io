@@ -15,6 +15,21 @@ import { useEffect, useRef, useState } from 'react'
 let mermaidInstance = null
 let initialized = false
 
+// mermaid.render는 측정용 DOM을 내부에서 공유한다. 한 글에 다이어그램이 셋 이상
+// 있으면 각 컴포넌트의 effect가 동시에 render를 부르고, 서로의 상태를 덮어써
+// 일부가 빈 SVG로 돌아온다 (throw가 아니라 falsy라서 에러 박스도 안 뜬다).
+// 호출을 모듈 단위 큐로 직렬화한다.
+let renderQueue: Promise<unknown> = Promise.resolve()
+
+function enqueueRender<T>(task: () => Promise<T>): Promise<T> {
+  const run = renderQueue.then(task, task) as Promise<T>
+  renderQueue = run.then(
+    () => undefined,
+    () => undefined,
+  )
+  return run
+}
+
 async function getMermaid() {
   if (!mermaidInstance) {
     const mod = await import('mermaid')
@@ -51,9 +66,14 @@ export default function MermaidDiagram({ code, onClickExpand }: { code: string; 
     let alive = true
     const render = async () => {
       try {
-        const mermaid = await getMermaid()
-        const id = `${idRef.current}-${Date.now()}`
-        const { svg: rendered } = await mermaid.render(id, code)
+        const rendered = await enqueueRender(async () => {
+          const mermaid = await getMermaid()
+          const id = `${idRef.current}-${Date.now()}`
+          const { svg } = await mermaid.render(id, code)
+          return svg
+        })
+        // 빈 SVG는 조용히 넘기지 않는다. 빈 박스만 남으면 작성자가 못 알아챈다.
+        if (!rendered) throw new Error('mermaid가 빈 SVG를 돌려줬다')
         if (alive) {
           setSvg(rendered)
           setError(null)
