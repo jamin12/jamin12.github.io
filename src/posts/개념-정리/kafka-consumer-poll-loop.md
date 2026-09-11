@@ -107,7 +107,7 @@ heartbeat를 별도 스레드로 뽑아낸 것은 Kafka 0.10.1의 결과다. 그
 
 ## auto.offset.reset은 저장된 offset이 없을 때만 쓰인다
 
-`__consumer_offsets`에 그 그룹의 진행 위치가 없을 때 어디서부터 읽을지가 `auto.offset.reset`으로 정해진다. 새 `group.id`로 처음 접속했거나, 오래 멈춰 있어 저장해 둔 offset이 만료된 경우다. 남아 있는 가장 오래된 offset부터 읽는 `earliest`와 지금 이후에 들어오는 것만 읽는 `latest` 중 하나를 고르며, 기본값은 `latest`다.
+커밋된 진행 위치는 브로커의 [내부 토픽 `__consumer_offsets`](/posts/kafka-consumer-offsets-topic)에 그룹 이름으로 저장되고, 거기에 그 그룹의 기록이 없을 때 어디서부터 읽을지가 `auto.offset.reset`으로 정해진다. 새 `group.id`로 처음 접속했거나, 오래 멈춰 있어 저장해 둔 offset이 만료된 경우다. 남아 있는 가장 오래된 offset부터 읽는 `earliest`와 지금 이후에 들어오는 것만 읽는 `latest` 중 하나를 고르며, 기본값은 `latest`다.
 
 기본값 탓에 걸리는 자리가 있다. 메시지를 먼저 세 건 보내 놓고 새 그룹으로 컨슈머를 띄우면, 컨슈머는 fetch position을 offset 3으로 잡고 아무것도 읽지 않는다. 쌓여 있는 0·1·2는 건너뛰고 그 뒤에 보낸 것부터 찍힌다. 기동 로그에 `Resetting offset for partition`으로 시작하는 줄이 남는 것이 유일한 단서다.
 
@@ -125,7 +125,16 @@ heartbeat를 별도 스레드로 뽑아낸 것은 Kafka 0.10.1의 결과다. 그
 
 ```java
 KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
-Runtime.getRuntime().addShutdownHook(new Thread(kafkaConsumer::wakeup));
+Thread mainThread = Thread.currentThread();
+
+Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+    kafkaConsumer.wakeup();
+    try {
+        mainThread.join();
+    } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+    }
+}));
 
 try {
     kafkaConsumer.subscribe(List.of(topicName));
@@ -142,6 +151,8 @@ try {
 ```
 
 `wakeup()`은 컨슈머의 메서드 중 유일하게 다른 스레드에서 불러도 되는 것이다. 나머지를 다른 스레드에서 부르면 `ConcurrentModificationException`으로 막히므로, 종료 신호를 넣을 자리가 여기뿐이다.
+
+훅이 `wakeup()`만 부르고 반환하면 커밋과 LeaveGroup이 나가지 못한다. JVM은 등록된 훅 스레드가 전부 끝나면 종료하는데, 메인 스레드는 그때 `poll`에서 막 빠져나와 `close()`에 들어간 참이다. 훅이 `mainThread.join()`으로 메인 스레드의 종료를 기다려야 `close()`가 끝까지 돌고, 그래야 위에서 본 45초를 실제로 피한다. `Thread.currentThread()`를 훅 바깥에서 잡아 두는 것도 같은 이유다 - 훅 안에서 부르면 메인 스레드가 아니라 훅 스레드 자신이 잡힌다.
 
 ## 이 배치는 group.protocol이 classic일 때다
 
