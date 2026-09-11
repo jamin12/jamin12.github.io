@@ -1,5 +1,28 @@
 [
   {
+    "slug": "kafka-consumer-offsets-topic",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka __consumer_offsets 토픽",
+    "date": "2026-09-10",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "offset",
+      "broker"
+    ],
+    "summary": "레코드 키가 그룹과 토픽과 파티션 셋으로만 이뤄져 있어서 offset의 주인이 컨슈머가 아니다",
+    "draft": false,
+    "private": false,
+    "readingTime": 10,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-offsets-topic"
+  },
+  {
     "slug": "kafka-consumer-fetch",
     "category": "개념-정리",
     "subcategory": "kafka",
@@ -63,7 +86,7 @@
     "summary": "서버는 임베딩, 저장, 검색만 하고, 훅이 부르는 claude -p가 추출과 판정을 맡는다. 한 턴이 끝나면 무슨 일이 일어나는지 따라간다",
     "draft": true,
     "private": false,
-    "readingTime": 15,
+    "readingTime": 16,
     "cover": "",
     "order": 2,
     "series": "Claude Code 장기 기억 구축기",
@@ -71,7 +94,7 @@
     "path": "/posts/ltm-02-구조와-동작"
   },
   {
-    "slug": "ltm-03-벡터는-1차-필터",
+    "slug": "ltm-03-벡터가-만들어지고-읽히는-자리",
     "category": "개념-정리",
     "subcategory": "",
     "subcategoryLabel": "",
@@ -92,14 +115,14 @@
     "order": 3,
     "series": "Claude Code 장기 기억 구축기",
     "seriesOrder": 3,
-    "path": "/posts/ltm-03-벡터는-1차-필터"
+    "path": "/posts/ltm-03-벡터가-만들어지고-읽히는-자리"
   },
   {
     "slug": "ltm-04-그래프와-카테고리",
     "category": "개념-정리",
     "subcategory": "",
     "subcategoryLabel": "",
-    "title": "그래프와 카테고리를 대체한 방법",
+    "title": "그래프와 카테고리를 다룬 방식",
     "date": "2026-09-04",
     "tags": [
       "claude-code",
@@ -108,10 +131,10 @@
       "llm",
       "architecture"
     ],
-    "summary": "흩어진 기억을 잇는 일을 저장할 때 만드는 그래프 대신 읽을 때의 병렬 검색과 병합에 맡기고, 카테고리는 type 한 값으로 줄였다",
+    "summary": "저장할 때 만들어지는 개체 저장소가 할 수 있는 일은 후보 안의 순서까지라, 흩어진 기억을 모으는 일은 읽을 때의 병렬 검색과 병합에 맡기고 카테고리는 type 한 값으로 줄였다",
     "draft": true,
     "private": false,
-    "readingTime": 8,
+    "readingTime": 9,
     "cover": "",
     "order": 4,
     "series": "Claude Code 장기 기억 구축기",
@@ -181,7 +204,7 @@
     "summary": "poll은 부른 스레드를 붙잡고, 백그라운드 스레드는 heartbeat만 보낸다",
     "draft": false,
     "private": false,
-    "readingTime": 16,
+    "readingTime": 17,
     "cover": "",
     "order": 0,
     "series": "",

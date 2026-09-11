@@ -37,13 +37,14 @@ flowchart TB
 
 ## 서버
 
-mem0 공식 저장소의 셀프호스팅 서버를 그대로 쓴다. 고친 곳은 세 파일이다.
+mem0 공식 저장소의 셀프호스팅 서버를 그대로 쓴다. 고친 곳은 네 파일이다.
 
 | 파일 | 변경 |
 |---|---|
-| docker-compose.yaml | 포트를 1990, 1991, 1992로 |
-| server/main.py | 허용 provider 화이트리스트에 `ollama` 추가 |
-| server/requirements.txt | `ollama` 패키지 추가 |
+| server/docker-compose.yaml | 포트를 1990, 1991, 1992로 |
+| server/main.py | 허용 provider 화이트리스트에 `ollama` 추가. `/search`에 `rerank` 파라미터와 크로스인코더 설정 추가 |
+| server/requirements.txt | `ollama`, `spacy`, `sentence-transformers` 추가. torch는 CPU 휠 인덱스로 고정 |
+| server/dev.Dockerfile | `en_core_web_sm`과 크로스인코더 가중치를 이미지에 미리 받아 둠 |
 
 서버는 허용하는 provider를 튜플로 들고 있고, 이미지에 번들된 것만 통과시킨다. mem0 라이브러리 자체는 Ollama를 지원하지만 서버 화이트리스트가 막고 있어서 한 줄을 더했다.
 
@@ -76,7 +77,7 @@ Ollama는 호스트에서 Homebrew 서비스로 돈다. LaunchAgent plist에 `OL
 | 이벤트 | 하는 일 | 사용자가 기다리나 |
 |---|---|---|
 | SessionStart | 상태줄 배너, 최근 활동 타임라인 주입 | 짧게 |
-| UserPromptSubmit | 프롬프트로 검색해 관련 기억 5개 주입. 3번째 프롬프트마다 최근 대화 자동 저장 | 검색만, 저장은 백그라운드 |
+| UserPromptSubmit | 프롬프트로 검색해 관련 기억 10개 주입. 3번째 프롬프트마다 최근 대화 자동 저장 | 검색만, 저장은 백그라운드 |
 | Stop | 턴이 끝날 때 마지막 답변에서 사실 추출, 저장 | 아니오, 백그라운드 |
 | PostToolUse (mem0 도구) | 세션 통계 갱신 | 아니오 |
 
@@ -110,7 +111,7 @@ Claude Code는 훅의 출력을 파이프로 받고, 그 파이프가 닫히면 
 |---|---|---|---|
 | user_id | 기억 주인 | MCP 서버 | 환경변수 |
 | project | 기억이 속한 프로젝트 | MCP 서버 | 현재 디렉터리의 git remote 주소를 `owner-repo` 꼴로 바꾼 것. 이 블로그 저장소에서는 `jamin12-jamin12.github.io` |
-| type | 기억의 종류 | Claude | decision, learning, task_learning, anti_pattern, preference, note 중 하나 |
+| type | 기억의 종류 | Claude | decision, learning, preference, task_learning, anti_pattern, session_state, note 중 하나 |
 
 - **프로젝트는 디렉터리가 정한다.** 어느 디렉터리에서 세션을 열었는지가 곧 프로젝트라, Claude가 잘못 적거나 빼먹을 일이 없다.
 - **type은 검색 필터다.** "결정만 보여줘"처럼 종류로 거를 때 쓴다.
@@ -182,7 +183,7 @@ UPDATE에는 안전장치가 붙어 있다. 모델이 돌려준 id가 검색 후
 
 ## 읽기 경로
 
-세션이 시작되면 SessionStart 훅이 상태줄과 최근 기억 타임라인을 컨텍스트에 넣는다. 그 뒤 프롬프트마다 UserPromptSubmit 훅이 프롬프트 전문을 쿼리로 서버에 검색을 쳐서 상위 5개를 "auto-retrieved" 블록으로 주입한다. 첫 프롬프트에는 규칙 하나가 함께 들어간다. 과거 작업을 언급하거나 결정을 묻거나 에러가 보이면 Claude가 직접 search_memories를 type 필터를 바꿔 2에서 4개 병렬로 던지라는 것이다.
+세션이 시작되면 SessionStart 훅이 상태줄과 최근 기억 타임라인을 컨텍스트에 넣는다. 그 뒤 프롬프트마다 UserPromptSubmit 훅이 프롬프트 전문을 쿼리로 서버에 검색을 쳐서 상위 10개를 "auto-retrieved" 블록으로 주입한다. 첫 프롬프트에는 규칙 하나가 함께 들어간다. 과거 작업을 언급하거나 결정을 묻거나 에러가 보이면 Claude가 직접 search_memories를 type 필터를 바꿔 2에서 4개 병렬로 던지라는 것이다.
 
 기억 본문은 전부 영어다. 검색이 벡터와 BM25 키워드의 하이브리드라 언어가 섞이면 키워드 쪽이 죽는다. 추출 프롬프트, MCP 도구 설명, 서버 전역 설정에 같은 문장이 박혀 있고, 식별자는 번역하지 않는다. 한국어로 물어도 Claude가 영어 명사구로 바꿔 검색하고 답은 한국어로 한다.
 
@@ -205,4 +206,4 @@ UPDATE에는 안전장치가 붙어 있다. 모델이 돌려준 id가 검색 후
 
 ## 서버가 하는 일
 
-이 구조에서 mem0 서버가 하는 일은 셋이다. 임베딩, 저장, 코사인과 BM25 검색. 클라우드 판에서 서버 LLM이 하던 추출, 중복 판정, 분류, 요약, 리랭크는 전부 호스트의 Claude로 갔거나 필요 없어졌다.
+이 구조에서 mem0 서버가 하는 일은 임베딩과 저장, 그리고 순위 매기기다. 순위는 코사인 유사도와 BM25에 개체 가산점을 더해 정하고, 그 결과를 로컬 크로스인코더가 다시 정렬한다. 전부 LLM을 부르지 않는다. 클라우드 판에서 서버 LLM이 하던 추출, 중복 판정, 분류, 요약은 호스트의 Claude로 갔거나 필요 없어졌다.
