@@ -156,7 +156,7 @@ flowchart LR
 리밸런싱에는 비용이 따른다. 전통적인 eager 방식은 재배정 동안 그룹 전체가 잠시 읽기를 멈춘다 — 이른바 stop-the-world다. 그래서 인스턴스 수가 자주 출렁이면 리밸런싱이 반복되고, 그 멈춤이 쌓여 오히려 처리량을 떨어뜨린다. 대응책은 대략 셋이다.
 
 - **스케일링 안정화** — 오토스케일러에 쿨다운을 둬 잦은 증감을 억제한다.
-- **Static Membership** — `group.instance.id`를 고정해, 짧은 재시작은 같은 멤버로 보고 리밸런싱을 생략한다.
+- **[Static Membership](/posts/kafka-static-membership)** — `group.instance.id`를 고정해, 짧은 재시작은 같은 멤버로 보고 리밸런싱을 생략한다.
 - **Cooperative Rebalancing** — 전체를 멈추지 않고 영향받는 파티션만 옮긴다.
 
 셋 중 마지막에는 조건이 붙는다. `partition.assignment.strategy`의 기본값은 `[RangeAssignor, CooperativeStickyAssignor]`라는 두 개짜리 목록이고, 앞에 있는 Range가 선택되므로 기본 상태의 실제 동작은 eager다. Cooperative를 쓰려면 목록에서 Range를 지워야 한다.

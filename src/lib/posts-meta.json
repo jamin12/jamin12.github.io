@@ -1,5 +1,27 @@
 [
   {
+    "slug": "kafka-static-membership",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka Static Membership",
+    "date": "2026-09-14",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "configuration"
+    ],
+    "summary": "리밸런싱을 건너뛰는 대신 그 파티션이 세션 타임아웃 동안 아무에게도 읽히지 않는다",
+    "draft": false,
+    "private": false,
+    "readingTime": 10,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-static-membership"
+  },
+  {
     "slug": "expo-build-ota",
     "category": "개념-정리",
     "subcategory": "react",
@@ -258,6 +280,50 @@
     "path": "/posts/kafka-custom-partitioner"
   },
   {
+    "slug": "kafka-consumer-rebalance-protocol",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka classic 리밸런싱 프로토콜",
+    "date": "2026-08-27",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "broker"
+    ],
+    "summary": "계산을 맡은 컨슈머가 하나라서, 그룹은 명단을 모으는 상태와 배정표를 기다리는 상태를 따로 갖는다",
+    "draft": false,
+    "private": false,
+    "readingTime": 8,
+    "cover": "",
+    "order": 1,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-rebalance-protocol"
+  },
+  {
+    "slug": "kafka-consumer-rebalance-kip848",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka KIP-848 리밸런싱 프로토콜",
+    "date": "2026-08-27",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "broker"
+    ],
+    "summary": "코디네이터가 목표 배정을 계산해 heartbeat에 실어 내려보내고, 멤버는 각자의 주기로 거기에 수렴한다",
+    "draft": false,
+    "private": false,
+    "readingTime": 8,
+    "cover": "",
+    "order": 2,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-rebalance-kip848"
+  },
+  {
     "slug": "kafka-consumer-poll-loop",
     "category": "개념-정리",
     "subcategory": "kafka",
@@ -279,28 +345,6 @@
     "series": "",
     "seriesOrder": 0,
     "path": "/posts/kafka-consumer-poll-loop"
-  },
-  {
-    "slug": "kafka-consumer-rebalance-protocol",
-    "category": "개념-정리",
-    "subcategory": "kafka",
-    "subcategoryLabel": "Kafka",
-    "title": "Kafka 리밸런싱 프로토콜",
-    "date": "2026-08-27",
-    "tags": [
-      "kafka",
-      "consumer-group",
-      "broker"
-    ],
-    "summary": "classic은 컨슈머 하나가 배정표를 짜서 브로커에 제출하고, 새 프로토콜은 브로커가 직접 계산해 heartbeat에 실어 내려보낸다",
-    "draft": false,
-    "private": false,
-    "readingTime": 11,
-    "cover": "",
-    "order": 0,
-    "series": "",
-    "seriesOrder": 0,
-    "path": "/posts/kafka-consumer-rebalance-protocol"
   },
   {
     "slug": "kafka-producer-idempotence",
