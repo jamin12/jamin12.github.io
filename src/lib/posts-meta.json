@@ -1,5 +1,27 @@
 [
   {
+    "slug": "kafka-consumer-assignment-strategy",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 컨슈머 파티션 할당 전략",
+    "date": "2026-09-27",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "partition"
+    ],
+    "summary": "Range는 토픽 사이의 번호를, RoundRobin은 개수를, Sticky는 이전 배정을 지킨다",
+    "draft": false,
+    "private": false,
+    "readingTime": 9,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-assignment-strategy"
+  },
+  {
     "slug": "kafka-static-membership",
     "category": "개념-정리",
     "subcategory": "kafka",
@@ -294,7 +316,7 @@
     "summary": "계산을 맡은 컨슈머가 하나라서, 그룹은 명단을 모으는 상태와 배정표를 기다리는 상태를 따로 갖는다",
     "draft": false,
     "private": false,
-    "readingTime": 8,
+    "readingTime": 14,
     "cover": "",
     "order": 1,
     "series": "",
