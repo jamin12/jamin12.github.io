@@ -33,13 +33,23 @@
 
 | 플러그인 | 역할 |
 |---------|------|
-| `remark-gfm` | GitHub Flavored Markdown (표, 체크리스트, 취소선) |
+| `remark-gfm` | GitHub Flavored Markdown (표, 체크리스트, 취소선). `singleTilde: false` |
 | `remark-math` | `$...$` / `$$...$$`를 math 노드로 파싱 |
 | `rehype-slug` | 헤딩에 id 자동 부여 (TOC·앵커링크용) |
 | `rehype-autolink-headings` | 헤딩 옆 앵커 링크 자동 삽입 |
 | `rehype-katex` | math 노드를 KaTeX로 렌더링 (`katex/dist/katex.min.css` 필요) |
 | `rehype-mermaid-passthrough` (로컬) | ` ```mermaid` 코드블록을 `<div class="mermaid-block">` 플레이스홀더로 교체. **shiki보다 먼저** 실행되어야 함 |
 | `@shikijs/rehype` | 코드블록 신택스 하이라이팅 |
+
+### 취소선은 `~~`만 (2026-10 변경)
+
+remark-gfm은 기본값에서 `~텍스트~`처럼 물결 하나로 감싼 것도 취소선으로 만든다. 한국어 글은 `0~9`, `10~20분`처럼 범위를 `~`로 쓰므로, 한 문단에 범위가 둘 이상 있으면 그 사이가 통째로 그어졌다. `kafka-consumer-poll-loop`의 "30~39와 40~49"에서 발견됐고, `mock-interview-ci-runner`의 "10~20분 ... 1~2분" 같은 기존 글에도 같은 문제가 숨어 있었다.
+
+| 후보 | 결과 |
+|------|------|
+| 글마다 `\~`로 이스케이프 | 작성자가 매번 기억해야 하고, 빠뜨리면 조용히 깨진다 |
+| 범위를 `-`나 "부터 까지"로 쓰기 | 문체 제약이 렌더러 사정 때문에 생긴다 |
+| **`singleTilde: false`** | **채택.** `~~텍스트~~`만 취소선. 설정 한 줄로 기존 글 전체가 고쳐진다 |
 
 ### Mermaid 다이어그램 (2026-04 4차 추가)
 

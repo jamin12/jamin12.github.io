@@ -1,6 +1,6 @@
 import { use, useRef, useState } from 'react'
 import { useParams, Link } from 'react-router'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown, { type Options as MarkdownOptions } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeSlug from 'rehype-slug'
@@ -24,7 +24,8 @@ import MermaidDiagram from '../components/MermaidDiagram'
 import Lightbox from '../components/Lightbox'
 import SEOHead from '../components/SEOHead'
 
-const remarkPlugins = [remarkGfm, remarkMath]
+// 단일 ~는 범위 표기(0~9)로 쓰이므로 취소선은 ~~만 인정
+const remarkPlugins: MarkdownOptions['remarkPlugins'] = [[remarkGfm, { singleTilde: false }], remarkMath]
 const rehypePlugins = [
   rehypeSlug,
   [
