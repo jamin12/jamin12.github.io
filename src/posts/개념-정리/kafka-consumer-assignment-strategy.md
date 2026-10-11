@@ -5,9 +5,9 @@ tags: [kafka, consumer-group, partition]
 summary: Range는 토픽 사이의 번호를, RoundRobin은 개수를, Sticky는 이전 배정을 지킨다
 ---
 
-컨슈머 그룹에서 어느 파티션을 누구에게 줄지는 그룹 리더가 계산하고, 계산 방식은 `partition.assignment.strategy`에 꽂힌 전략이 정한다. 토픽이 하나이고 파티션 수가 컨슈머 수로 나누어떨어지면 어느 전략을 골라도 결과가 같다. 토픽을 여럿 구독하거나 멤버가 바뀌어 다시 나눌 때는 전략마다 결과가 달라지고, 그 차이가 처리 방식과 리밸런싱 비용에 그대로 옮겨 온다.
-
 ## 내장 전략 네 가지
+
+classic 컨슈머 그룹의 리더는 `partition.assignment.strategy`에 설정된 전략으로 파티션 배정을 계산한다.
 
 | 전략 | 먼저 지키는 것 | 리밸런싱 절차 |
 |---|---|---|

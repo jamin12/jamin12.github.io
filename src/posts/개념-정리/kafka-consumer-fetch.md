@@ -5,8 +5,6 @@ tags: [kafka, consumer-group, configuration, java]
 summary: 브로커에서 오는 단위는 바이트고 poll이 건네는 단위는 건수라, 둘 사이에 큐가 하나 있다
 ---
 
-`poll()` 한 번이 돌려주는 `ConsumerRecords`는 그 호출이 브로커에서 받아 온 것이 아닐 수 있다. 컨슈머 안에는 브로커 응답을 쌓아 두는 큐가 있고, `poll()`은 그 큐에서 정해진 건수만큼 꺼내 준다. 브로커가 한 번에 얼마를 보내는지와 `poll()`이 한 번에 얼마를 건네는지는 서로 다른 설정이 정하고, 그 사이에서 배치 크기가 어떻게 잡히는지는 브로커가 요청을 언제까지 붙잡는지에 달려 있다.
-
 ## 컨슈머 안의 큐
 
 `KafkaConsumer`를 만들면 안에 협력 객체 몇 개가 함께 생긴다. `group.protocol`이 기본값 `classic`일 때의 구현인 `ClassicKafkaConsumer`를 디버거로 열면 최상위 필드 넷이 보이고, 그중 `fetcher`를 한 단계 더 펼치면 fetch에 쓰는 객체들이 나온다.

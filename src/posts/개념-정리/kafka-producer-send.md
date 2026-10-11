@@ -4,8 +4,6 @@ date: 2026-08-13
 tags: [kafka, producer, partitioner, serializer]
 ---
 
-프로듀서 코드는 짧다. 레코드를 만들고 `send()`를 부르면 끝이다. 그 한 줄 안에서 메시지는 바이트로 바뀌고, 어느 파티션으로 갈지 정해지고, 다른 메시지들과 한 덩어리로 모인 뒤에 전송된다.
-
 ## send()가 지나가는 길
 
 ```mermaid

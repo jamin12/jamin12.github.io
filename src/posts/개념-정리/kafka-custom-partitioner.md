@@ -5,8 +5,6 @@ tags: [kafka, producer, partitioner, java]
 summary: 커스텀 파티셔너를 등록하면 누적 바이트로 파티션을 고르던 계층이 통째로 빠진다
 ---
 
-프로듀서가 레코드를 어느 파티션에 넣을지는 브로커가 아니라 프로듀서가 정한다. 그 규칙을 직접 짜려면 `Partitioner`를 구현해 `partitioner.class`에 등록한다. 추상 메서드가 둘뿐인 인터페이스라 구현은 짧고 등록은 설정 한 줄이다. 그 한 줄을 넣으면 프로듀서가 기본으로 쓰던 파티션 배분 로직은 더 이상 불리지 않는다.
-
 ## 기본 파티셔너라는 객체는 없음
 
 `partitioner.class`의 기본값은 `null`이고, 이 상태에서 파티션은 `BuiltInPartitioner`가 정한다. 2.x에서 `partitioner.class=DefaultPartitioner`라고 적던 것과 4.x에서 아무것도 적지 않는 것이 같은 동작이다.

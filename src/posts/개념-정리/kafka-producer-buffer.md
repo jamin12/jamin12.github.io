@@ -5,11 +5,9 @@ tags: [kafka, producer, batch]
 summary: 파티션마다 배치 큐가 있고, buffer.memory는 그 전체가 나눠 쓰는 풀 하나다
 ---
 
-Kafka 프로듀서는 `send()`를 부를 때 레코드를 곧바로 네트워크에 내보내지 않는다. RecordAccumulator라는 메모리 구조에 배치로 넣어 두고, 별도의 Sender 스레드가 그 배치를 꺼내 브로커로 보낸다. `batch.size`·`max.request.size`·`max.in.flight.requests.per.connection`·`buffer.memory`는 전부 이 구조를 가리키고, 네 값이 재는 대상은 서로 다른 층이다.
-
 ## 배치는 파티션별인데 요청은 브로커별이다
 
-Sender는 한 사이클마다 보낼 준비가 된 브로커들을 고르고, 그 브로커로 갈 배치들을 **모아서** 요청 하나로 만든다. 배치를 꺼내는 함수가 돌려주는 것이 브로커별로 묶인 배치 목록이다.
+`send()`가 RecordAccumulator에 쌓은 배치를 브로커로 보내는 것은 Sender 스레드다. Sender는 한 사이클마다 보낼 준비가 된 브로커들을 고르고, 그 브로커로 갈 배치들을 **모아서** 요청 하나로 만든다. 배치를 꺼내는 함수가 돌려주는 것이 브로커별로 묶인 배치 목록이다.
 
 ```mermaid
 flowchart LR
