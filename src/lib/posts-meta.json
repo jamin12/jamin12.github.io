@@ -23,6 +23,29 @@
     "path": "/posts/kafka-consumer-offset-commit"
   },
   {
+    "slug": "kafka-consumer-replay",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 컨슈머의 파티션 수동 할당과 재조회",
+    "date": "2026-10-11",
+    "tags": [
+      "kafka",
+      "consumer-group",
+      "java",
+      "offset"
+    ],
+    "summary": "assign으로 파티션을 직접 고르고 seek로 시작 위치를 지정해, 기존 그룹의 커밋을 바꾸지 않고 정해진 범위를 다시 읽는다",
+    "draft": false,
+    "private": false,
+    "readingTime": 13,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-consumer-replay"
+  },
+  {
     "slug": "kafka-consumer-assignment-strategy",
     "category": "개념-정리",
     "subcategory": "kafka",
