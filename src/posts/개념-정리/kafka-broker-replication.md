@@ -151,6 +151,8 @@ sequenceDiagram
 
 브로커 하나가 죽었을 때 파티션의 운명은 그 브로커가 무슨 역할이었냐로 갈린다.
 
+새 파티션 리더를 결정하는 주체는 활성 컨트롤러다. KRaft에서 컨트롤러가 장애를 감지하고 리더 변경을 공유하는 과정은 [KRaft와 컨트롤러](/posts/kafka-kraft-controller)에서 다룬다.
+
 ```mermaid
 flowchart LR
     S1["Leader: B<br/>Follower: A, C"] -->|"B 다운"| S2["ISR에서 새 리더 선출<br/>Leader: A<br/>Follower: C"]

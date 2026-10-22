@@ -1,5 +1,27 @@
 [
   {
+    "slug": "kafka-kraft-controller",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka KRaft와 컨트롤러",
+    "date": "2026-10-22",
+    "tags": [
+      "kafka",
+      "broker",
+      "replication"
+    ],
+    "summary": "컨트롤러의 역할과 Raft 합의, 메타데이터 로그로 이어지는 브로커 장애 처리",
+    "draft": false,
+    "private": false,
+    "readingTime": 10,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-kraft-controller"
+  },
+  {
     "slug": "kafka-consumer-offset-commit",
     "category": "개념-정리",
     "subcategory": "kafka",
@@ -610,7 +632,7 @@
     "summary": "",
     "draft": false,
     "private": false,
-    "readingTime": 12,
+    "readingTime": 13,
     "cover": "",
     "order": 0,
     "series": "",
