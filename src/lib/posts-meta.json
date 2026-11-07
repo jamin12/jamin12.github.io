@@ -1,5 +1,27 @@
 [
   {
+    "slug": "kafka-leader-election",
+    "category": "개념-정리",
+    "subcategory": "kafka",
+    "subcategoryLabel": "Kafka",
+    "title": "Kafka 파티션 리더 선출과 장애 복구",
+    "date": "2026-11-07",
+    "tags": [
+      "kafka",
+      "broker",
+      "replication"
+    ],
+    "summary": "ISR과 ELR의 선출 자격, preferred replica로의 리더 재배치와 데이터 손실을 감수하는 복구 선택",
+    "draft": false,
+    "private": false,
+    "readingTime": 13,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/kafka-leader-election"
+  },
+  {
     "slug": "kafka-kraft-controller",
     "category": "개념-정리",
     "subcategory": "kafka",
